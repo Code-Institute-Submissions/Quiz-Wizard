@@ -39,3 +39,16 @@ A functional app the accurately displays and updates information, and displays r
 * display questions and update
 * display score
 * reset button
+
+### Functional Requirements
+
+* The site will be public and available to anyone
+* Users are able to interact with the game
+* Stores and displays updated and relevent data
+
+### Content Requirements
+
+* Header with page title/game name and menu
+* Display content of the game - category, question, answer choices, result and score
+* Footer/contact information
+
