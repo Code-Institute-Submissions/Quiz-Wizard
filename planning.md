@@ -27,3 +27,15 @@ A functional app the accurately displays and updates information, and displays r
 * I teach children in the early teens, and I'm looking for something fun and interesting to do when they have finished all their assignments. I want to be able to challenge them with general knowledge, but not questions that are too difficult.
 * Since I retired I have a lot of spare time, I like to keep my mind sharp by exercising it with challenging activities such as trivia.
 * Sometimes my partner and I like to challenge each other with random trivia facts. I'd like to be able to access a wide range of questions so that I can easily shoot them off at a moments notice.
+
+## Scope
+
+**Single page web app**
+
+* nav bar/header
+* how to use/instructions
+* bg image
+* category selection
+* display questions and update
+* display score
+* reset button
