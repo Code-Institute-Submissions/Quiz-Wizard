@@ -25,3 +25,9 @@ The goal of this project is to provide an educational and entertaining experienc
 <em>Since I retired I have a lot of spare time, I like to keep my mind sharp by exercising it with challenging activities such as trivia. I want something easy to use so that I can focus on the qeustions.</em> - Arnold
 
 <em>Sometimes my partner and I like to challenge each other with random trivia facts. I'd like to be able to access a wide range of questions so that I can easily shoot them off at a moments notice.</em> - Zara
+
+#### Site Owner Goals
+* Provide a functioning web app
+* Display trivia information for users and record their answers
+
+
