@@ -48,7 +48,14 @@ A functional app the accurately displays and updates information, and displays r
 
 ### Content Requirements
 
-* Header with page title/game name and menu
+* Header with logo, game name and menu
 * Display content of the game - category, question, answer choices, result and score
 * Footer/contact information
 
+## Structure
+
+### Interaction design
+
+* Navigation at top. Due to the nature of the project being a single page, navigation will be limited to instructions and resetting the game
+* Clicking the logo also resets the game - possibly with a confirmation required so user doesn't lose progress
+* Could have an initial welcome screen that fades or requires a button click to begin, rather than opening on a category select screen
