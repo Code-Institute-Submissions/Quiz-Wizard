@@ -27,7 +27,5 @@ The goal of this project is to provide an educational and entertaining experienc
 <em>Sometimes my partner and I like to challenge each other with random trivia facts. I'd like to be able to access a wide range of questions so that I can easily shoot them off at a moments notice.</em> - Zara
 
 #### Site Owner Goals
-* Provide a functioning web app
-* Display trivia information for users and record their answers
-
-
+* Display trivia information for users and display their answers
+* Create an engaging and enjoyable experience for users
