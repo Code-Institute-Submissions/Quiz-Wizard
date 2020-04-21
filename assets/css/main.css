@@ -61,3 +61,11 @@
     background-size: cover;
     position: relative;
 }
+
+.game {
+
+}
+
+.game--heading {
+    text-align: center;
+}
