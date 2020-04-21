@@ -62,10 +62,20 @@
     position: relative;
 }
 
-.game {
-
+.game-content {
+ padding: 0 3vw 0;
 }
 
 .game--heading {
     text-align: center;
+}
+
+.game--categories {
+
+}
+
+.category {
+    min-height: 10vh;
+    text-align: center;
+    border: red 1px solid;
 }
