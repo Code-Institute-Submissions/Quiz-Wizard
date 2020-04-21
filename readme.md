@@ -50,4 +50,5 @@ I used [coolers.co](https://coolors.co/) to design a colour scheme. [Here](https
 * Opposite: #e4784e "Burnt Sienna" - Using a colour opposite tool and tweaking it slightly, I decided on this shade as it will add a good contrast to the overall blue scheme. Orange is also known to be a color of motivation and lends a positive attitude, which contributes to the scheme philisophy
 * Main text: #fffbfc "Snow" - A slight variation on white for the text
 
-
+##### Fonts
+* Primary: Roboto - After doing some research on font psychology I decided this is a good choice for the main text of this project. This is due to it's clean, neutral appearance. I want this because I don't want people to be distracted by the font when reading questions and thinking of answers.
