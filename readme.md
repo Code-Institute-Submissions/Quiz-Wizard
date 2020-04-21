@@ -48,4 +48,6 @@ I used [coolers.co](https://coolors.co/) to design a colour scheme. [Here](https
 * Secondary: #0e3d4c "Midnight Green" - This is the primary colour a few shades darker, which will be used mostly as a background and will help the primary stand out
 * Tertiary: #374a67 "Independence" - A slightly bluer variation of the primary and secondary, used to create contrast and highlights to draw attention
 * Opposite: #e4784e "Burnt Sienna" - Using a colour opposite tool and tweaking it slightly, I decided on this shade as it will add a good contrast to the overall blue scheme. Orange is also known to be a color of motivation and lends a positive attitude, which contributes to the scheme philisophy
+* Main text: #fffbfc "Snow" - A slight variation on white for the text
+
 
