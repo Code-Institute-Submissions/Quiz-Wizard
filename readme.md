@@ -47,4 +47,5 @@ I used [coolers.co](https://coolors.co/) to design a colour scheme. [Here](https
 * Primary: #228093 "Metallic Seaweed" - [This](https://coschedule.com/blog/color-psychology-marketing/) blog on colour psychology influenced my decision to use this as a primary colour. Green <em>"lends us a clearer sense of right from wrong since green incorporates a balance of both the logical and emotional"</em> and Blue <em>"lends a more mental reaction rather than physical that allows us to destress, calm down, and think of the most ideal situation."</em> I wanted to combine these into a single colour that I believe would be suited to the aformentioned philosophy for this project
 * Secondary: #0e3d4c "Midnight Green" - This is the primary colour a few shades darker, which will be used mostly as a background and will help the primary stand out
 * Tertiary: #374a67 "Independence" - A slightly bluer variation of the primary and secondary, used to create contrast and highlights to draw attention
-* 
+* Opposite: #e4784e "Burnt Sienna" - Using a colour opposite tool and tweaking it slightly, I decided on this shade as it will add a good contrast to the overall blue scheme. Orange is also known to be a color of motivation and lends a positive attitude, which contributes to the scheme philisophy
+
