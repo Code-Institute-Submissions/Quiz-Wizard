@@ -38,3 +38,12 @@ The goal of this project is to provide an educational and entertaining experienc
 * Choose difficulty of questions
 * Display results and score
 
+## Design Choices
+
+Because trivia is a mental activity and a game, I decided to create a theme that focuses on promoting mental clarity while still appearing fun and engaging.
+
+##### Colours
+I used [coolers.co](https://coolors.co/) to design a colour scheme
+*Primary: #228093 "Metallic Seaweed" - [This](https://coschedule.com/blog/color-psychology-marketing/) blog on colour psychology influenced my decision to use this as a primary colour. Green <em>"lends us a clearer sense of right from wrong since green incorporates a balance of both the logical and emotional"</em> and Blue <em>"lends a more mental reaction rather than physical that allows us to destress, calm down, and think of the most ideal situation."</em> I wanted to combine these into a single colour that I believe would be suited for the aformentioned philosophy for this project
+*Secondary: #0e3d4c "Midnight Green" - This is the primary colour a few shades darker, which will be used mostly as a background and will help the primary stand out
+
