@@ -1,3 +1,5 @@
+/* Nav */
+
 .nav-wrapper {
     background: #000000;
     border: red 1px solid; 
@@ -44,4 +46,18 @@
 
 .nav-text-style a {
     padding: 0.75rem 0;
+}
+
+/* Home */
+
+.home-container-wrapper {
+    min-height: 90vh;
+    /* margin-top: 10vh; */
+    padding: 12vh 3vw 0;
+    background: gray;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
 }
