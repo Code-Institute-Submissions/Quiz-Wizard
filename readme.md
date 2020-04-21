@@ -29,3 +29,12 @@ The goal of this project is to provide an educational and entertaining experienc
 #### Site Owner Goals
 * Display trivia information for users and display their answers
 * Create an engaging and enjoyable experience for users
+
+## User Requirements and Expectations
+##### Requirements
+* Choose category of questions
+* Input answer selection
+##### Expectations
+* Choose difficulty of questions
+* Display results and score
+
