@@ -13,3 +13,35 @@
     -moz-background-size: contain;
     -o-background-size: contain;
 }
+
+.nav-menu-icon {
+    z-index: 10;
+    margin: 0 1rem 0 0;
+    border: 0;
+    padding: 0;
+}
+
+.nav-menu-icon span {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+#NavMobileToggler {
+    padding-top: 0.5rem;
+    background: #000000;
+    z-index: 8;
+}
+
+.nav-text-style {
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    font-family: "rubik", sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
+}
+
+.nav-text-style a {
+    padding: 0.75rem 0;
+}
