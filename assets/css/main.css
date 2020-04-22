@@ -12,7 +12,7 @@ body {
 
 .nav-wrapper {
     background: #000000;
-    border: red 1px solid; 
+    border: red 1px solid;
 }
 
 .logo {
@@ -63,7 +63,7 @@ body {
 .home-container-wrapper {
     min-height: 90vh;
     /* margin-top: 10vh; */
-    padding: 12vh 3vw 0;
+    padding: 12vh 8vw 0;
     background: #0e3d4c;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -86,6 +86,8 @@ body {
 
 .category {
     min-height: 10vh;
+    padding: 10px;
     text-align: center;
     border: red 1px solid;
+    background: #228093;
 }
