@@ -84,6 +84,13 @@ body {
 
 }
 
+.game--difficulty {
+    text-align: center;
+    background: #228093;
+    /* margin: 2px 0; */
+    /* border: red 1px solid; */
+}
+
 .category {
     min-height: 10vh;
     padding: 3px 0;
