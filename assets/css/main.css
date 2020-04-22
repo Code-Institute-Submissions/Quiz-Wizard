@@ -2,7 +2,7 @@
 >>IMPORTS AND GLOBAL SETTINGS
 ========================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
     background: #0e3d4c;
@@ -78,6 +78,13 @@ body {
 
 .game--heading {
     text-align: center;
+}
+
+.game--heading h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fffbfc;
 }
 
 .game--categories {
