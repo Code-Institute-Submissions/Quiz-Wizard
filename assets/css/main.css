@@ -98,3 +98,22 @@ body {
     /* border: red 1px solid; */
     /* background: #228093; */
 }
+
+.game--question {
+    min-height: 200px;
+    min-width: 200px;
+    text-align: center;
+    border: red 1px solid;
+}
+
+.game--answers {
+    min-height: 80px;
+    text-align: center;
+    border: red 1px solid;
+}
+
+.game--score {
+    min-height: 80px;
+    text-align: center;
+    border: red 1px solid;
+}
