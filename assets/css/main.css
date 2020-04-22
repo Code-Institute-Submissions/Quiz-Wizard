@@ -4,6 +4,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+body {
+    background: #0e3d4c;
+}
+
 /* Nav */
 
 .nav-wrapper {
@@ -60,7 +64,7 @@
     min-height: 90vh;
     /* margin-top: 10vh; */
     padding: 12vh 3vw 0;
-    background: gray;
+    background: #0e3d4c;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
