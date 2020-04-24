@@ -8,11 +8,20 @@ Build an interactive front-end site. The site should respond to the users' actio
 ### Project Goals
 The goal of this project is to provide an educational and entertaining experience for the users. This will be in the form of a web app, aimed at anyone interested in the content of the game. To achieve this the site needs to be easily accessible to people of all ages.
 
-#### User Goals
+### User Goals
 * An entertaining way to learn new facts
 * An easy way to test their trivia knowledge
 * A fun way to pass the time that feels meaningful
 * Able to use the website on mobile, tablet or desktop
+
+### User Requirements and Expectations
+##### Requirements
+* Choose category of questions
+* Input answer selection
+##### Expectations
+* Choose difficulty of questions
+* Display results and score
+* Immediate feedback after each question
 
 #### User Stories
 
@@ -26,17 +35,42 @@ The goal of this project is to provide an educational and entertaining experienc
 
 <em>Sometimes my partner and I like to challenge each other with random trivia facts. I'd like to be able to access a wide range of questions so that I can easily shoot them off at a moments notice.</em> - Zara
 
-#### Site Owner Goals
+## Site Owner Goals
 * Display trivia information for users and display their answers
 * Create an engaging and enjoyable experience for users
+* An intuitive and easy to navigate app
 
-## User Requirements and Expectations
-##### Requirements
-* Choose category of questions
-* Input answer selection
-##### Expectations
-* Choose difficulty of questions
-* Display results and score
+### Scope
+
+##### Single page web app
+
+* nav bar/header
+* how to use/instructions
+* bg image
+* category selection
+* display questions and update
+* display score
+* reset button
+
+#### Functional Requirements
+
+* The site will be public and available to anyone
+* Users are able to interact with the game
+* Stores and displays updated and relevent data
+
+#### Content Requirements
+
+* Header with logo, game name and menu
+* Display content of the game - category, question, answer choices, result and score
+* Footer/contact information
+
+### Structure
+
+#### Interaction design
+
+* Navigation at top. Due to the nature of the project being a single page, navigation will be limited to instructions and resetting the game
+* Clicking the logo also resets the game - possibly with a confirmation required so user doesn't lose progress
+* Could have an initial welcome screen that fades or requires a button click to begin, rather than opening on a category select screen
 
 ## Design Choices
 
