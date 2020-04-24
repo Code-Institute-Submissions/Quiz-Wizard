@@ -124,3 +124,16 @@ body {
     text-align: center;
     border: red 1px solid;
 }
+
+/* ============
+>>Media Queries
+============ */
+
+/* ========
+>768+ width
+======== */
+
+/* min-height to exclude long phones in landscape eg; pixel 2 */
+@media only screen and (min-width: 768px) and (min-height: 420px) {
+
+}
