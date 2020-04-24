@@ -107,8 +107,8 @@ body {
 }
 
 .game--question {
-    min-height: 200px;
-    min-width: 200px;
+    height: 25vh;
+    /* min-width: 50vw; */
     text-align: center;
     border: red 1px solid;
 }
