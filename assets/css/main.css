@@ -113,6 +113,13 @@ body {
     border: red 1px solid;
 }
 
+.game--question h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #fffbfc;
+}
+
 .game--answers {
     min-height: 80px;
     text-align: center;
