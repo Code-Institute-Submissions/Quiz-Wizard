@@ -135,5 +135,27 @@ body {
 
 /* min-height to exclude long phones in landscape eg; pixel 2 */
 @media only screen and (min-width: 768px) and (min-height: 420px) {
-
+    .home-container-wrapper {
+        /* padding: 12vh 8vw 0; */
+    }
 }
+
+/* ========
+>992+ width
+======== */
+
+@media only screen and (min-width: 992px) {
+    .home-container-wrapper {
+        padding: 12vh 15vw 0;
+    }
+}
+
+/* =========
+>1200+ width
+========= */
+
+@media only screen and (min-width: 1200px) {
+    .home-container-wrapper {
+        padding: 12vh 22vw 0;
+    }
+}   
