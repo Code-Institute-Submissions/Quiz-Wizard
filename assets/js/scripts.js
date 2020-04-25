@@ -1,4 +1,16 @@
 $(document).ready(function () {
+
+    let urlStart = 'https://opentdb.com/api.php?'
+    let url10 = 'amount=10'
+    let url15 = 'amount=15'
+    let url20 = 'amount=20'
+    let urlCategory = '&category=10'
+    let urlEasy = '&difficulty=easy'
+    let urlMed = '&difficulty=medium'
+    let urlHard = '&difficulty=hard'
+    let urlType = '&type=multiple'
+    let triviaURL = ''
+
     $('.category').click(function (e) {
         e.preventDefault();
         console.log('click');
@@ -11,9 +23,9 @@ $(document).ready(function () {
         $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
     });
 
+    triviaURL = urlStart + url10 + urlCategory + urlEasy + urlType
 
-
-    fetch('https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple')
+    fetch(triviaURL)
     .then(res => res.json())
     .then(data => {
         let triviaData = data.results;
