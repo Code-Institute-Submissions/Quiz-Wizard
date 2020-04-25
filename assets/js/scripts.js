@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 
 
-        $('.category').click(function(e) {
+    $('.category').click(function(e) {
         e.preventDefault();
         /* Category selection switch */
         switch ($(this).prop('id')) {
@@ -24,6 +24,48 @@ $(document).ready(function () {
             case 'books':
             console.log('books');
             break;
+            case 'film':
+            console.log('film');
+            break;
+            case 'television':
+            console.log('television');
+            break;
+            case 'videoGames':
+            console.log('video games');
+            break;
+            case 'scienceNature':
+            console.log('Science and nature');
+            break;
+            case 'sports':
+            console.log('sports');
+            break;
+            case 'history':
+            console.log('history');
+            break;
+            case 'politics':
+            console.log('politics');
+            break;
+            case 'animals':
+            console.log('animals');
+            break;
+            case 'art':
+            console.log('art');
+            break;
+            case 'geography':
+            console.log('geography');
+            break;
+            case 'vehicles':
+            console.log('vehicles');
+            break;
+            case 'music':
+            console.log('music');
+            break;
+            case 'celebrities':
+            console.log('celebrities');
+            break;
+            case 'generalKnowledge':
+            console.log('general knowledge');
+            break;
             default:
             console.log('default');
         }
@@ -31,6 +73,8 @@ $(document).ready(function () {
         $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
         $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
     });
+
+
     $('.game--difficulty-select').click(function (e) {
         e.preventDefault();
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown');
