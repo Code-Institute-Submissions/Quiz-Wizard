@@ -8,6 +8,14 @@ body {
     background: #0e3d4c;
 }
 
+.game--panel__hidden {
+    display: none;
+}
+
+.game--panel__shown {
+    display: block;
+}
+
 /* Nav */
 
 .nav-wrapper {
