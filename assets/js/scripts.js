@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    /* API URL generation */
     let urlStart = 'https://opentdb.com/api.php?'
     let url10 = 'amount=10'
     let url15 = 'amount=15'
@@ -11,9 +12,22 @@ $(document).ready(function () {
     let urlType = '&type=multiple'
     let triviaURL = ''
 
-    $('.category').click(function (e) {
+
+
+        $('.category').click(function(e) {
         e.preventDefault();
-        console.log('click');
+        /* Category selection switch */
+        switch ($(this).prop('id')) {
+            case 'mythology':
+            console.log('mythology');
+            break;
+            case 'books':
+            console.log('books');
+            break;
+            default:
+            console.log('default');
+        }
+        
         $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
         $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
     });
