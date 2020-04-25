@@ -1,5 +1,18 @@
 $(document).ready(function () {
-    
+    $('.category').click(function (e) {
+        e.preventDefault();
+        console.log('click');
+        $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
+        $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
+    });
+    $('.game--difficulty-select').click(function (e) {
+        e.preventDefault();
+        $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown');
+        $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
+    });
+
+
+
     fetch('https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple')
     .then(res => res.json())
     .then(data => {
