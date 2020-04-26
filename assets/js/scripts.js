@@ -66,7 +66,21 @@ $(document).ready(function () {
     //     $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
     // });
 
+    
+
+    /* Get data out of local scope */
+    /* https://stackoverflow.com/a/44644532 */
     function getTriviaData() {
+        return fetch(triviaURL)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data.results);
+            return data.results
+        })
+    }
+    // getTriviaData().then(triviaRes => console.log(triviaRes));
+
+    function getTriviaData2() {
         fetch(triviaURL)
         .then(res => res.json())
         .then(data => {
@@ -106,7 +120,7 @@ $(document).ready(function () {
                         document.getElementById(`trivia${index1}Answer${index2}`).innerHTML = triviaAnswers[index1][index2]
                     })
             })
-    
+            // console.log(triviaCorrect);
             // console.log(triviaQuestions);
             // console.log(triviaAnswers);
             // triviaData[0].incorrect_answers.forEach(answer => {
@@ -115,13 +129,12 @@ $(document).ready(function () {
             //         console.log(i);
             //     }
             // });
-    
             // $('.game--answer--single').click(function (e) {
             //     e.preventDefault();
             //     // console.log('click');
             //     console.log($(this).text());
             //     // console.log('----');
-            //     if ($(this).text() == correctAnswer) {
+            //     if ($(this).text() == currentCorrect) {
             //         console.log('correct');
             //     } else {
             //         console.log('incorrect');
