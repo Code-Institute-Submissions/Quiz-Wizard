@@ -30,11 +30,11 @@ $(document).ready(function () {
     })[categoryChoice]
     
     /* Click events for selecting category and difficulty of trivia */
-    $('.category').click(function(event) {
+    $('.game--category-select').click(function(event) {
         return triviaSelect($(this).attr('id'))
     })
 
-    $('.category').click(function(event) {
+    $('.game--category-select').click(function(event) {
         urlSelection = event.result
         console.log(urlSelection);
     })
@@ -52,7 +52,7 @@ $(document).ready(function () {
     })
 
 
-    // $('.category').click(function(e) {
+    // $('.game--category-select').click(function(e) {
     //     e.preventDefault();
         
     //     $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
