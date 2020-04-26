@@ -32,63 +32,14 @@ $(document).ready(function () {
         'generalKnowledge': 'category=9',
     })[categoryChoice]
     
-    console.log(categoryURL('film'));
+    // console.log(categoryURL('film'));
 
-    function selectCategory(playerChoice) {
-        switch (playerChoice) {
-                case 'mythology':
-                console.log('mythology');
-                break;
-                case 'books':
-                console.log('books');
-                break;
-                case 'film':
-                console.log('film');
-                break;
-                case 'television':
-                console.log('television');
-                break;
-                case 'videoGames':
-                console.log('video games');
-                break;
-                case 'scienceNature':
-                console.log('Science and nature');
-                break;
-                case 'sports':
-                console.log('sports');
-                break;
-                case 'history':
-                console.log('history');
-                break;
-                case 'politics':
-                console.log('politics');
-                break;
-                case 'animals':
-                console.log('animals');
-                break;
-                case 'art':
-                console.log('art');
-                break;
-                case 'geography':
-                console.log('geography');
-                break;
-                case 'vehicles':
-                console.log('vehicles');
-                break;
-                case 'music':
-                console.log('music');
-                break;
-                case 'celebrities':
-                console.log('celebrities');
-                break;
-                case 'generalKnowledge':
-                console.log('general knowledge');
-                break;
-                default:
-                console.log('default');
-            }
-    }
-    // selectCategory('books');
+    $('.category').click(function() {
+        // console.log($(this).attr('id'));
+        console.log(categoryURL($(this).attr('id')));
+    })
+
+    
 
     // $('.category').click(function(e) {
     //     e.preventDefault();
