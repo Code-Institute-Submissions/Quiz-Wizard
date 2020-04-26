@@ -12,7 +12,83 @@ $(document).ready(function () {
     let urlType = '&type=multiple'
     let triviaURL = ''
 
+    
+    const categoryURL = (categoryChoice) => ({
+        'mythology': 'category=20',
+        'books': 'category=10',
+        'film': 'category=11',
+        'television': 'category=14',
+        'videoGames': 'category=15',
+        'scienceNature': 'category=17',
+        'sport': 'category=21',
+        'history': 'category=23',
+        'politics': 'category=24',
+        'animals': 'category=27',
+        'art': 'category=25',
+        'geography': 'category=22',
+        'vehicles': 'category=28',
+        'music': 'category=12',
+        'celebrities': 'category=26',
+        'generalKnowledge': 'category=9',
+    })[categoryChoice]
+    
+    console.log(categoryURL('film'));
 
+    function selectCategory(playerChoice) {
+        switch (playerChoice) {
+                case 'mythology':
+                console.log('mythology');
+                break;
+                case 'books':
+                console.log('books');
+                break;
+                case 'film':
+                console.log('film');
+                break;
+                case 'television':
+                console.log('television');
+                break;
+                case 'videoGames':
+                console.log('video games');
+                break;
+                case 'scienceNature':
+                console.log('Science and nature');
+                break;
+                case 'sports':
+                console.log('sports');
+                break;
+                case 'history':
+                console.log('history');
+                break;
+                case 'politics':
+                console.log('politics');
+                break;
+                case 'animals':
+                console.log('animals');
+                break;
+                case 'art':
+                console.log('art');
+                break;
+                case 'geography':
+                console.log('geography');
+                break;
+                case 'vehicles':
+                console.log('vehicles');
+                break;
+                case 'music':
+                console.log('music');
+                break;
+                case 'celebrities':
+                console.log('celebrities');
+                break;
+                case 'generalKnowledge':
+                console.log('general knowledge');
+                break;
+                default:
+                console.log('default');
+            }
+    }
+    // selectCategory('books');
 
     // $('.category').click(function(e) {
     //     e.preventDefault();
