@@ -29,24 +29,33 @@ $(document).ready(function () {
         'music': '&category=12',
         'celebrities': '&category=26',
         'general-knowledge': '&category=9',
+        'easy': '&difficulty=easy',
+        'medium': '&difficulty=medium',
+        'hard': '&difficulty=hard'
     })[categoryChoice]
     
     // console.log(categoryURL('film'));
 
     $('.category').click(function(event) {
-        // console.log($(this).attr('id'));
-        // console.log(categoryURL($(this).attr('id')));
         return categoryURL($(this).attr('id'))
     })
 
     $('.category').click(function(event) {
         urlCategory = event.result
-        // console.log(urlCategory);
-        triviaURL = urlStart + url10 + urlCategory + urlEasy + urlType
+        console.log(urlCategory);
+    })
+    
+    $('.game--difficulty-select').click(function(event) {
+        return categoryURL($(this).attr('id'))
+    })
+
+    $('.game--difficulty-select').click(function(event) {
+        urlCategory = urlCategory + event.result
+        console.log(urlCategory);
+        triviaURL = urlStart + url10 + urlCategory + urlType
         console.log(triviaURL);
         getTriviaData();
     })
-    
 
 
     // $('.category').click(function(e) {
