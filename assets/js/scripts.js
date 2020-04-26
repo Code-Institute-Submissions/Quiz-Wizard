@@ -33,18 +33,19 @@ $(document).ready(function () {
     
     // console.log(categoryURL('film'));
 
-    function playerSelect() {
-        $('.category').click(function(event) {
-            // console.log($(this).attr('id'));
-            // console.log(categoryURL($(this).attr('id')));
-            return categoryURL($(this).attr('id'))
-        })
+    $('.category').click(function(event) {
+        // console.log($(this).attr('id'));
+        // console.log(categoryURL($(this).attr('id')));
+        return categoryURL($(this).attr('id'))
+    })
 
-        $('.category').click(function(event) {
-            urlCategory = event.result
-            // console.log(urlCategory);
-        })
-    }
+    $('.category').click(function(event) {
+        urlCategory = event.result
+        // console.log(urlCategory);
+        triviaURL = urlStart + url10 + urlCategory + urlEasy + urlType
+        console.log(triviaURL);
+        getTriviaData();
+    })
     
 
 
