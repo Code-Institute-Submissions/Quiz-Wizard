@@ -5,7 +5,7 @@ $(document).ready(function () {
     let url10 = 'amount=10'
     let url15 = 'amount=15'
     let url20 = 'amount=20'
-    let urlCategory = '&category=10'
+    let urlCategory = '&category=23'
     let urlEasy = '&difficulty=easy'
     let urlMed = '&difficulty=medium'
     let urlHard = '&difficulty=hard'
@@ -112,11 +112,19 @@ $(document).ready(function () {
         triviaData.forEach((cAnswer, index) => {
             triviaCorrect.push(triviaData[index].correct_answer)
         })
-        
-        document.getElementById('trivia' + '0' + 'Question').innerHTML = triviaQuestions[0];
-        triviaAnswers[0].forEach((answer, index) => {
-            document.getElementById(`trivia0Answer${index}`).innerHTML = triviaAnswers[0][index];
+        // iterate array to display questions
+        triviaQuestions.forEach((question, index) => {
+            document.getElementById(`trivia${index}Question`).innerHTML = triviaQuestions[index];
         })
+        // iterate array to display answers
+        triviaAnswers.forEach((answerArray, index1) => {
+                triviaAnswers[index1].forEach((answer, index2) => {
+                    document.getElementById(`trivia${index1}Answer${index2}`).innerHTML = triviaAnswers[index1][index2]
+                })
+        })
+
+        // console.log(triviaQuestions);
+        // console.log(triviaAnswers);
         // triviaData[0].incorrect_answers.forEach(answer => {
         //     for (i = 0; i < triviaData[0].incorrect_answers.length; i++) {
         //         document.getElementById('triviaAnswer' + (i + 1)).innerHTML = triviaData[0].incorrect_answers[i]
