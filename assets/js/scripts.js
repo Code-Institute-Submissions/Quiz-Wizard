@@ -1,18 +1,13 @@
 $(document).ready(function () {
 
     /* API URL generation */
-    let urlStart = 'https://opentdb.com/api.php?'
-    let url10 = 'amount=10'
-    let url15 = 'amount=15'
-    let url20 = 'amount=20'
-    let urlCategory = ''
-    let urlEasy = '&difficulty=easy'
-    let urlMed = '&difficulty=medium'
-    let urlHard = '&difficulty=hard'
+    let urlStart = 'https://opentdb.com/api.php?amount=10'
+    let urlSelection = ''
     let urlType = '&type=multiple'
     let triviaURL = 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple'
 
-    const categoryURL = (categoryChoice) => ({
+    /* Values to select category and difficulty of trivia */
+    const triviaSelect = (categoryChoice) => ({
         'mythology': '&category=20',
         'books': '&category=10',
         'film': '&category=11',
@@ -34,25 +29,24 @@ $(document).ready(function () {
         'hard': '&difficulty=hard'
     })[categoryChoice]
     
-    // console.log(categoryURL('film'));
-
+    /* Click events for selecting category and difficulty of trivia */
     $('.category').click(function(event) {
-        return categoryURL($(this).attr('id'))
+        return triviaSelect($(this).attr('id'))
     })
 
     $('.category').click(function(event) {
-        urlCategory = event.result
-        console.log(urlCategory);
+        urlSelection = event.result
+        console.log(urlSelection);
     })
     
     $('.game--difficulty-select').click(function(event) {
-        return categoryURL($(this).attr('id'))
+        return triviaSelect($(this).attr('id'))
     })
 
     $('.game--difficulty-select').click(function(event) {
-        urlCategory = urlCategory + event.result
-        console.log(urlCategory);
-        triviaURL = urlStart + url10 + urlCategory + urlType
+        urlSelection = urlSelection + event.result
+        console.log(urlSelection);
+        triviaURL = urlStart + urlSelection + urlType
         console.log(triviaURL);
         getTriviaData();
     })
