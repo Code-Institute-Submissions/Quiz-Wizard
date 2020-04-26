@@ -83,7 +83,6 @@ $(document).ready(function () {
 
     triviaURL = urlStart + url10 + urlCategory + urlEasy + urlType
 
-
     fetch(triviaURL)
     .then(res => res.json())
     .then(data => {
@@ -103,13 +102,23 @@ $(document).ready(function () {
         triviaData.forEach((allAnswers, index) => {
             triviaAnswers.push(triviaData[index].incorrect_answers)
         })
+        // shuffle answer array
+        for (i =0; i < triviaAnswers.length; i++) {
+            // console.log(triviaAnswers[i]);
+            triviaAnswers[i].sort(() => Math.random() - 0.5);
+            // console.log(triviaAnswers[i]);
+        }
         // push all correct answers into array
         triviaData.forEach((cAnswer, index) => {
             triviaCorrect.push(triviaData[index].correct_answer)
         })
-        console.log(triviaQuestions);
-        console.log(triviaAnswers);
-        console.log(triviaCorrect);
+        // console.log(triviaQuestions);
+        // console.log(triviaAnswers[0]);
+        // triviaAnswers[0].sort(() => Math.random() - 0.5);
+        // console.log(triviaAnswers[0]);
+        // console.log(triviaCorrect);
+        // triviaAnswers.sort(() => Math.random() - 0.5)
+        
         // let correctAnswer = triviaData[0].correct_answer;
         
         // triviaData[0].incorrect_answers.push(triviaData[0].correct_answer);
