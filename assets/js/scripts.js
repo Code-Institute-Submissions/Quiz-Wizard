@@ -140,18 +140,21 @@ $(document).ready(function () {
     
     /* check correct answer */
     let checkAnswer = 0
+    let currentScore = 0
     $('.game--answer--single').click(function() {
-        console.log($(this).text());
-        // console.log(checkAnswer);
+        console.log($(this).text())
+        // console.log(checkAnswer)
         if ($(this).text() == correctArray[checkAnswer]) {
-            console.log('correct');
+            console.log('correct')
+            currentScore ++
         } else {
-            console.log('incorrect');
+            console.log('incorrect')
         }
         $(`#gamePanel${checkAnswer}`).hide()
         $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
         checkAnswer++
-    });
+        document.getElementById('playerScore').innerHTML = `Score ${currentScore}/10`
+    })
 
     /* Question about this */
     // let checkCorrect = () => console.log($(this));
