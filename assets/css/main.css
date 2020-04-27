@@ -106,6 +106,13 @@ body {
     /* border: red 1px solid; */
 }
 
+.game--difficulty-select {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fffbfc;
+}
+
 .category {
     min-height: 10vh;
     padding: 3px 0;
