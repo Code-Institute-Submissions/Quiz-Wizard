@@ -138,22 +138,39 @@ $(document).ready(function () {
         console.log(correctArray);
     }
     
+    function changeQuestion() {
+        $(`#gamePanel${checkAnswer}`).hide()
+        $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
+    }
+
     /* check correct answer */
     let checkAnswer = 0
     let currentScore = 0
     $('.game--answer--single').click(function() {
+        console.log(checkAnswer);
         console.log($(this).text())
-        // console.log(checkAnswer)
         if ($(this).text() == correctArray[checkAnswer]) {
             console.log('correct')
+            $(this).css('background-color', 'green')
             currentScore ++
         } else {
             console.log('incorrect')
+            $(this).css('background-color', 'red')
         }
-        $(`#gamePanel${checkAnswer}`).hide()
-        $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
-        checkAnswer++
+        setTimeout(() => {
+            // $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
+            // $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
+            $(`#gamePanel${checkAnswer}`).hide()
+            $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1500)
+            checkAnswer++
+            console.log(checkAnswer);
+        }, 1500);
+        // $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
+        // $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // $(`#gamePanel${checkAnswer}`).hide()
+        // $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
         document.getElementById('playerScore').innerHTML = `Score ${currentScore}/10`
+        console.log(checkAnswer);
     })
 
     /* Question about this */
