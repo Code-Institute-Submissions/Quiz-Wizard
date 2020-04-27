@@ -36,7 +36,9 @@ $(document).ready(function () {
 
     $('.game--category-select').click(function(event) {
         urlSelection = event.result
-        console.log(urlSelection)
+        
+        // display category name in title
+        document.getElementById('gameTitle').innerHTML = $(this).attr('id').toUpperCase()
         // $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
         // $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
         $('.game--categories').hide()
