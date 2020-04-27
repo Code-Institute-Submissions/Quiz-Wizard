@@ -36,7 +36,12 @@ $(document).ready(function () {
 
     $('.game--category-select').click(function(event) {
         urlSelection = event.result
-        console.log(urlSelection);
+        console.log(urlSelection)
+        // $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
+        // $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
+        $('.game--categories').hide()
+        $('.game--difficulty').fadeIn(1500)
+
     })
     
     $('.game--difficulty-select').click(function(event) {
@@ -47,8 +52,12 @@ $(document).ready(function () {
         urlSelection = urlSelection + event.result
         console.log(urlSelection);
         triviaURL = urlStart + urlSelection + urlType
-        console.log(triviaURL);
-        userSelection();
+        console.log(triviaURL)
+        userSelection()
+        // $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown');
+        // $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
+        $('.game--difficulty').hide();
+        $('.game--display').fadeIn(1500);
     })
 
 
@@ -144,68 +153,5 @@ $(document).ready(function () {
     /* Question about this */
     // let checkCorrect = () => console.log($(this));
     // let checkCorrect = () => ($(this).text() == correctArray[1]) ? console.log('correct') : console.log('incorrect')
-    
-    
-    function getTriviaData2() {
-        fetch(triviaURL)
-        .then(res => res.json())
-        .then(data => {
-            let triviaData = data.results;
-            let triviaQuestions = []
-            let triviaAnswers = []
-            let triviaCorrect = []
-            // push all questions into array
-            triviaData.forEach((question, index) => {
-                triviaQuestions.push(triviaData[index].question)
-            });
-            // push correct answer into incorrect answers
-            triviaData.forEach((answer, index) => {
-                triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
-            });
-            // push all answer choices into array
-            triviaData.forEach((allAnswers, index) => {
-                triviaAnswers.push(triviaData[index].incorrect_answers)
-            })
-            // shuffle answer array
-            for (i =0; i < triviaAnswers.length; i++) {
-                // console.log(triviaAnswers[i]);
-                triviaAnswers[i].sort(() => Math.random() - 0.5);
-                // console.log(triviaAnswers[i]);
-            }
-            // push all correct answers into array
-            triviaData.forEach((cAnswer, index) => {
-                triviaCorrect.push(triviaData[index].correct_answer)
-            })
-            // iterate array to display questions
-            triviaQuestions.forEach((question, index) => {
-                document.getElementById(`trivia${index}Question`).innerHTML = triviaQuestions[index];
-            })
-            // iterate array to display answers
-            triviaAnswers.forEach((answerArray, index1) => {
-                    triviaAnswers[index1].forEach((answer, index2) => {
-                        document.getElementById(`trivia${index1}Answer${index2}`).innerHTML = triviaAnswers[index1][index2]
-                    })
-            })
-            // console.log(triviaCorrect);
-            // console.log(triviaQuestions);
-            // console.log(triviaAnswers);
-            // triviaData[0].incorrect_answers.forEach(answer => {
-            //     for (i = 0; i < triviaData[0].incorrect_answers.length; i++) {
-            //         document.getElementById('triviaAnswer' + (i + 1)).innerHTML = triviaData[0].incorrect_answers[i]
-            //         console.log(i);
-            //     }
-            // });
-            // $('.game--answer--single').click(function (e) {
-            //     e.preventDefault();
-            //     // console.log('click');
-            //     console.log($(this).text());
-            //     // console.log('----');
-            //     if ($(this).text() == currentCorrect) {
-            //         console.log('correct');
-            //     } else {
-            //         console.log('incorrect');
-            //     }
-            // });
-        });
-    }
+
 });
