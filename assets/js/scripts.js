@@ -60,7 +60,6 @@ $(document).ready(function () {
         $('.game--display').fadeIn(1500);
     })
 
-
     // $('.game--category-select').click(function(e) {
     //     e.preventDefault();
         
@@ -147,6 +146,8 @@ $(document).ready(function () {
         } else {
             console.log('incorrect');
         }
+        $(`#gamePanel${checkAnswer}`).hide()
+        $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
         checkAnswer++
     });
 
