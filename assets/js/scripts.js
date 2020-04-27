@@ -129,13 +129,16 @@ $(document).ready(function () {
     }
     
     /* check correct answer */
+    let checkAnswer = 0
     $('.game--answer--single').click(function() {
         console.log($(this).text());
-        if ($(this).text() == correctArray[1]) {
+        // console.log(checkAnswer);
+        if ($(this).text() == correctArray[checkAnswer]) {
             console.log('correct');
         } else {
             console.log('incorrect');
         }
+        checkAnswer++
     });
 
     /* Question about this */
