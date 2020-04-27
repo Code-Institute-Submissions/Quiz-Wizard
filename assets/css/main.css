@@ -134,10 +134,24 @@ body {
     border: red 1px solid;
 }
 
+.game--answers p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fffbfc;
+}
+
 .game--score {
     min-height: 80px;
     text-align: center;
     border: red 1px solid;
+}
+
+.game--score h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fffbfc;
 }
 
 /* ============
