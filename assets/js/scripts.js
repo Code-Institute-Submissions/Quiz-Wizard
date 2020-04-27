@@ -128,7 +128,21 @@ $(document).ready(function () {
         console.log(correctArray);
     }
     
+    /* check correct answer */
+    $('.game--answer--single').click(function() {
+        console.log($(this).text());
+        if ($(this).text() == correctArray[1]) {
+            console.log('correct');
+        } else {
+            console.log('incorrect');
+        }
+    });
 
+    /* Question about this */
+    // let checkCorrect = () => console.log($(this));
+    // let checkCorrect = () => ($(this).text() == correctArray[1]) ? console.log('correct') : console.log('incorrect')
+    
+    
     function getTriviaData2() {
         fetch(triviaURL)
         .then(res => res.json())
