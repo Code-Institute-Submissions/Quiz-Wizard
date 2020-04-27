@@ -48,7 +48,7 @@ $(document).ready(function () {
         console.log(urlSelection);
         triviaURL = urlStart + urlSelection + urlType
         console.log(triviaURL);
-        getTriviaData();
+        userSelection();
     })
 
 
@@ -67,18 +67,67 @@ $(document).ready(function () {
     // });
 
     
-
+    let triviaQuestions = []
+    let triviaAnswers = []
+    let triviaCorrect = []
     /* Get data out of local scope */
     /* https://stackoverflow.com/a/44644532 */
-    function getTriviaData() {
-        return fetch(triviaURL)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data.results);
-            return data.results
+    async function getTriviaData() {
+        const res = await fetch(triviaURL);
+        const data = await res.json();
+        // console.log(data.results);
+        return data.results;
+    }
+    
+    function processTriviaData() {
+        getTriviaData().then(triviaData => {
+            // push all questions into array
+            triviaData.forEach((question, index) => {
+                triviaQuestions.push(triviaData[index].question)
+            })
+            // push correct answer into incorrect answers
+            triviaData.forEach((answer, index) => {
+                triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
+            })
+            // push all answer choices into array
+            triviaData.forEach((allAnswers, index) => {
+                triviaAnswers.push(triviaData[index].incorrect_answers)
+            })
+            // shuffle answer array
+            for (i =0; i < triviaAnswers.length; i++) {
+                // console.log(triviaAnswers[i]);
+                triviaAnswers[i].sort(() => Math.random() - 0.5);
+                // console.log(triviaAnswers[i]);
+            }
+            // push all correct answers into array
+            triviaData.forEach((cAnswer, index) => {
+                triviaCorrect.push(triviaData[index].correct_answer)
+            })
+            // iterate array to display questions
+            triviaQuestions.forEach((question, index) => {
+                document.getElementById(`trivia${index}Question`).innerHTML = triviaQuestions[index];
+            })
+            // iterate array to display answers
+            triviaAnswers.forEach((answerArray, index1) => {
+                    triviaAnswers[index1].forEach((answer, index2) => {
+                        document.getElementById(`trivia${index1}Answer${index2}`).innerHTML = triviaAnswers[index1][index2]
+                    })
+            })
         })
     }
-    // getTriviaData().then(triviaRes => console.log(triviaRes));
+
+    async function displayTrivia() {
+        await getTriviaData()
+        processTriviaData()
+        return triviaCorrect;
+    }
+    
+    let correctArray = []
+    async function userSelection() {
+        correctArray = await displayTrivia()
+        console.log(correctArray);
+    }
+    
 
     function getTriviaData2() {
         fetch(triviaURL)
