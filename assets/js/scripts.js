@@ -1,5 +1,29 @@
 $(document).ready(function () {
 
+    let categoryArray = []
+
+    async function getData(url) {
+        const res = await fetch(url)
+        const data = await res.json()
+        return data
+    }
+    
+    async function getCategories() {
+        const data = await getData('https://opentdb.com/api_category.php')
+        categoryList = data.trivia_categories
+        console.log('full list')
+        console.log(categoryList)
+    }
+
+    getCategories()
+
+    // async function getTriviaData() {
+    //     const res = await fetch(triviaURL);
+    //     const data = await res.json();
+    //     // console.log(data.results);
+    //     return data.results;
+    // }
+
     /* API URL generation */
     let urlStart = 'https://opentdb.com/api.php?amount=10'
     let urlSelection = ''
