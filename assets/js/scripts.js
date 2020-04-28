@@ -8,14 +8,32 @@ $(document).ready(function () {
         return data
     }
     
-    async function getCategories() {
-        const data = await getData('https://opentdb.com/api_category.php')
+    async function getCategories(catUrl) {
+        const data = await getData(catUrl)
         categoryList = data.trivia_categories
         console.log('full list')
         console.log(categoryList)
+        filterCategories('General Knowledge')
+        filterCategories('Entertainment: Books')
+        filterCategories('Entertainment: Film')
+        filterCategories('Entertainment: Music')
+        filterCategories('Entertainment: Television')
+        filterCategories('Entertainment: Video Games')
+        filterCategories('Science & Nature')
+        filterCategories('Science: Computers')
+        filterCategories('Sports')
+        filterCategories('Geography')
+        filterCategories('History')
+        filterCategories('Entertainment: Japanese Anime & Manga')
+        console.log('filtered')
+        console.log(categoryArray)
     }
 
-    getCategories()
+    getCategories('https://opentdb.com/api_category.php')
+
+    const filterCategories = (categoryName) => {
+        categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
+    }
 
     // async function getTriviaData() {
     //     const res = await fetch(triviaURL);
