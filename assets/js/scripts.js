@@ -8,11 +8,11 @@ $(document).ready(function () {
         const data = await res.json()
         return data
     }
-    
+
     // Get specific trivia data based on user selection
     async function getTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
-        console.log(data.results) 
+        console.log(data.results)
     }
 
     // Generate array of categories
@@ -41,7 +41,15 @@ $(document).ready(function () {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
 
-    getCategories('https://opentdb.com/api_category.php')
+    // generate category buttons in DOM
+    async function createCategories() {
+        await getCategories('https://opentdb.com/api_category.php')
+        categoryArray.forEach((category, index) => {
+            $(".game--categories" ).append(`<button class="btn btn-default game--answer--single" id=${category.id}>${category.name}</button>`);
+        })
+    }
+
+    createCategories()
 
     function generateURL(categoryID, difficulty) {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
@@ -66,44 +74,16 @@ $(document).ready(function () {
         userDiff = event.result
     })
 
-    $('#begin').click(function (event) { 
+    $('#begin').click(function (event) {
        console.log(userCategory + ' ' + userDiff)
         getTriviaData(generateURL(userCategory, userDiff))
     })
 
-    // $('#begin').click(function (event) { 
-    //     userUrl = event.result
-    // })
-
-    /* API URL generation */
-    let urlStart = 'https://opentdb.com/api.php?amount=10'
-    let urlSelection = ''
-    let urlType = '&type=multiple'
-    let triviaURL = 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple'
-
-    /* Values to select category and difficulty of trivia */
-    const triviaSelect = (categoryChoice) => ({
-        'mythology': '&category=20',
-        'books': '&category=10',
-        'film': '&category=11',
-        'television': '&category=14',
-        'video-games': '&category=15',
-        'science-nature': '&category=17',
-        'sport': '&category=21',
-        'history': '&category=23',
-        'politics': '&category=24',
-        'animals': '&category=27',
-        'art': '&category=25',
-        'geography': '&category=22',
-        'vehicles': '&category=28',
-        'music': '&category=12',
-        'celebrities': '&category=26',
-        'general-knowledge': '&category=9',
-        'easy': '&difficulty=easy',
-        'medium': '&difficulty=medium',
-        'hard': '&difficulty=hard'
-    })[categoryChoice]
     
+
+
+
+    /* Old code - kept for reference at this time */
     /* Click events for selecting category and difficulty of trivia */
     $('.game--category-select').click(function(event) {
         return triviaSelect($(this).attr('id'))
