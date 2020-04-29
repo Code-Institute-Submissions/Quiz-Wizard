@@ -52,6 +52,25 @@ $(document).ready(function () {
         return urlDefault + urlCategory + urlDifficulty
     }
 
+    // test click events
+    $('#9').click(function (event) {
+        return $(this).attr('id')
+    })
+
+    $('#9').click(function (event) {
+        userCategory = event.result
+    })
+
+    $('#easy').click(function (event) {
+        return $(this).attr('id')
+    })
+    $('#easy').click(function (event) {
+        userDiff = event.result
+    })
+
+    $('#begin').click(function (event) { 
+        console.log(generateURL(userCategory, userDiff));
+    })
 
     /* API URL generation */
     let urlStart = 'https://opentdb.com/api.php?amount=10'
