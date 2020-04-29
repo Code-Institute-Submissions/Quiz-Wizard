@@ -12,10 +12,8 @@ $(document).ready(function () {
     // Get specific trivia data based on user selection
     async function getTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
-        // console.log(data.results) 
+        console.log(data.results) 
     }
-
-    getTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
 
     // Generate array of categories
     async function getCategories(catUrl) {
@@ -69,8 +67,13 @@ $(document).ready(function () {
     })
 
     $('#begin').click(function (event) { 
-        console.log(generateURL(userCategory, userDiff));
+       console.log(userCategory + ' ' + userDiff)
+        getTriviaData(generateURL(userCategory, userDiff))
     })
+
+    // $('#begin').click(function (event) { 
+    //     userUrl = event.result
+    // })
 
     /* API URL generation */
     let urlStart = 'https://opentdb.com/api.php?amount=10'
