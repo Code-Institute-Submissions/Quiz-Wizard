@@ -11,8 +11,6 @@ $(document).ready(function () {
     async function getCategories(catUrl) {
         const data = await getData(catUrl)
         categoryList = data.trivia_categories
-        console.log('full list')
-        console.log(categoryList)
         filterCategories('General Knowledge')
         filterCategories('Entertainment: Books')
         filterCategories('Entertainment: Film')
@@ -25,7 +23,7 @@ $(document).ready(function () {
         filterCategories('Geography')
         filterCategories('History')
         filterCategories('Entertainment: Japanese Anime & Manga')
-        console.log('filtered')
+        // console.log('filtered')
         console.log(categoryArray)
     }
 
@@ -35,12 +33,18 @@ $(document).ready(function () {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
 
-    // async function getTriviaData() {
-    //     const res = await fetch(triviaURL);
-    //     const data = await res.json();
-    //     // console.log(data.results);
-    //     return data.results;
-    // }
+    function generateURL(categoryID, difficulty) {
+        let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
+        let urlCategory = '&category=' + categoryID
+        let urlDifficulty = '&difficulty=' + difficulty
+        return urlDefault + urlCategory + urlDifficulty
+    }
+
+    setTimeout(() => {
+        triviaURLtest = generateURL(9, 'hard')
+        console.log(triviaURLtest)
+    }, 5000)
+
 
     /* API URL generation */
     let urlStart = 'https://opentdb.com/api.php?amount=10'
