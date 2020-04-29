@@ -2,12 +2,22 @@ $(document).ready(function () {
 
     let categoryArray = []
 
+    // Get data from API
     async function getData(url) {
         const res = await fetch(url)
         const data = await res.json()
         return data
     }
     
+    // Get specific trivia data based on user selection
+    async function getTriviaData(triviaUrl) {
+        const data = await getData(triviaUrl)
+        // console.log(data.results) 
+    }
+
+    getTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
+
+    // Generate array of categories
     async function getCategories(catUrl) {
         const data = await getData(catUrl)
         categoryList = data.trivia_categories
@@ -23,15 +33,17 @@ $(document).ready(function () {
         filterCategories('Geography')
         filterCategories('History')
         filterCategories('Entertainment: Japanese Anime & Manga')
+        // console.log(categoryList);
         // console.log('filtered')
-        console.log(categoryArray)
+        // console.log(categoryArray)
     }
 
-    getCategories('https://opentdb.com/api_category.php')
-
+    // Filter category function
     const filterCategories = (categoryName) => {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
+
+    getCategories('https://opentdb.com/api_category.php')
 
     function generateURL(categoryID, difficulty) {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
@@ -39,11 +51,6 @@ $(document).ready(function () {
         let urlDifficulty = '&difficulty=' + difficulty
         return urlDefault + urlCategory + urlDifficulty
     }
-
-    setTimeout(() => {
-        triviaURLtest = generateURL(9, 'hard')
-        console.log(triviaURLtest)
-    }, 5000)
 
 
     /* API URL generation */
@@ -128,14 +135,14 @@ $(document).ready(function () {
     let triviaCorrect = []
     /* Get data out of local scope */
     /* https://stackoverflow.com/a/44644532 */
-    async function getTriviaData() {
-        const res = await fetch(triviaURL);
-        const data = await res.json();
-        // console.log(data.results);
-        return data.results;
-    }
+    // async function getTriviaData() {
+    //     const res = await fetch(triviaURL);
+    //     const data = await res.json();
+    //     // console.log(data.results);
+    //     return data.results;
+    // }
     
-    function processTriviaData() {
+    /* function processTriviaData() {
         getTriviaData().then(triviaData => {
             // push all questions into array
             triviaData.forEach((question, index) => {
@@ -170,13 +177,13 @@ $(document).ready(function () {
                     })
             })
         })
-    }
+    } */
 
-    async function displayTrivia() {
+    /* async function displayTrivia() {
         await getTriviaData()
         processTriviaData()
         return triviaCorrect;
-    }
+    } */
     
     let correctArray = []
     async function userSelection() {
@@ -190,7 +197,7 @@ $(document).ready(function () {
     }
 
     /* check correct answer */
-    let checkAnswer = 0
+    /* let checkAnswer = 0
     let currentScore = 0
     $('.game--answer--single').click(function() {
         console.log(checkAnswer);
@@ -217,7 +224,7 @@ $(document).ready(function () {
         // $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
         document.getElementById('playerScore').innerHTML = `Score ${currentScore}/10`
         console.log(checkAnswer);
-    })
+    }) */
 
     /* Question about this */
     // let checkCorrect = () => console.log($(this));
