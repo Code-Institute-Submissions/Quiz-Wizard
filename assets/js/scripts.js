@@ -45,7 +45,7 @@ $(document).ready(function () {
     async function createCategories() {
         await getCategories('https://opentdb.com/api_category.php')
         categoryArray.forEach((category, index) => {
-            $(".game--categories" ).append(`<button class="btn btn-default game--answer--single" id=${category.id}>${category.name}</button>`);
+            $(".game--categories" ).append(`<button class="btn btn-default game--category-select" id=${category.id}>${category.name}</button>`);
         })
     }
 
@@ -58,14 +58,27 @@ $(document).ready(function () {
         return urlDefault + urlCategory + urlDifficulty
     }
 
-    // test click events
-    $('#9').click(function (event) {
+    /* User interaction */
+
+    // select category
+    $(document).on('click', '.game--category-select', function (event) {
         return $(this).attr('id')
     })
 
-    $('#9').click(function (event) {
+    $(document).on('click', '.game--category-select', function (event) {
         userCategory = event.result
+        console.log(userCategory)
     })
+
+    // test click events
+    // $('.game--category-select').click(function (event) {
+    //     return $(this).attr('id')
+    // })
+
+    // $('.game--category-select').click(function (event) {
+    //     userCategory = event.result
+    //     console.log(userCategory)
+    // })
 
     $('#easy').click(function (event) {
         return $(this).attr('id')
