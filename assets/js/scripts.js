@@ -59,13 +59,11 @@ $(document).ready(function () {
         for (i=0; i<categoryArray.length; i++) {
             if (rowNum % colNum === 0) {
                 $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
-                console.log('new row');
             }
             rowNum++
-            $(`#row${rowID}`).append(`<button class='col-3'>col${i}</button>`)
+            $(`#row${rowID}`).append(`<button class='btn btn-default col-6 col-md-3 game--category-select' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
             if (rowNum % colNum === 0) {
                 $('.game--categories').append(`</div>`)
-                console.log('end row');
                 rowID++
             }
         }
