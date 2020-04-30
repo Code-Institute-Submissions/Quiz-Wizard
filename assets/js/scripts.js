@@ -45,10 +45,10 @@ $(document).ready(function () {
     async function createCategories() {
         await getCategories('https://opentdb.com/api_category.php')
         categoryArray.forEach((category, index) => {
-            $(".game--categories" ).append(`<button class="btn btn-default game--category-select" id=${category.id}>${category.name}</button>`);
+            $(".game--category-row" ).append(`<button class="btn btn-default col-4 col-md-3 game--category-select" id=${category.id}>${category.name}</button>`);
         })
     }
-
+    
     createCategories()
 
     function generateURL(categoryID, difficulty) {
