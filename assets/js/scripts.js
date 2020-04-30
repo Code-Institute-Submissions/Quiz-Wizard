@@ -42,14 +42,37 @@ $(document).ready(function () {
     }
 
     // generate category buttons in DOM
+    // async function createCategories() {
+    //     await getCategories('https://opentdb.com/api_category.php')
+    //     categoryArray.forEach((category, index) => {
+    //         $(".game--category-row" ).append(`<button class="btn btn-default col-4 col-md-3 game--category-select" id=${category.id}>${category.name}</button>`);
+    //     })
+    // }
+
+    /* https://stackoverflow.com/a/40562841/10828019 */
+    // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
     async function createCategories() {
         await getCategories('https://opentdb.com/api_category.php')
-        categoryArray.forEach((category, index) => {
-            $(".game--category-row" ).append(`<button class="btn btn-default col-4 col-md-3 game--category-select" id=${category.id}>${category.name}</button>`);
-        })
+        rowNum = 0
+        colNum = 4
+        rowID = 1
+        for (i=0; i<categoryArray.length; i++) {
+            if (rowNum % colNum === 0) {
+                $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
+                console.log('new row');
+            }
+            rowNum++
+            $(`#row${rowID}`).append(`<button class='col-3'>col${i}</button>`)
+            if (rowNum % colNum === 0) {
+                $('.game--categories').append(`</div>`)
+                console.log('end row');
+                rowID++
+            }
+        }
     }
     
     createCategories()
+
 
     function generateURL(categoryID, difficulty) {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
