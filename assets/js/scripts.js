@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    let categoryArray = []
-
     // Get data from API
     async function getData(url) {
         const res = await fetch(url)
@@ -12,10 +10,12 @@ $(document).ready(function () {
     // Get specific trivia data based on user selection
     async function getTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
-        console.log(data.results)
+        // console.log(data.results)
+        return data.results
     }
 
     // Generate array of categories
+    let categoryArray = []
     async function getCategories(catUrl) {
         const data = await getData(catUrl)
         categoryList = data.trivia_categories
@@ -41,14 +41,6 @@ $(document).ready(function () {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
 
-    // generate category buttons in DOM
-    // async function createCategories() {
-    //     await getCategories('https://opentdb.com/api_category.php')
-    //     categoryArray.forEach((category, index) => {
-    //         $(".game--category-row" ).append(`<button class="btn btn-default col-4 col-md-3 game--category-select" id=${category.id}>${category.name}</button>`);
-    //     })
-    // }
-
     /* https://stackoverflow.com/a/40562841/10828019 */
     // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
     async function createCategories() {
@@ -68,16 +60,22 @@ $(document).ready(function () {
             }
         }
     }
-    
     createCategories()
 
-
+    // generate url to get specific trivia user selects
     function generateURL(categoryID, difficulty) {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
         let urlCategory = '&category=' + categoryID
         let urlDifficulty = '&difficulty=' + difficulty
         return urlDefault + urlCategory + urlDifficulty
     }
+
+    /* Processing of trivia data */
+    let triviaQuestions = []
+    let triviaAnswers = []
+    let triviaCorrect = []
+    let triviaData = []
+
 
     /* User interaction */
 
@@ -91,16 +89,6 @@ $(document).ready(function () {
         console.log(userCategory)
     })
 
-    // test click events
-    // $('.game--category-select').click(function (event) {
-    //     return $(this).attr('id')
-    // })
-
-    // $('.game--category-select').click(function (event) {
-    //     userCategory = event.result
-    //     console.log(userCategory)
-    // })
-
     $('.game--difficulty-select').click(function (event) {
         return $(this).attr('id')
     })
@@ -111,10 +99,15 @@ $(document).ready(function () {
 
     $('#begin').click(function (event) {
        console.log(userCategory + ' ' + userDiff)
-        getTriviaData(generateURL(userCategory, userDiff))
+        // getTriviaData(generateURL(userCategory, userDiff))
+        createTrivia()
     })
 
     
+
+    
+    
+
 
 
 
@@ -167,9 +160,7 @@ $(document).ready(function () {
     // });
 
     
-    let triviaQuestions = []
-    let triviaAnswers = []
-    let triviaCorrect = []
+    
     /* Get data out of local scope */
     /* https://stackoverflow.com/a/44644532 */
     // async function getTriviaData() {
@@ -222,16 +213,16 @@ $(document).ready(function () {
         return triviaCorrect;
     } */
     
-    let correctArray = []
-    async function userSelection() {
-        correctArray = await displayTrivia()
-        console.log(correctArray);
-    }
+    // let correctArray = []
+    // async function userSelection() {
+    //     correctArray = await displayTrivia()
+    //     console.log(correctArray);
+    // }
     
-    function changeQuestion() {
-        $(`#gamePanel${checkAnswer}`).hide()
-        $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
-    }
+    // function changeQuestion() {
+    //     $(`#gamePanel${checkAnswer}`).hide()
+    //     $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
+    // }
 
     /* check correct answer */
     /* let checkAnswer = 0
