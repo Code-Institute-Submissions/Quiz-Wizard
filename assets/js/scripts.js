@@ -101,11 +101,12 @@ $(document).ready(function () {
     //     console.log(userCategory)
     // })
 
-    $('#easy').click(function (event) {
+    $('.game--difficulty-select').click(function (event) {
         return $(this).attr('id')
     })
-    $('#easy').click(function (event) {
+    $('.game--difficulty-select').click(function (event) {
         userDiff = event.result
+        console.log($(this).attr('id'));
     })
 
     $('#begin').click(function (event) {
@@ -119,7 +120,7 @@ $(document).ready(function () {
 
     /* Old code - kept for reference at this time */
     /* Click events for selecting category and difficulty of trivia */
-    $('.game--category-select').click(function(event) {
+    /* $('.game--category-select').click(function(event) {
         return triviaSelect($(this).attr('id'))
     })
 
@@ -133,9 +134,9 @@ $(document).ready(function () {
         $('.game--categories').hide()
         $('.game--difficulty').fadeIn(1500)
 
-    })
+    }) */
     
-    $('.game--difficulty-select').click(function(event) {
+    /* $('.game--difficulty-select').click(function(event) {
         return triviaSelect($(this).attr('id'))
     })
 
@@ -149,7 +150,7 @@ $(document).ready(function () {
         // $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
         $('.game--difficulty').hide();
         $('.game--display').fadeIn(1500);
-    })
+    }) */
 
     // $('.game--category-select').click(function(e) {
     //     e.preventDefault();
