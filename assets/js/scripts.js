@@ -78,9 +78,26 @@ $(document).ready(function () {
     async function processTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
         triviaData = data.results
+        // push correct answer into incorrect answers
+        triviaData.forEach((el, index) => {
+            triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
+        })
+        // shuffle answer array
+        for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
+            console.log(triviaData[i].incorrect_answers);
+            triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5);
+            console.log(triviaData[i].incorrect_answers);
+        }
+        
 
+        triviaData.forEach((el, index) => {
+            console.log('new game panel');
+            console.log('new Q: ' + el.question);
+            console.log('A:' + el.incorrect_answers);
+            console.log('Corr:' + el.correct_answer);
+        })
         // console.log(triviaData)
-        arrayLooper(triviaData, 'question')
+        // arrayLooper(triviaData, 'question')
     }
 
     function arrayLooper(array, query) {
@@ -89,8 +106,140 @@ $(document).ready(function () {
         })
     }
 
-    // processTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
     
+
+    let testArray = [
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "Which company did Valve cooperate with in the creation of the Vive?",
+    "correct_answer": "HTC",
+    "incorrect_answers": [
+    "Oculus",
+    "Google",
+    "Razer"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What is the first book of the Old Testament?",
+    "correct_answer": "Genesis",
+    "incorrect_answers": [
+    "Exodus",
+    "Leviticus",
+    "Numbers"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "In past times, what would a gentleman keep in his fob pocket?",
+    "correct_answer": "Watch",
+    "incorrect_answers": [
+    "Money",
+    "Keys",
+    "Notebook"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "How would one say goodbye in Spanish?",
+    "correct_answer": "Adi&oacute;s",
+    "incorrect_answers": [
+    " Hola",
+    "Au Revoir",
+    "Salir"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "Red Vines is a brand of what type of candy?",
+    "correct_answer": "Licorice",
+    "incorrect_answers": [
+    "Lollipop",
+    "Chocolate",
+    "Bubblegum"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What is the nickname of the US state of California?",
+    "correct_answer": "Golden State",
+    "incorrect_answers": [
+    "Sunshine State",
+    "Bay State",
+    "Treasure State"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What is on display in the Madame Tussaud&#039;s museum in London?",
+    "correct_answer": "Wax sculptures",
+    "incorrect_answers": [
+    "Designer clothing",
+    "Unreleased film reels",
+    "Vintage cars"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "According to the nursery rhyme, what fruit did Little Jack Horner pull out of his Christmas pie?",
+    "correct_answer": "Plum",
+    "incorrect_answers": [
+    "Apple",
+    "Peach",
+    "Pear"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "How many furlongs are there in a mile?",
+    "correct_answer": "Eight",
+    "incorrect_answers": [
+    "Two",
+    "Four",
+    "Six"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What is the name of NASA&rsquo;s most famous space telescope?",
+    "correct_answer": "Hubble Space Telescope",
+    "incorrect_answers": [
+    "Big Eye",
+    "Death Star",
+    "Millenium Falcon"
+    ]
+    }
+    ]
+
+    function testing() {
+        testArray.forEach((el, index) => {
+            
+        })
+    }
+    // testing()
+
+    // processTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
+
 
     /* User interaction */
 
