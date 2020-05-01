@@ -150,18 +150,19 @@ $(document).ready(function () {
     })
 
     let checkAnswer = 0
+    let currentScore = 0
     $(document).on('click', '.game--answer--single', function (event) {
         console.log($(this).text());
         if (correctArray[checkAnswer] === $(this).text()) {
             console.log('correct');
+            currentScore++
         } else {
             console.log('incorrect');
         }
         $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
         $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
-        // $(`#gamePanel${checkAnswer}`).addClass('.game--panel__hidden').removeClass('.game--panel__shown')
-        // $(`#gamePanel${(checkAnswer + 1)}`).addClass('.game--panel__shown').removeClass('.game--panel__hidden')
         checkAnswer++
+        $('#playerScore').text(`Score ${currentScore}/10`)
     })
 
 
