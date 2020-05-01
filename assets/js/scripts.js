@@ -84,21 +84,32 @@ $(document).ready(function () {
         })
         // shuffle answer array
         for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
-            console.log(triviaData[i].incorrect_answers);
+            // console.log(triviaData[i].incorrect_answers);
             triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5);
-            console.log(triviaData[i].incorrect_answers);
+            // console.log(triviaData[i].incorrect_answers);
         }
         
 
         triviaData.forEach((el, index) => {
-            console.log('new game panel');
-            console.log('new Q: ' + el.question);
-            console.log('A:' + el.incorrect_answers);
-            console.log('Corr:' + el.correct_answer);
+            // console.log('new game panel');
+            $('.game--display').append(`<div class='game--panel game--panel__shown' id='gamePanel${index}'>
+            <div class='row'>
+                <div class='col-10 offset-1 game--question'>
+                    <h3 id='trivia${index}Question'>${triviaData[index].question}</h3>
+                </div>
+            </div>
+            <br>
+            
+            </div>`)
+            // console.log('new Q: ' + el.question);
+            // console.log('A:' + el.incorrect_answers);
+            // console.log('Corr:' + el.correct_answer);
         })
-        // console.log(triviaData)
+        console.log(triviaData)
         // arrayLooper(triviaData, 'question')
     }
+
+    
 
     function arrayLooper(array, query) {
         array.forEach((el, index) => {
