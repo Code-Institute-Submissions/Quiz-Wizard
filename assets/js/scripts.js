@@ -115,9 +115,6 @@ $(document).ready(function () {
     }
 
 
-    // processTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
-
-
     /* User interaction */
 
     // select category
@@ -130,15 +127,16 @@ $(document).ready(function () {
         console.log(userCategory)
     })
 
-    $('.game--difficulty-select').click(function (event) {
+    $(document).on('click', '.game--difficulty-select', function (event) {
         return $(this).attr('id')
     })
-    $('.game--difficulty-select').click(function (event) {
+
+    $(document).on('click', '.game--difficulty-select', function (event) {
         userDiff = event.result
-        console.log($(this).attr('id'));
+        console.log(userDiff)
     })
 
-    $('#begin').click(function (event) {
+    $(document).on('click', '#begin', function (event) {
         console.log(userCategory + ' ' + userDiff)
         console.log(generateURL(userCategory, userDiff));
         processTriviaData(generateURL(userCategory, userDiff))
