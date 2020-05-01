@@ -74,8 +74,44 @@ $(document).ready(function () {
     let triviaQuestions = []
     let triviaAnswers = []
     let triviaCorrect = []
-    let triviaData = []
 
+    async function processTriviaData(triviaUrl) {
+        const data = await getData(triviaUrl)
+        triviaData = data.results
+        // push all questions into array
+        triviaData.forEach((el, index) => {
+            triviaQuestions.push(triviaData[index].question)
+        })
+        // push correct answer into incorrect answers
+        triviaData.forEach((el, index) => {
+            triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
+        })
+        // push all answer choices into array
+        triviaData.forEach((el, index) => {
+            triviaAnswers.push(triviaData[index].incorrect_answers)
+        })
+        // shuffle answer array
+        for (i =0; i < triviaAnswers.length; i++) {
+            // console.log(triviaAnswers[i]);
+            triviaAnswers[i].sort(() => Math.random() - 0.5);
+            // console.log(triviaAnswers[i]);
+        }
+        // push all correct answers into array
+        triviaData.forEach((el, index) => {
+            triviaCorrect.push(triviaData[index].correct_answer)
+        })
+        console.log('full');
+        console.log(triviaData);
+        console.log('Q');
+        console.log(triviaQuestions);
+        console.log('A');
+        console.log(triviaAnswers);
+        console.log('corr');
+        console.log(triviaCorrect);
+    }
+
+    // processTriviaData('https://opentdb.com/api.php?amount=10&type=multiple&category=9&difficulty=easy')
+    
 
     /* User interaction */
 
@@ -98,9 +134,11 @@ $(document).ready(function () {
     })
 
     $('#begin').click(function (event) {
-       console.log(userCategory + ' ' + userDiff)
+        console.log(userCategory + ' ' + userDiff)
+        console.log(generateURL(userCategory, userDiff));
+        processTriviaData(generateURL(userCategory, userDiff))
         // getTriviaData(generateURL(userCategory, userDiff))
-        createTrivia()
+        // createTrivia()
     })
 
     
