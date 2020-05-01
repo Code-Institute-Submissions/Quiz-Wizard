@@ -53,7 +53,7 @@ $(document).ready(function () {
                 $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
             }
             rowNum++
-            $(`#row${rowID}`).append(`<button class='btn btn-default col-4 offset-1 col-md-3 game--category-select mb-1' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
+            $(`#row${rowID}`).append(`<button class='btn btn-outline-primary col-4 offset-1 col-md-3 game--category-select mb-2' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
             if (rowNum % colNum === 0) {
                 $('.game--categories').append(`</div>`)
                 rowID++
