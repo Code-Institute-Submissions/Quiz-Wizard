@@ -107,8 +107,7 @@ $(document).ready(function () {
                 <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
                 <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
             </div>
-            </div>
-            <br>`)
+            </div>`)
             
             // console.log('new Q: ' + el.question);
             // console.log('A:' + el.incorrect_answers);
@@ -158,6 +157,11 @@ $(document).ready(function () {
         } else {
             console.log('incorrect');
         }
+        $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // $(`#gamePanel${checkAnswer}`).addClass('.game--panel__hidden').removeClass('.game--panel__shown')
+        // $(`#gamePanel${(checkAnswer + 1)}`).addClass('.game--panel__shown').removeClass('.game--panel__hidden')
+        checkAnswer++
     })
 
 
