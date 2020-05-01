@@ -88,24 +88,32 @@ $(document).ready(function () {
             triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5);
             // console.log(triviaData[i].incorrect_answers);
         }
-        
-
-        triviaData.forEach((el, index) => {
+        // generate panel of questions and answers for each trivia entry
+        triviaData.forEach((trivia, index) => {
             // console.log('new game panel');
             $('.game--display').append(`<div class='game--panel game--panel__shown' id='gamePanel${index}'>
             <div class='row'>
                 <div class='col-10 offset-1 game--question'>
-                    <h3 id='trivia${index}Question'>${triviaData[index].question}</h3>
+                    <h3 id='trivia${index}Question'>${trivia.question}</h3>
                 </div>
             </div>
             <br>
+            <div class='row'>
+                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
+                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
+            </div>
+            <div class='row'>
+                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
+                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
+            </div>
+            </div>
+            <br>`)
             
-            </div>`)
             // console.log('new Q: ' + el.question);
             // console.log('A:' + el.incorrect_answers);
             // console.log('Corr:' + el.correct_answer);
         })
-        console.log(triviaData)
+        // console.log(triviaData)
         // arrayLooper(triviaData, 'question')
     }
 
