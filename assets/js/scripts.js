@@ -144,6 +144,16 @@ $(document).ready(function () {
         // createTrivia()
     })
 
+    let checkAnswer = 0
+    $(document).on('click', '.game--answer--single', function (event) {
+        console.log($(this).text());
+        if (triviaData[checkAnswer].correct_answer === $(this).text()) {
+            console.log('correct');
+        } else {
+            console.log('incorrect');
+        }
+    })
+
 
 
 
