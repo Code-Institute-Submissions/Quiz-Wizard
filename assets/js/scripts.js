@@ -71,9 +71,14 @@ $(document).ready(function () {
     }
 
     /* Processing of trivia data */
+    let correctArray = []
     async function processTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
         triviaData = data.results
+        // push all correct answers into seperatearray
+        triviaData.forEach((el, index) => {
+            correctArray.push(triviaData[index].correct_answer)
+        })
         // push correct answer into incorrect answers
         triviaData.forEach((el, index) => {
             triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
@@ -112,6 +117,7 @@ $(document).ready(function () {
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
         // console.log(triviaData)
         // arrayLooper(triviaData, 'question')
+        console.log(correctArray);
     }
 
 
@@ -147,7 +153,7 @@ $(document).ready(function () {
     let checkAnswer = 0
     $(document).on('click', '.game--answer--single', function (event) {
         console.log($(this).text());
-        if (triviaData[checkAnswer].correct_answer === $(this).text()) {
+        if (correctArray[checkAnswer] === $(this).text()) {
             console.log('correct');
         } else {
             console.log('incorrect');
