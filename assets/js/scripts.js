@@ -87,7 +87,7 @@ $(document).ready(function () {
         // generate panel of questions and answers for each trivia entry
         triviaData.forEach((trivia, index) => {
             // console.log('new game panel');
-            $('.game--display').append(`<div class='game--panel game--panel__shown' id='gamePanel${index}'>
+            $('.game--display').append(`<div class='game--panel game--panel__hidden' id='gamePanel${index}'>
             <div class='row'>
                 <div class='col-10 offset-1 game--question'>
                     <h3 id='trivia${index}Question'>${trivia.question}</h3>
@@ -109,6 +109,7 @@ $(document).ready(function () {
             // console.log('A:' + el.incorrect_answers);
             // console.log('Corr:' + el.correct_answer);
         })
+        $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
         // console.log(triviaData)
         // arrayLooper(triviaData, 'question')
     }
