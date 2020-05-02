@@ -151,9 +151,10 @@ p, h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     font-size: .75rem;
     font-weight: 400;
-    /* color: #fffbfc; */
+    color: #fffbfc;
     min-width: 100px;
     min-height: 75px;
+    border: #2B3E50 1px solid;
 }
 
 .category {
@@ -176,6 +177,7 @@ p, h1, h2, h3, h4, h5, h6 {
     min-width: 100px;
     height: 50px;
     padding: 1vh 0;
+    border: #2B3E50 1px solid;
 }
 
 /* Game display panel */
