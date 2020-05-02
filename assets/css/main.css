@@ -179,16 +179,23 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Game display panel */
+.game--display {
+    padding: 1vh 0vw;
+}
+
+.trivia--panel {
+    
+}
+
 .game--question {
-    height: 25vh;
-    /* min-width: 50vw; */
+    min-height: 32vh;
     text-align: center;
-    border: red 1px solid;
+    background-color: #4E5D6C;
 }
 
 .game--question h3 {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: #fffbfc;
 }

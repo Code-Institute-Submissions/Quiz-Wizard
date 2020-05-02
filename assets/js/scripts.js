@@ -92,20 +92,19 @@ $(document).ready(function () {
         // generate panel of questions and answers for each trivia entry
         triviaData.forEach((trivia, index) => {
             // console.log('new game panel');
-            $('.game--display').append(`<div class='game--panel game--panel__hidden' id='gamePanel${index}'>
-            <div class='row'>
-                <div class='col-10 offset-1 game--question'>
+            $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
+            <div class='row mx-0 mb-3 game--question'>
+                <div class='col-10 mx-auto my-auto'>
                     <h3 id='trivia${index}Question'>${trivia.question}</h3>
                 </div>
             </div>
-            <br>
             <div class='row'>
-                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
-                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
+                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
+                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
             </div>
             <div class='row'>
-                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
-                <button class='col-6 game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
+                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
+                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
             </div>
             </div>`)
             
