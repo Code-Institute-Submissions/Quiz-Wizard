@@ -219,9 +219,10 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .game--score {
-    min-height: 80px;
+    min-height: 5vh;
     text-align: center;
-    border: red 1px solid;
+    background-color: #4E5D6C;
+    border: #2B3E50 1px solid;
 }
 
 .game--score h4 {
