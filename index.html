@@ -31,7 +31,7 @@
     <!-- Home page main content -->
     <section class="container-fluid home-container-wrapper">
         <!-- Welcome screen -->
-        <div class="card welcome-panel game--panel__hidden mt-4">
+        <div class="card welcome-panel game--panel__shown mt-4">
             <div class="row">
                 <div class="col-12 pt-4">
                     <h3>welcome to</h3>
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div class="game-content game--panel__shown ">
+        <div class="game-content game--panel__hidden ">
             <!-- Game heading -->
             <div class="row game--heading">
                 <div class="col-12 pt-3 pb-1">
@@ -66,7 +66,7 @@
                 </div>
             </div>
             <!-- Category select page -->
-            <div class="game--categories game--panel__shown mb-3">
+            <div class="game--categories game--panel__hidden mb-3">
                 <!-- Category button generation goes here -->
             </div>
             <!-- Difficulty select page -->
@@ -86,7 +86,11 @@
             </div>
 
             <!-- Game display and input page -->
-            <div class="game--display--wrapper game--panel__shown">
+            <div class="game--display--wrapper game--panel__shown mt-3">
+                
+                
+
+
                 <div class="game--display">
                     <!-- Trivia game panel generation goes here -->
                 </div>
@@ -97,7 +101,31 @@
                 </div>
             </div>
         </div>
-        <br><br>
+        <!-- End game panel -->
+        <div class="card endgame-panel game--panel__shown mt-4">
+            <div class="row">
+                <div class="col-12 pt-4">
+                    <h3>thanks for playing!</h3>
+                </div>
+                <div class="col-12 pt-2">
+                    <h2>score</h2>
+                </div>
+                <div class="col-12 endgame--score">
+                    <h2>10pts</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 pt-3 pb-2">
+                    <p></p>
+                </div>
+                <div class="col-5 mx-auto">
+                    <button class="btn btn-primary welcome--play">PLAY</button>
+                </div>
+                <div class="col-5 mx-auto">
+                    <button class="btn btn-primary welcome--play">NEW USER</button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Scripts -->

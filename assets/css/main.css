@@ -232,6 +232,40 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #fffbfc;
 }
 
+/* Endgame panel */
+.endgame-panel {
+    height: 40vh;
+}
+
+.endgame-panel h3 {
+    font-family: "Bowlby One SC", sans-serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.endgame-panel h2 {
+    font-family: "Bowlby One SC";
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.endgame-panel h5 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: .8rem;
+    text-align: center;
+}
+
+.endgame-panel p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: .75rem;
+    text-align: center;
+}
+
 /* ============
 >>Media Queries
 ============ */
