@@ -67,7 +67,9 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 0;
 }
 
-/* Home */
+/* ============
+>>WELCOME PANEL
+============ */
 
 .home-container-wrapper {
     min-height: 90vh;
@@ -78,6 +80,43 @@ p, h1, h2, h3, h4, h5, h6 {
     -o-background-size: cover;
     background-size: cover;
     position: relative;
+}
+
+.welcome-panel {
+    height: 60vh;
+}
+
+.welcome-panel h3 {
+    font-family: "Bowlby One SC", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.welcome-panel h2 {
+    font-family: "Bowlby One SC";
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.welcome-panel h5 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.welcome-panel p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: .75rem;
+    text-align: center;
+}
+
+.welcome--play {
+    width: 100%;
 }
 
 .game-content {

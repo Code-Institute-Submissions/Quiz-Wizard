@@ -30,7 +30,36 @@
     </nav>
     <!-- Home page main content -->
     <section class="container-fluid home-container-wrapper">
-        <div class="game-content">
+        <!-- Welcome screen -->
+        <div class="card border-primary welcome-panel">
+            <div class="row">
+                <div class="col-12 pt-3">
+                    <h3>welcome to</h3>
+                </div>
+                <div class="col-12 pt-1">
+                    <h2>quiz Wizard</h2>
+                </div>
+                <div class="col-12 pt-3 pb-5">
+                    <h5>Click play to begin</h5>
+                </div>
+            </div>
+            <form action="">
+                <div class="form-group row pt-1">
+                  <!-- <label class="col-8 offset-2 col-form-label col-form-label" for="inputLarge">Enter username</label> -->
+                  <input class="col-8 offset-2 form-control form-control-lg" type="text" placeholder="enter name" id="">
+                  <div class="col-12">
+                      <p>Enter a username to keep track of your score</p>
+                  </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <button class="btn btn-outline-primary welcome--play">PLAY</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="game-content game--panel__hidden">
             <!-- Game heading -->
             <div class="row game--heading">
                 <div class="col-12">
@@ -76,7 +105,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>
