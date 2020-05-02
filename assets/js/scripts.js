@@ -98,11 +98,11 @@ $(document).ready(function () {
                     <h3 id='trivia${index}Question'>${trivia.question}</h3>
                 </div>
             </div>
-            <div class='row'>
+            <div class='row mx-0 mb-1'>
                 <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
                 <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
             </div>
-            <div class='row'>
+            <div class='row mx-0'>
                 <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
                 <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
             </div>
