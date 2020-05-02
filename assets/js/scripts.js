@@ -53,7 +53,7 @@ $(document).ready(function () {
                 $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
             }
             rowNum++
-            $(`#row${rowID}`).append(`<button class='btn btn-outline-primary col-4 offset-1 col-md-3 game--category-select mb-2' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
+            $(`#row${rowID}`).append(`<button class='btn btn-primary col-4 col-md-3 mx-auto game--category-select my-2' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
             if (rowNum % colNum === 0) {
                 $('.game--categories').append(`</div>`)
                 rowID++
@@ -122,6 +122,11 @@ $(document).ready(function () {
 
     /* User interaction */
 
+    // welcome screen
+    $(document).on('click', '.welcome--play', function (event) {
+        $('.welcome-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $('.game-content').addClass('game--panel__shown').removeClass('game--panel__hidden')
+    })
     // select category
     $(document).on('click', '.game--category-select', function (event) {
         return $(this).attr('id')

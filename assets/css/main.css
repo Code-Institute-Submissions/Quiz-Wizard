@@ -28,6 +28,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .nav-wrapper {
     /* background: #000000; */
+    height: 8vh;
 }
 
 .logo-text {
@@ -74,7 +75,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .home-container-wrapper {
     min-height: 90vh;
     /* margin-top: 10vh; */
-    padding: 12vh 8vw 0;
+    padding: 8vh 8vw 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -119,8 +120,11 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* ==========
+>>GAME PANELS
+========== */
+
 .game-content {
-    
     padding: 0 3vw 0;
 }
 
@@ -136,7 +140,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .game--categories {
-
+    background-color: #4E5D6C;
+    padding: 1vh 8vw;
 }
 
 .game--difficulty {
@@ -146,19 +151,24 @@ p, h1, h2, h3, h4, h5, h6 {
     /* border: red 1px solid; */
 }
 
+.game--category-select {
+    font-family: 'Roboto', sans-serif;
+    font-size: .75rem;
+    font-weight: 400;
+    /* color: #fffbfc; */
+    min-width: 120px;
+    min-height: 80px;
+}
+
+.test-cat {
+    background-color: #4E5D6C;
+    padding: 0 2vw;
+}
+
 .game--difficulty-select {
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
     font-weight: 500;
-    color: #fffbfc;
-    min-width: 120px;
-    min-height: 100px;
-}
-
-.game--category-select {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
     color: #fffbfc;
     min-width: 120px;
     min-height: 100px;

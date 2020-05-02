@@ -31,7 +31,7 @@
     <!-- Home page main content -->
     <section class="container-fluid home-container-wrapper">
         <!-- Welcome screen -->
-        <div class="card border-primary welcome-panel game--panel__shown mt-4">
+        <div class="card welcome-panel game--panel__hidden mt-4">
             <div class="row">
                 <div class="col-12 pt-4">
                     <h3>welcome to</h3>
@@ -47,7 +47,6 @@
                       <h5>Enter a username to keep track of your score</h5>
                   </div>
                   <input class="col-8 offset-2 form-control form-control-lg" type="text" placeholder="enter name" id="">
-                  
                 </div>
             </form>
             <div class="row">
@@ -58,12 +57,11 @@
                     <button class="btn btn-primary welcome--play">PLAY</button>
                 </div>
             </div>
-            
         </div>
-        <div class="game-content game--panel__hidden">
+        <div class="game-content game--panel__shown ">
             <!-- Game heading -->
             <div class="row game--heading">
-                <div class="col-12">
+                <div class="col-12 pt-3 pb-1">
                     <h1 id="gameTitle">Choose Your Category</h1>
                 </div>
             </div>
