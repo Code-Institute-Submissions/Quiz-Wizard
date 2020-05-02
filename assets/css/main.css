@@ -83,20 +83,20 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-panel {
-    height: 60vh;
+    height: 50vh;
 }
 
 .welcome-panel h3 {
     font-family: "Bowlby One SC", sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.15rem;
     text-transform: uppercase;
     text-align: center;
 }
 
 .welcome-panel h2 {
     font-family: "Bowlby One SC";
-    font-size: 2rem;
+    font-size: 2.25rem;
     text-transform: uppercase;
     text-align: center;
 }
@@ -104,7 +104,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .welcome-panel h5 {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: .8rem;
     text-align: center;
 }
 
