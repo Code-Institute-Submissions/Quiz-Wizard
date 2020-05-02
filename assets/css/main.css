@@ -124,10 +124,12 @@ p, h1, h2, h3, h4, h5, h6 {
 >>GAME PANELS
 ========== */
 
+/* Main content wrapper */
 .game-content {
     padding: 0 3vw 0;
 }
 
+/* Game title */
 .game--heading {
     text-align: center;
 }
@@ -139,16 +141,10 @@ p, h1, h2, h3, h4, h5, h6 {
     /* color: #fffbfc; */
 }
 
+/* Category panel */
 .game--categories {
     background-color: #4E5D6C;
     padding: 1vh 8vw;
-}
-
-.game--difficulty {
-    /* text-align: center; */
-    /* background: #228093; */
-    /* margin: 2px 0; */
-    /* border: red 1px solid; */
 }
 
 .game--category-select {
@@ -156,13 +152,22 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: .75rem;
     font-weight: 400;
     /* color: #fffbfc; */
-    min-width: 120px;
-    min-height: 80px;
+    min-width: 100px;
+    min-height: 75px;
 }
 
-.test-cat {
-    background-color: #4E5D6C;
-    padding: 0 2vw;
+.category {
+    min-height: 10vh;
+    padding: 3px 0;
+    text-align: center;
+}
+
+/* Difficulty panel */
+.game--difficulty {
+    /* text-align: center; */
+    /* background: #228093; */
+    /* margin: 2px 0; */
+    /* border: red 1px solid; */
 }
 
 .game--difficulty-select {
@@ -174,12 +179,7 @@ p, h1, h2, h3, h4, h5, h6 {
     min-height: 100px;
 }
 
-.category {
-    min-height: 10vh;
-    padding: 3px 0;
-    text-align: center;
-}
-
+/* Game display panel */
 .game--question {
     height: 25vh;
     /* min-width: 50vw; */
@@ -226,6 +226,18 @@ p, h1, h2, h3, h4, h5, h6 {
 /* ============
 >>Media Queries
 ============ */
+
+
+/* ========
+>321+ width
+======== */
+
+@media only screen and (min-width: 321px) {
+    .game--category-select {
+        min-width: 120px;
+        min-height: 80px;
+    }
+}
 
 /* ========
 >768+ width
