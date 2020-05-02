@@ -31,7 +31,7 @@
     <!-- Home page main content -->
     <section class="container-fluid home-container-wrapper">
         <!-- Welcome screen -->
-        <div class="card welcome-panel game--panel__shown mt-4">
+        <div class="card welcome-panel game--panel__shown mt-5">
             <div class="row">
                 <div class="col-12 pt-4">
                     <h3>welcome to</h3>
@@ -66,11 +66,11 @@
                 </div>
             </div>
             <!-- Category select page -->
-            <div class="game--categories game--panel__hidden mb-3">
+            <div class="game--categories game--panel__shown mb-3">
                 <!-- Category button generation goes here -->
             </div>
             <!-- Difficulty select page -->
-            <div class ="game--difficulty game--panel__shown">
+            <div class ="game--difficulty game--panel__hidden">
                 <div class="row">
                     <button class="btn col-10 mx-auto my-2 game--difficulty-select" id="easy">EASY</button>
                 </div>
@@ -81,12 +81,12 @@
                     <button class="btn col-10 mx-auto my-2 game--difficulty-select" id="hard">HARD</button>
                 </div>
                 <div class="row">
-                    <button class="btn btn-outline-primary col-8 mx-auto mt-2" id="begin">Start trivia</button>
+                    <button class="btn btn-outline-primary col-8 mx-auto mt-2" id="begin" disabled>Start trivia</button>
                 </div>
             </div>
 
             <!-- Game display and input page -->
-            <div class="game--display--wrapper game--panel__shown mt-3">
+            <div class="game--display--wrapper game--panel__hidden mt-3">
                 
                 
 
@@ -102,7 +102,7 @@
             </div>
         </div>
         <!-- End game panel -->
-        <div class="card endgame-panel game--panel__shown mt-4">
+        <div class="card endgame-panel game--panel__hidden mt-4">
             <div class="row">
                 <div class="col-12 pt-4">
                     <h3>thanks for playing!</h3>

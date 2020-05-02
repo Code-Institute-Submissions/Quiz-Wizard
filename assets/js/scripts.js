@@ -133,7 +133,9 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--category-select', function (event) {
         userCategory = event.result
-        console.log(userCategory)
+        $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('#gameTitle').text($(this).text())
     })
 
     $(document).on('click', '.game--difficulty-select', function (event) {
@@ -142,13 +144,15 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--difficulty-select', function (event) {
         userDiff = event.result
-        console.log(userDiff)
+        $('#begin').removeAttr("disabled")
     })
 
     $(document).on('click', '#begin', function (event) {
         console.log(userCategory + ' ' + userDiff)
         console.log(generateURL(userCategory, userDiff));
         processTriviaData(generateURL(userCategory, userDiff))
+        $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
         // getTriviaData(generateURL(userCategory, userDiff))
         // createTrivia()
     })
@@ -167,6 +171,12 @@ $(document).ready(function () {
         $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
         checkAnswer++
         $('#playerScore').text(`Score ${currentScore}/10`)
+        if (checkAnswer === correctArray.length) {
+            $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
+            $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
+            $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
+            $('.endgame--score').text(`${currentScore}pts`)
+        }
     })
 
 
