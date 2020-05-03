@@ -2,9 +2,17 @@ $(document).ready(function () {
 
     // Get data from API
     async function getData(url) {
-        const res = await fetch(url)
-        const data = await res.json()
-        return data
+        let res
+        let data
+        try {
+            res = await fetch(url)
+            data = await res.json()
+            console.log(res);
+            return data
+        }
+        catch {
+            console.log('error')
+        }
     }
 
     // Get specific trivia data based on user selection
