@@ -118,7 +118,6 @@ $(document).ready(function () {
         console.log(correctArray);
     }
 
-
     /* User interaction */
 
     // welcome screen
@@ -170,13 +169,24 @@ $(document).ready(function () {
         $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
         $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
         checkAnswer++
-        $('#playerScore').text(`Score ${currentScore}/10`)
+        $('#playerScore').text(`Score ${currentScore} points`)
         if (checkAnswer === correctArray.length) {
             $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
             $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
             $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
-            $('.endgame--score').text(`${currentScore}pts`)
+            $('.endgame--score').text(`${currentScore} points`)
         }
+    })
+
+    $(document).on('click', '#endgameButton', function() {
+        $('.game--display').empty()
+        correctArray = []
+        checkAnswer = 0
+        currentScore = 0
+        $('.endgame-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
+        $('#playerScore').text(`Score 0 points`)
     })
 
 
