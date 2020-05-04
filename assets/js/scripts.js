@@ -48,11 +48,11 @@ $(document).ready(function () {
     const filterCategories = (categoryName) => {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
-
     /* https://stackoverflow.com/a/40562841/10828019 */
     // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
+    // https://opentdb.com/api_category.php
     async function createCategories() {
-        await getCategories('https://opentdb.com/api_category.php')
+        await getCategories('./categories.json')
         rowNum = 0
         colNum = 4
         rowID = 1
@@ -80,7 +80,8 @@ $(document).ready(function () {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
         let urlCategory = '&category=' + categoryID
         let urlDifficulty = '&difficulty=' + difficulty
-        return urlDefault + urlCategory + urlDifficulty
+        // return urlDefault + urlCategory + urlDifficulty
+        return './trivia.json'
     }
 
     /* Processing of trivia data */
@@ -357,3 +358,4 @@ $(document).ready(function () {
     // let checkCorrect = () => ($(this).text() == correctArray[1]) ? console.log('correct') : console.log('incorrect')
 
 });
+
