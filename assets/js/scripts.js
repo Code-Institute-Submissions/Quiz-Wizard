@@ -113,12 +113,12 @@ $(document).ready(function () {
                 </div>
             </div>
             <div class='row mx-0 mb-1'>
-                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
-                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
+                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
+                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
             </div>
             <div class='row mx-0'>
-                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
-                <button class='col-4 mx-auto game--answer--single btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
+                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
+                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
             </div>
             </div>`)
             
@@ -126,6 +126,14 @@ $(document).ready(function () {
             // console.log('A:' + el.incorrect_answers);
             // console.log('Corr:' + el.correct_answer);
         })
+        correctArray.forEach((el, index) => {
+           for (i=0; i<4; i++) {
+               if ($(`#trivia${index}Answer${i}`).text() === el) {
+                $(`#trivia${index}Answer${i}`).addClass(`correct-answer${index}`)
+               }
+           }
+        })
+        console.log($(`#trivia0Answer0`).text());
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
         // console.log(triviaData)
         // arrayLooper(triviaData, 'question')
@@ -178,14 +186,20 @@ $(document).ready(function () {
     $(document).on('click', '.game--answer--single', function (event) {
         console.log($(this).text());
         if (correctArray[checkAnswer] === $(this).text()) {
+            $(this).addClass('btn-success')
             console.log('correct');
             currentScore++
         } else {
             console.log('incorrect');
+            $(this).addClass('btn-danger')
+            $(`.correct-answer${checkAnswer}`).addClass('btn-outline-success').removeClass('game--answer--outline')
         }
-        $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
-        $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
-        checkAnswer++
+        setTimeout(() => {
+            $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
+            $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
+            checkAnswer++
+        }, 1500);
+        
         $('#playerScore').text(`Score ${currentScore} points`)
         if (checkAnswer === correctArray.length) {
             $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')

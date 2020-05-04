@@ -215,6 +215,9 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #fffbfc;
     min-width: 120px;
     min-height: 100px;
+}
+
+.game--answer--outline {
     border: white 1px solid;
 }
 
