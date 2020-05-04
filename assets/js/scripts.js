@@ -167,7 +167,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--difficulty-select', function (event) {
         userDiff = event.result
-        $('#begin').removeAttr("disabled")
+        $('#begin').removeAttr('disabled')
     })
 
     $(document).on('click', '#begin', function (event) {
@@ -193,10 +193,12 @@ $(document).ready(function () {
             $(this).addClass('btn-danger')
             $(`.correct-answer${checkAnswer}`).addClass('btn-outline-success').removeClass('game--answer--outline')
         }
+        $('.game--answer--single').attr('disabled', true)
         setTimeout(() => {
             $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
             $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
             checkAnswer++
+            $('.game--answer--single').removeAttr('disabled')
         }, 1500);
         
         $('#playerScore').text(`Score ${currentScore} points`)
