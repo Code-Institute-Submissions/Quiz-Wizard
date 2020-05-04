@@ -68,7 +68,12 @@ $(document).ready(function () {
             }
         }
     }
-    createCategories()
+    
+    async function loadCategories() {
+        await createCategories()
+        $('.game-content').fadeIn(1000)
+        $('#loadingSpinner').hide()
+    }
 
     // generate url to get specific trivia user selects
     function generateURL(categoryID, difficulty) {
@@ -130,8 +135,11 @@ $(document).ready(function () {
 
     // welcome screen
     $(document).on('click', '.welcome--play', function (event) {
-        $('.welcome-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        $('.game-content').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // $('.welcome-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        // $('.game-content').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('.welcome-panel').hide()
+        $('#loadingSpinner').show()
+        loadCategories()
     })
     // select category
     $(document).on('click', '.game--category-select', function (event) {
