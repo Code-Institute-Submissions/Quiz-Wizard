@@ -133,7 +133,6 @@ $(document).ready(function () {
                }
            }
         })
-        console.log($(`#trivia0Answer0`).text());
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
         // console.log(triviaData)
         // arrayLooper(triviaData, 'question')
@@ -185,7 +184,7 @@ $(document).ready(function () {
     let currentScore = 0
     $(document).on('click', '.game--answer--single', function (event) {
         console.log($(this).text());
-        if (correctArray[checkAnswer] === $(this).text()) {
+        if ($(this).is(`.correct-answer${checkAnswer}`)) {
             $(this).addClass('btn-success')
             console.log('correct');
             currentScore++
