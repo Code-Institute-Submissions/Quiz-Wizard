@@ -199,15 +199,14 @@ $(document).ready(function () {
             $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
             checkAnswer++
             $('.game--answer--single').removeAttr('disabled')
+            if (checkAnswer === correctArray.length) {
+                $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
+                $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
+                $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
+                $('.endgame--score').text(`${currentScore} points`)
+            }
         }, 1500);
-        
         $('#playerScore').text(`Score ${currentScore} points`)
-        if (checkAnswer === correctArray.length) {
-            $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
-            $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
-            $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
-            $('.endgame--score').text(`${currentScore} points`)
-        }
     })
 
     $(document).on('click', '#endgameButton', function() {
