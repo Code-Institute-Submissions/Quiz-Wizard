@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    /* ==============
+    >>DATA PROCESSING
+    ============== */
+
     // Get data from API
     async function getData(url) {
         let res
@@ -7,19 +11,12 @@ $(document).ready(function () {
         try {
             res = await fetch(url)
             data = await res.json()
-            console.log(res);
+            console.log(res)
             return data
         }
         catch {
             console.log('error')
         }
-    }
-
-    // Get specific trivia data based on user selection
-    async function getTriviaData(triviaUrl) {
-        const data = await getData(triviaUrl)
-        // console.log(data.results)
-        return data.results
     }
 
     // Generate array of categories
@@ -39,15 +36,13 @@ $(document).ready(function () {
         filterCategories('Geography')
         filterCategories('History')
         filterCategories('Entertainment: Japanese Anime & Manga')
-        // console.log(categoryList);
-        // console.log('filtered')
-        // console.log(categoryArray)
     }
 
-    // Filter category function
+    // Filter categories using specific names
     const filterCategories = (categoryName) => {
         categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
     }
+    
     /* https://stackoverflow.com/a/40562841/10828019 */
     // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
     // https://opentdb.com/api_category.php
@@ -69,13 +64,14 @@ $(document).ready(function () {
         }
     }
     
+    // Load categories using above processing
     async function loadCategories() {
         await createCategories()
         $('.game-content').fadeIn(1000)
         $('#loadingSpinner').hide()
     }
 
-    // generate url to get specific trivia user selects
+    // Generate url to get specific trivia user selects
     function generateURL(categoryID, difficulty) {
         let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
         let urlCategory = '&category=' + categoryID
@@ -89,7 +85,7 @@ $(document).ready(function () {
     async function processTriviaData(triviaUrl) {
         const data = await getData(triviaUrl)
         triviaData = data.results
-        // push all correct answers into seperatearray
+        // push all correct answers into seperate array
         triviaData.forEach((el, index) => {
             correctArray.push(triviaData[index].correct_answer)
         })
@@ -99,13 +95,10 @@ $(document).ready(function () {
         })
         // shuffle answer array
         for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
-            // console.log(triviaData[i].incorrect_answers);
-            triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5);
-            // console.log(triviaData[i].incorrect_answers);
+            triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
         }
         // generate panel of questions and answers for each trivia entry
         triviaData.forEach((trivia, index) => {
-            // console.log('new game panel');
             $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
             <div class='row mx-0 mb-3 game--question'>
                 <div class='col-10 mx-auto my-auto'>
@@ -121,10 +114,6 @@ $(document).ready(function () {
                 <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
             </div>
             </div>`)
-            
-            // console.log('new Q: ' + el.question);
-            // console.log('A:' + el.incorrect_answers);
-            // console.log('Corr:' + el.correct_answer);
         })
         correctArray.forEach((el, index) => {
            for (i=0; i<4; i++) {
@@ -134,22 +123,20 @@ $(document).ready(function () {
            }
         })
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
-        // console.log(triviaData)
-        // arrayLooper(triviaData, 'question')
-        console.log(correctArray);
     }
 
-    /* User interaction */
+    /* ===============
+    >>USER INTERACTION
+    =============== */
 
-    // welcome screen
+    // Welcome screen
     $(document).on('click', '.welcome--play', function (event) {
-        // $('.welcome-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        // $('.game-content').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('.welcome-panel').hide()
         $('#loadingSpinner').show()
         loadCategories()
     })
-    // select category
+
+    // Select category
     $(document).on('click', '.game--category-select', function (event) {
         return $(this).attr('id')
     })
@@ -161,6 +148,7 @@ $(document).ready(function () {
         $('#gameTitle').text($(this).text())
     })
 
+    // Select difficulty
     $(document).on('click', '.game--difficulty-select', function (event) {
         return $(this).attr('id')
     })
@@ -170,45 +158,48 @@ $(document).ready(function () {
         $('#begin').removeAttr('disabled')
     })
 
+    // Begin game by using the URL generated through previous steps and
+    // processing it to create the game panels
     $(document).on('click', '#begin', function (event) {
-        console.log(userCategory + ' ' + userDiff)
-        console.log(generateURL(userCategory, userDiff));
         processTriviaData(generateURL(userCategory, userDiff))
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
         $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
-        // getTriviaData(generateURL(userCategory, userDiff))
-        // createTrivia()
     })
 
+    // Check answer is correct, process it and move to next panel
     let checkAnswer = 0
     let currentScore = 0
     $(document).on('click', '.game--answer--single', function (event) {
-        console.log($(this).text());
+        console.log($(this).text())
         if ($(this).is(`.correct-answer${checkAnswer}`)) {
             $(this).addClass('btn-success')
-            console.log('correct');
+            console.log('correct')
             currentScore++
         } else {
-            console.log('incorrect');
+            console.log('incorrect')
             $(this).addClass('btn-danger')
             $(`.correct-answer${checkAnswer}`).addClass('btn-outline-success').removeClass('game--answer--outline')
         }
+        // disable answer buttons after selection is made to prevent multiple clicks
         $('.game--answer--single').attr('disabled', true)
+        // display selection for 1.5 seconds before moving on
         setTimeout(() => {
             $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
             $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
             checkAnswer++
             $('.game--answer--single').removeAttr('disabled')
+            // After all panels have been completed, show end game panel with score displayed
             if (checkAnswer === correctArray.length) {
                 $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
                 $('.endgame--score').text(`${currentScore} points`)
             }
-        }, 1500);
+        }, 1500)
         $('#playerScore').text(`Score ${currentScore} points`)
     })
 
+    // Reset from end game panel back to category select screen so it can be played again
     $(document).on('click', '#endgameButton', function() {
         $('.game--display').empty()
         correctArray = []
@@ -221,155 +212,4 @@ $(document).ready(function () {
     })
 
 
-
-
-
-    /* Old code - kept for reference at this time */
-    /* Click events for selecting category and difficulty of trivia */
-    /* $('.game--category-select').click(function(event) {
-        return triviaSelect($(this).attr('id'))
-    })
-
-    $('.game--category-select').click(function(event) {
-        urlSelection = event.result
-        
-        // display category name in title
-        document.getElementById('gameTitle').innerHTML = $(this).attr('id').toUpperCase()
-        // $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
-        // $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
-        $('.game--categories').hide()
-        $('.game--difficulty').fadeIn(1500)
-
-    }) */
-    
-    /* $('.game--difficulty-select').click(function(event) {
-        return triviaSelect($(this).attr('id'))
-    })
-
-    $('.game--difficulty-select').click(function(event) {
-        urlSelection = urlSelection + event.result
-        console.log(urlSelection);
-        triviaURL = urlStart + urlSelection + urlType
-        console.log(triviaURL)
-        userSelection()
-        // $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown');
-        // $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
-        $('.game--difficulty').hide();
-        $('.game--display').fadeIn(1500);
-    }) */
-
-    // $('.game--category-select').click(function(e) {
-    //     e.preventDefault();
-        
-    //     $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown');
-    //     $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden');
-    // });
-
-
-    // $('.game--difficulty-select').click(function (e) {
-    //     e.preventDefault();
-    //     $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown');
-    //     $('.game--display').addClass('game--panel__shown').removeClass('game--panel__hidden');
-    // });
-
-    
-    
-    /* Get data out of local scope */
-    /* https://stackoverflow.com/a/44644532 */
-    // async function getTriviaData() {
-    //     const res = await fetch(triviaURL);
-    //     const data = await res.json();
-    //     // console.log(data.results);
-    //     return data.results;
-    // }
-    
-    /* function processTriviaData() {
-        getTriviaData().then(triviaData => {
-            // push all questions into array
-            triviaData.forEach((question, index) => {
-                triviaQuestions.push(triviaData[index].question)
-            })
-            // push correct answer into incorrect answers
-            triviaData.forEach((answer, index) => {
-                triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
-            })
-            // push all answer choices into array
-            triviaData.forEach((allAnswers, index) => {
-                triviaAnswers.push(triviaData[index].incorrect_answers)
-            })
-            // shuffle answer array
-            for (i =0; i < triviaAnswers.length; i++) {
-                // console.log(triviaAnswers[i]);
-                triviaAnswers[i].sort(() => Math.random() - 0.5);
-                // console.log(triviaAnswers[i]);
-            }
-            // push all correct answers into array
-            triviaData.forEach((cAnswer, index) => {
-                triviaCorrect.push(triviaData[index].correct_answer)
-            })
-            // iterate array to display questions
-            triviaQuestions.forEach((question, index) => {
-                document.getElementById(`trivia${index}Question`).innerHTML = triviaQuestions[index];
-            })
-            // iterate array to display answers
-            triviaAnswers.forEach((answerArray, index1) => {
-                    triviaAnswers[index1].forEach((answer, index2) => {
-                        document.getElementById(`trivia${index1}Answer${index2}`).innerHTML = triviaAnswers[index1][index2]
-                    })
-            })
-        })
-    } */
-
-    /* async function displayTrivia() {
-        await getTriviaData()
-        processTriviaData()
-        return triviaCorrect;
-    } */
-    
-    // let correctArray = []
-    // async function userSelection() {
-    //     correctArray = await displayTrivia()
-    //     console.log(correctArray);
-    // }
-    
-    // function changeQuestion() {
-    //     $(`#gamePanel${checkAnswer}`).hide()
-    //     $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
-    // }
-
-    /* check correct answer */
-    /* let checkAnswer = 0
-    let currentScore = 0
-    $('.game--answer--single').click(function() {
-        console.log(checkAnswer);
-        console.log($(this).text())
-        if ($(this).text() == correctArray[checkAnswer]) {
-            console.log('correct')
-            $(this).css('background-color', 'green')
-            currentScore ++
-        } else {
-            console.log('incorrect')
-            $(this).css('background-color', 'red')
-        }
-        setTimeout(() => {
-            // $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
-            // $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
-            $(`#gamePanel${checkAnswer}`).hide()
-            $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1500)
-            checkAnswer++
-            console.log(checkAnswer);
-        }, 1500);
-        // $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
-        // $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
-        // $(`#gamePanel${checkAnswer}`).hide()
-        // $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
-        document.getElementById('playerScore').innerHTML = `Score ${currentScore}/10`
-        console.log(checkAnswer);
-    }) */
-
-    /* Question about this */
-    // let checkCorrect = () => console.log($(this));
-    // let checkCorrect = () => ($(this).text() == correctArray[1]) ? console.log('correct') : console.log('incorrect')
-
-});
-
+})
