@@ -129,8 +129,19 @@ $(document).ready(function () {
     >>USER INTERACTION
     =============== */
 
+    // Declare empty player object
+    const gamePlayer = {
+        username: '',
+        scores: {
+        }
+    }
+
     // Welcome screen
     $(document).on('click', '.welcome--play', function (event) {
+
+        if (typeof($('#usernameInput').val()) === 'string') {
+            gamePlayer.username = $('#usernameInput').val()
+        }
         $('.welcome-panel').hide()
         $('#loadingSpinner').show()
         loadCategories()
