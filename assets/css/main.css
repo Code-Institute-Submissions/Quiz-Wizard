@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
 
 body {
     /* background: #0e3d4c; */
@@ -75,7 +76,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .home-container-wrapper {
     min-height: 90vh;
     /* margin-top: 10vh; */
-    padding: 8vh 8vw 0;
+    padding: 8vh 2vw 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -85,6 +86,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .welcome-panel {
     height: 60vh;
+    margin-top: 8vh;
 }
 
 .welcome-panel h3 {
@@ -103,21 +105,24 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-panel h5 {
-    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.welcome-panel p {
+    /* font-family: "Roboto", sans-serif; */
+    font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: .8rem;
     text-align: center;
 }
 
-.welcome-panel p {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: .75rem;
-    text-align: center;
-}
-
 .welcome--play {
     width: 100%;
+    min-height: 60px;
 }
 
 /* ==========
@@ -135,7 +140,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .game--heading h1 {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     /* color: #fffbfc; */
@@ -148,7 +154,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .game--category-select {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Manrope', sans-serif;
     font-size: .75rem;
     font-weight: 400;
     color: #fffbfc;
