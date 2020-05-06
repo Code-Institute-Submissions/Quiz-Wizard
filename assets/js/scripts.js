@@ -144,8 +144,8 @@ $(document).ready(function () {
     
     // testing button
     $(document).on('click', '#testClick', function () {
-        console.log(gamePlayer)
-        console.log(localStorage.getItem(gamePlayer.username));
+        console.log('click')
+        // console.log($('#endgameScore p').last());
     })
 
     /* ===============
@@ -196,24 +196,35 @@ $(document).ready(function () {
     // Begin game by using the URL generated through previous steps and
     // processing it to create the game panels
     let currentCategory = ''
+    let difficultyMultiplier = 1
     $(document).on('click', '#begin', function (event) {
         processTriviaData(generateURL(userCategory, userDiff))
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
         $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
         currentCategory = $('#gameTitle').text()
         $('#currentQuestion').text(`${checkAnswer + 1}/10`)
+        $('#displayUsername').text(gamePlayer.username)
         console.log(currentCategory)
+        if (userDiff === 'hard') {
+            difficultyMultiplier = 3
+        } else if (userDiff === 'medium') {
+            difficultyMultiplier = 2
+        } else {
+            difficultyMultiplier = 1
+        }
     })
 
     // Check answer is correct, process it and move to next panel
     let checkAnswer = 0
+    let correctTotal = 0
     let currentScore = 0
     $(document).on('click', '.game--answer--single', function (event) {
         console.log($(this).text())
         if ($(this).is(`.correct-answer${checkAnswer}`)) {
             $(this).addClass('btn-success')
             console.log('correct')
-            currentScore++
+            correctTotal++
+            currentScore = (correctTotal * difficultyMultiplier)
         } else {
             console.log('incorrect')
             $(this).addClass('btn-danger')
@@ -233,7 +244,13 @@ $(document).ready(function () {
                 $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
-                $('.endgame--score').text(`${currentScore} points`)
+                if (typeof(gamePlayer.username) === 'string') {
+                    $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
+                }
+                $('#endgameScore').children().children('h4').text(currentCategory)
+                $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
+                $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
+                $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
                 Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
                 updateScoreboard()
             }
@@ -256,7 +273,9 @@ $(document).ready(function () {
         $('.game--display').empty()
         correctArray = []
         checkAnswer = 0
+        difficultyMultiplier = 1
         currentScore = 0
+        correctTotal = 0
         $('.endgame-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
         $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
