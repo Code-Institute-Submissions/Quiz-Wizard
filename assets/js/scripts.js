@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    // Declare empty player object
+    const gamePlayer = {
+        'username': '',
+        'scores': []
+    }
+
     /* ==============
     >>DATA PROCESSING
     ============== */
@@ -125,39 +131,25 @@ $(document).ready(function () {
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
     }
 
-    const testScoreboard = {
-        'username': 'Thor',
-        'scores': [
-            {
-                'General Knowledge': 5,
-                'Science': 10,
-                'Film': 15
-            }
-        ]
-    }
-    
-    console.log(testScoreboard.scores);
-    
-
     // Update scoreboard
     function updateScoreboard() {
-        for (const property in testScoreboard.scores[0]) {
-            $('#scoreboardBody').append(`<p>${property}: ${testScoreboard.scores[0][property]}</p>`)
-            console.log(property + ' ' + testScoreboard.scores[0][property]);
+        $('#scoreboardBody').empty()
+        for (const property in gamePlayer.scores) {
+            $('#scoreboardBody').append(`<p>${property}: ${gamePlayer.scores[property]}</p>`)
         }
+        console.log('scoreboard updated');
     }
-    updateScoreboard()
+
+    
+    // testing button
+    $(document).on('click', '#testClick', function () {
+        console.log(gamePlayer);
+    })
 
     /* ===============
     >>USER INTERACTION
     =============== */
 
-    // Declare empty player object
-    const gamePlayer = {
-        'username': '',
-        'scores': []
-    }
-    
     // Welcome screen
     $(document).on('click', '.welcome--play', function (event) {
         if (typeof($('#usernameInput').val()) === 'string') {
@@ -230,17 +222,19 @@ $(document).ready(function () {
                 $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
                 $('.endgame--score').text(`${currentScore} points`)
                 Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
-                // {
-                //     'score': currentScore,
-                //     'difficulty': userDiff
-                // }
+                updateScoreboard()
             }
         }, 1500)
         $('#playerScore').text(`Score ${currentScore} points`)
     })
 
     // Reset from end game panel back to category select screen so it can be played again
-    $(document).on('click', '#endgameButton', function() {
+    $('#endgameButton').on('click', function() {
+        console.log('click')
+        resetGame()
+    })
+
+    function resetGame() {
         $('.game--display').empty()
         correctArray = []
         checkAnswer = 0
@@ -249,8 +243,8 @@ $(document).ready(function () {
         $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
         $('#playerScore').text(`Score 0 points`)
-        console.log(gamePlayer);
-    })
+        updateScoreboard()
+    }
 
 
 })
