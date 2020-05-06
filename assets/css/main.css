@@ -161,6 +161,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .game--category-select {
     /* font-family: 'Roboto', sans-serif; */
+    margin-top: .25rem;
+    margin-top: .25rem;
     font-family: 'Manrope', sans-serif;
     font-size: .85rem;
     font-weight: 400;
@@ -382,6 +384,18 @@ p, h1, h2, h3, h4, h5, h6 {
         height: 50vh;
         margin-top: 8vh;
         padding-top: 5vh;
+    }
+
+    .game-content {
+        margin-top: 5vh;
+    }
+
+    .game--categories {
+        padding: 1vh 5vw;
+    }
+
+    .game--category-select {
+        max-width: 125px;
     }
 
 }
