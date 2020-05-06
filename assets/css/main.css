@@ -419,6 +419,10 @@ p, h1, h2, h3, h4, h5, h6 {
     .home-container-wrapper {
         padding: 12vh 20vw 0;
     }
+
+    .game--categories {
+    padding: 1vh 2vw;
+    }
 }
 
 /* =========
