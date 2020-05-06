@@ -128,7 +128,8 @@ $(document).ready(function () {
                }
            }
         })
-        $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('#gamePanel0').show()
     }
 
     // Update scoreboard
@@ -170,8 +171,8 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--category-select', function (event) {
         userCategory = event.result
-        $('.game--categories').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        $('.game--difficulty').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('.game--categories').hide()
+        $('.game--difficulty').fadeIn(1000)
         $('#gameTitle').text($(this).text())
     })
 
@@ -188,8 +189,8 @@ $(document).ready(function () {
     // Go back and change category choice
     $(document).on('click', '#changeCategory', function () {
         $('#gameTitle').text('Choose Your Category')
-        $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
-        $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        $('.game--difficulty').hide()
+        $('.game--categories').fadeIn(1000)
         disableButton('#begin')
     })
 
@@ -199,8 +200,10 @@ $(document).ready(function () {
     let difficultyMultiplier = 1
     $(document).on('click', '#begin', function (event) {
         processTriviaData(generateURL(userCategory, userDiff))
-        $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
+        // $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('.game--difficulty').hide()
+        $('.game--display--wrapper').fadeIn(1000)
         currentCategory = $('#gameTitle').text()
         $('#currentQuestion').text(`${checkAnswer + 1}/10`)
         $('#displayUsername').text(gamePlayer.username)
@@ -234,16 +237,16 @@ $(document).ready(function () {
         disableButton('.game--answer--single')
         // display selection for 1.5 seconds before moving on
         setTimeout(() => {
-            $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
-            $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
+            $(`#gamePanel${checkAnswer}`).hide()
+            $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
             checkAnswer++
             enableButton('.game--answer--single')
             $('#currentQuestion').text(`${checkAnswer + 1}/10`)
             // After all panels have been completed, show end game panel with score displayed
             if (checkAnswer === correctArray.length) {
-                $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
-                $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
-                $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
+                $('.game--display--wrapper').hide()
+                $('#gameTitle').hide()
+                $('.endgame-panel').fadeIn(1000)
                 if (typeof(gamePlayer.username) === 'string') {
                     $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
                 }
@@ -276,10 +279,10 @@ $(document).ready(function () {
         difficultyMultiplier = 1
         currentScore = 0
         correctTotal = 0
-        $('.endgame-panel').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
-        $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
-        $('#playerScore').text(`Score 0 points`)
+        $('.endgame-panel').hide()
+        $('.game--categories').fadeIn(1000)
+        $('#gameTitle').fadeIn(1000).text(`Choose Your Category`)
+        $('#playerScore').text(`Score`)
         disableButton('#begin')
         updateScoreboard()
     }
