@@ -97,7 +97,7 @@
             </div>
 
             <!-- Game display and input page -->
-            <div class="game--display--wrapper game--panel__hidden mt-3">
+            <div class="game--display--wrapper game--panel__hidden">
                 
                 
 
@@ -105,9 +105,13 @@
                 <div class="game--display">
                     <!-- Trivia game panel generation goes here -->
                 </div>
-                <div class="row game--score mx-0">
-                    <div class="col-12 mx-auto my-auto">
-                        <h4 id="playerScore">Score 0 points</h4>
+                <!-- Current question and score display -->
+                <div class="row game--score">
+                    <div class="col-4 mx-auto my-auto">
+                        <h4 id="currentQuestion">1/10</h4>
+                    </div>
+                    <div class="col-8 mx-auto my-auto">
+                        <h4 id="playerScore">Score</h4>
                     </div>
                 </div>
             </div>

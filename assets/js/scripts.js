@@ -106,8 +106,8 @@ $(document).ready(function () {
         // generate panel of questions and answers for each trivia entry
         triviaData.forEach((trivia, index) => {
             $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
-            <div class='row mx-0 mb-3 game--question'>
-                <div class='col-10 mx-auto my-auto'>
+            <div class='row mx-0 game--question'>
+                <div class='col-12 mx-auto my-auto'>
                     <h3 id='trivia${index}Question'>${trivia.question}</h3>
                 </div>
             </div>
@@ -201,6 +201,7 @@ $(document).ready(function () {
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
         $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
         currentCategory = $('#gameTitle').text()
+        $('#currentQuestion').text(`${checkAnswer + 1}/10`)
         console.log(currentCategory)
     })
 
@@ -226,6 +227,7 @@ $(document).ready(function () {
             $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
             checkAnswer++
             $('.game--answer--single').removeAttr('disabled')
+            $('#currentQuestion').text(`${checkAnswer + 1}/10`)
             // After all panels have been completed, show end game panel with score displayed
             if (checkAnswer === correctArray.length) {
                 $('.game--display--wrapper').addClass('game--panel__hidden').removeClass('game--panel__shown')
@@ -236,7 +238,12 @@ $(document).ready(function () {
                 updateScoreboard()
             }
         }, 1500)
-        $('#playerScore').text(`Score ${currentScore} points`)
+        // update current score display
+        if (currentScore === 1) {
+            $('#playerScore').text(`${currentScore} point`)
+        } else {
+            $('#playerScore').text(`${currentScore} points`)
+        }
     })
 
     // Reset from end game panel back to category select screen so it can be played again
