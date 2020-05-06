@@ -355,6 +355,13 @@ p, h1, h2, h3, h4, h5, h6 {
 ======== */
 
 @media only screen and (min-width: 321px) {
+
+    .home-container-wrapper {
+        min-height: 90vh;
+        /* margin-top: 10vh; */
+        padding: 10vh 6vw 0;
+    }
+
     .game--category-select {
         min-width: 120px;
         min-height: 80px;
@@ -368,8 +375,15 @@ p, h1, h2, h3, h4, h5, h6 {
 /* min-height to exclude long phones in landscape eg; pixel 2 */
 @media only screen and (min-width: 768px) and (min-height: 420px) {
     .home-container-wrapper {
-        /* padding: 12vh 8vw 0; */
+        padding: 10vh 10vw 0;
     }
+
+    .welcome-panel {
+        height: 50vh;
+        margin-top: 8vh;
+        padding-top: 5vh;
+    }
+
 }
 
 /* ========
@@ -378,7 +392,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 992px) {
     .home-container-wrapper {
-        padding: 12vh 15vw 0;
+        padding: 12vh 20vw 0;
     }
 }
 
@@ -388,7 +402,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 1200px) {
     .home-container-wrapper {
-        padding: 12vh 22vw 0;
+        padding: 12vh 25vw 0;
     }
 }   
 
