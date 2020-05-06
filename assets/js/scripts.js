@@ -125,6 +125,29 @@ $(document).ready(function () {
         $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
     }
 
+    const testScoreboard = {
+        'username': 'Thor',
+        'scores': [
+            {
+                'General Knowledge': 5,
+                'Science': 10,
+                'Film': 15
+            }
+        ]
+    }
+    
+    console.log(testScoreboard.scores);
+    
+
+    // Update scoreboard
+    function updateScoreboard() {
+        for (const property in testScoreboard.scores[0]) {
+            $('#scoreboardBody').append(`<p>${property}: ${testScoreboard.scores[0][property]}</p>`)
+            console.log(property + ' ' + testScoreboard.scores[0][property]);
+        }
+    }
+    updateScoreboard()
+
     /* ===============
     >>USER INTERACTION
     =============== */
@@ -132,14 +155,9 @@ $(document).ready(function () {
     // Declare empty player object
     const gamePlayer = {
         'username': '',
-        // 'General Knowledge': {
-        //     'score': 0,
-        //     'difficulty': ''
-        // }
+        'scores': []
     }
-    let testVar = 'hihi'
-    let testobj = 'category'
-    let testscore = 5
+    
     // Welcome screen
     $(document).on('click', '.welcome--play', function (event) {
         if (typeof($('#usernameInput').val()) === 'string') {
@@ -211,10 +229,11 @@ $(document).ready(function () {
                 $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
                 $('.endgame--score').text(`${currentScore} points`)
-                Object.assign(gamePlayer, {[currentCategory]: {
-                    'score': currentScore,
-                    'difficulty': userDiff
-                }})
+                Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
+                // {
+                //     'score': currentScore,
+                //     'difficulty': userDiff
+                // }
             }
         }, 1500)
         $('#playerScore').text(`Score ${currentScore} points`)
