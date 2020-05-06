@@ -131,14 +131,17 @@ $(document).ready(function () {
 
     // Declare empty player object
     const gamePlayer = {
-        username: '',
-        scores: {
-        }
+        'username': '',
+        // 'General Knowledge': {
+        //     'score': 0,
+        //     'difficulty': ''
+        // }
     }
-
+    let testVar = 'hihi'
+    let testobj = 'category'
+    let testscore = 5
     // Welcome screen
     $(document).on('click', '.welcome--play', function (event) {
-
         if (typeof($('#usernameInput').val()) === 'string') {
             gamePlayer.username = $('#usernameInput').val()
         }
@@ -171,10 +174,13 @@ $(document).ready(function () {
 
     // Begin game by using the URL generated through previous steps and
     // processing it to create the game panels
+    let currentCategory = ''
     $(document).on('click', '#begin', function (event) {
         processTriviaData(generateURL(userCategory, userDiff))
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
         $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        currentCategory = $('#gameTitle').text()
+        console.log(currentCategory)
     })
 
     // Check answer is correct, process it and move to next panel
@@ -205,6 +211,10 @@ $(document).ready(function () {
                 $('#gameTitle').addClass('game--panel__hidden').removeClass('game--panel__shown')
                 $('.endgame-panel').addClass('game--panel__shown').removeClass('game--panel__hidden')
                 $('.endgame--score').text(`${currentScore} points`)
+                Object.assign(gamePlayer, {[currentCategory]: {
+                    'score': currentScore,
+                    'difficulty': userDiff
+                }})
             }
         }, 1500)
         $('#playerScore').text(`Score ${currentScore} points`)
@@ -220,6 +230,7 @@ $(document).ready(function () {
         $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
         $('#playerScore').text(`Score 0 points`)
+        console.log(gamePlayer);
     })
 
 
