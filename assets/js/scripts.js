@@ -137,13 +137,15 @@ $(document).ready(function () {
         for (const property in gamePlayer.scores) {
             $('#scoreboardBody').append(`<p>${property}: ${gamePlayer.scores[property]}</p>`)
         }
+        localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
         console.log('scoreboard updated');
     }
 
     
     // testing button
     $(document).on('click', '#testClick', function () {
-        console.log(gamePlayer);
+        console.log(gamePlayer)
+        console.log(localStorage.getItem(gamePlayer.username));
     })
 
     /* ===============
@@ -154,6 +156,7 @@ $(document).ready(function () {
     $(document).on('click', '.welcome--play', function (event) {
         if (typeof($('#usernameInput').val()) === 'string') {
             gamePlayer.username = $('#usernameInput').val()
+            localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
         }
         $('.welcome-panel').hide()
         $('#loadingSpinner').show()
@@ -180,6 +183,14 @@ $(document).ready(function () {
     $(document).on('click', '.game--difficulty-select', function (event) {
         userDiff = event.result
         $('#begin').removeAttr('disabled')
+    })
+
+    // Go back and change category choice
+    $(document).on('click', '#changeCategory', function () {
+        $('#gameTitle').text('Choose Your Category')
+        $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
+
     })
 
     // Begin game by using the URL generated through previous steps and
