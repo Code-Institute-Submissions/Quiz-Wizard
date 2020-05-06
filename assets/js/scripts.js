@@ -182,7 +182,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--difficulty-select', function (event) {
         userDiff = event.result
-        $('#begin').removeAttr('disabled')
+        enableButton('#begin')
     })
 
     // Go back and change category choice
@@ -190,7 +190,7 @@ $(document).ready(function () {
         $('#gameTitle').text('Choose Your Category')
         $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
-
+        disableButton('#begin')
     })
 
     // Begin game by using the URL generated through previous steps and
@@ -231,13 +231,13 @@ $(document).ready(function () {
             $(`.correct-answer${checkAnswer}`).addClass('btn-outline-success').removeClass('game--answer--outline')
         }
         // disable answer buttons after selection is made to prevent multiple clicks
-        $('.game--answer--single').attr('disabled', true)
+        disableButton('.game--answer--single')
         // display selection for 1.5 seconds before moving on
         setTimeout(() => {
             $(`#gamePanel${checkAnswer}`).addClass('game--panel__hidden').removeClass('game--panel__shown')
             $(`#gamePanel${(checkAnswer + 1)}`).addClass('game--panel__shown').removeClass('game--panel__hidden')
             checkAnswer++
-            $('.game--answer--single').removeAttr('disabled')
+            enableButton('.game--answer--single')
             $('#currentQuestion').text(`${checkAnswer + 1}/10`)
             // After all panels have been completed, show end game panel with score displayed
             if (checkAnswer === correctArray.length) {
@@ -280,7 +280,16 @@ $(document).ready(function () {
         $('.game--categories').addClass('game--panel__shown').removeClass('game--panel__hidden')
         $('#gameTitle').addClass('game--panel__shown').removeClass('game--panel__hidden').text(`Choose Your Category`)
         $('#playerScore').text(`Score 0 points`)
+        disableButton('#begin')
         updateScoreboard()
+    }
+
+    function disableButton(selector) {
+        $(selector).attr('disabled', true)
+    }
+
+    function enableButton(selector) {
+        $(selector).removeAttr('disabled')
     }
 
 
