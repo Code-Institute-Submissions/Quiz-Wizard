@@ -263,18 +263,27 @@ p, h1, h2, h3, h4, h5, h6 {
     border: #fffbfc 1px solid;
 }
 
-#playerScore {
-    text-align: right;
-}
-
 #currentQuestion {
     text-align: center;
+    color: #5bc0de
+}
+
+#displayUsername {
+    text-align: center;
+    color: #5bc0de;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#playerScore {
+    text-align: right;
+    color: #5bc0de
 }
 
 .game--score h4 {
     font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 400;
     color: #fffbfc;
 }
 
@@ -303,6 +312,7 @@ p, h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 1.25rem;
+    text-transform: uppercase;
     text-align: center;
 }
 
@@ -318,13 +328,6 @@ p, h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     font-size: 1rem;
     text-align: right;
-}
-
-.endgame--score {
-    font-family: "Bowlby One SC";
-    font-size: 2.25rem;
-    text-transform: uppercase;
-    text-align: center;
 }
 
 #endgameButton {
