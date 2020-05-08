@@ -1,78 +1,143 @@
+const categoryWhitelist = ['General Knowledge', 'Entertainment: Books', 'Entertainment: Film', 'Entertainment: Music', 'Entertainment: Television', 'Entertainment: Video Games', 'Science & Nature', 'Science: Computers', 'Sports', 'Geography', 'History', 'Entertainment: Japanese Anime & Manga']
+
+/**
+ * Uses fetch API to return JSON data
+ * @param {string} url takes an API address to fetch data
+ */
+const getData = async url => {
+    try {
+        return await (await fetch(url)).json()
+    }
+    catch {
+        console.log('error')
+    }
+}
+
+/**
+ * Filters a list of chosen categories out of the complete list from the API
+ * @param {array} completeList The API category list
+ * @param {array} filterList Chosen category whitelist
+ */
+const filterCategories = (completeList, filterList) => {
+    return completeList.filter(item => {
+        return filterList.includes(item.name)
+    })
+}
+
+/**
+ * Displays a list of categories in the DOM
+ * @param {array} categoryList The list of categories to display
+ */
+const displayCategories = categoryList => {
+    rowNum = 0
+    colNum = 4
+    rowID = 1
+    for (i=0; i<categoryList.length; i++) {
+        if (rowNum % colNum === 0) {
+            $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
+        }
+        rowNum++
+        $(`#row${rowID}`).append(`<button class='btn col-4 col-md-3 mx-auto game--category-select' id='${categoryList[i].id}'>${categoryList[i].name}</button>`)
+        if (rowNum % colNum === 0) {
+            $('.game--categories').append(`</div>`)
+            rowID++
+        }
+    }
+}
+
+/**
+ * Fetches and filters category list, then prints results to the DOM
+ */
+(async () => {
+    try {
+        const data = await getData('./categories.json')
+        const categories = data.trivia_categories
+        filteredCategories = filterCategories(categories, categoryWhitelist)
+        displayCategories(filteredCategories)
+    }
+    catch {
+        console.log('error')
+    }
+})()
+
+
+
 $(document).ready(function () {
 
-    // Declare empty player object
+    // // Declare empty player object
     const gamePlayer = {
         'username': '',
         'scores': []
     }
 
-    /* ==============
-    >>DATA PROCESSING
-    ============== */
-
-    // Get data from API
-    async function getData(url) {
-        let res
-        let data
-        try {
-            res = await fetch(url)
-            data = await res.json()
-            console.log(res)
-            return data
-        }
-        catch {
-            console.log('error')
-        }
-    }
-
-    // Generate array of categories
-    let categoryArray = []
-    async function getCategories(catUrl) {
-        const data = await getData(catUrl)
-        categoryList = data.trivia_categories
-        filterCategories('General Knowledge')
-        filterCategories('Entertainment: Books')
-        filterCategories('Entertainment: Film')
-        filterCategories('Entertainment: Music')
-        filterCategories('Entertainment: Television')
-        filterCategories('Entertainment: Video Games')
-        filterCategories('Science & Nature')
-        filterCategories('Science: Computers')
-        filterCategories('Sports')
-        filterCategories('Geography')
-        filterCategories('History')
-        filterCategories('Entertainment: Japanese Anime & Manga')
-    }
-
-    // Filter categories using specific names
-    const filterCategories = (categoryName) => {
-        categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
-    }
     
-    /* https://stackoverflow.com/a/40562841/10828019 */
-    // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
-    // https://opentdb.com/api_category.php
-    async function createCategories() {
-        await getCategories('./categories.json')
-        rowNum = 0
-        colNum = 4
-        rowID = 1
-        for (i=0; i<categoryArray.length; i++) {
-            if (rowNum % colNum === 0) {
-                $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
-            }
-            rowNum++
-            $(`#row${rowID}`).append(`<button class='btn col-4 col-md-3 mx-auto game--category-select' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
-            if (rowNum % colNum === 0) {
-                $('.game--categories').append(`</div>`)
-                rowID++
-            }
-        }
-    }
+    // // Get data from API - DONE
+    // async function getData(url) {
+    //     let res
+    //     let data
+    //     try {
+    //         res = await fetch(url)
+    //         data = await res.json()
+    //         console.log(data)
+    //         return data
+    //     }
+    //     catch {
+    //         console.log('error')
+    //     }
+    // }
+
+
+    // // Generate array of categories DONE
+    // let categoryArray = []
+    // async function getCategories(catUrl) {
+    //     const data = await getData(catUrl)
+    //     categoryList = data.trivia_categories
+    //     filterCategories('General Knowledge')
+    //     filterCategories('Entertainment: Books')
+    //     filterCategories('Entertainment: Film')
+    //     filterCategories('Entertainment: Music')
+    //     filterCategories('Entertainment: Television')
+    //     filterCategories('Entertainment: Video Games')
+    //     filterCategories('Science & Nature')
+    //     filterCategories('Science: Computers')
+    //     filterCategories('Sports')
+    //     filterCategories('Geography')
+    //     filterCategories('History')
+    //     filterCategories('Entertainment: Japanese Anime & Manga')
+    // }
+
+    // // Filter categories using specific names - DONE
+    // const filterCategories = (categoryName) => {
+    //     categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
+    // }
+
+    
+
+    
+    // /* https://stackoverflow.com/a/40562841/10828019 */
+    // // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
+    // // https://opentdb.com/api_category.php
+    // async function createCategories() {
+    //     await getCategories('./categories.json')
+    //     rowNum = 0
+    //     colNum = 4
+    //     rowID = 1
+    //     for (i=0; i<categoryArray.length; i++) {
+    //         if (rowNum % colNum === 0) {
+    //             $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
+    //         }
+    //         rowNum++
+    //         $(`#row${rowID}`).append(`<button class='btn col-4 col-md-3 mx-auto game--category-select' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
+    //         if (rowNum % colNum === 0) {
+    //             $('.game--categories').append(`</div>`)
+    //             rowID++
+    //         }
+    //     }
+    // }
     
     // Load categories using above processing
     async function loadCategories() {
-        await createCategories()
+        // await createCategories()
         $('.game-content').fadeIn(1000)
         $('#loadingSpinner').hide()
     }
