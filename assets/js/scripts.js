@@ -4,6 +4,12 @@ const gamePlayer = {
     'scores': []
 }
 const correctAnswers = []
+const gameContent = $('#gameContentWrapper')
+const gameTitle = $('#gameTitle')
+const categoryPanel = $('#gameCategoryPanel')
+const difficultyPanel = $('#gameDifficultyPanel')
+const triviaWrapper = $('#triviaWrapper')
+const triviaPanels = $('#triviaPanelDisplay')
 
 /**
  * Uses fetch API to return JSON data
@@ -39,12 +45,12 @@ const displayCategories = categoryList => {
     rowID = 1
     for (i=0; i<categoryList.length; i++) {
         if (rowNum % colNum === 0) {
-            $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
+            categoryPanel.append(`<div class='row game--category-row' id='row${rowID}'>`)
         }
         rowNum++
         $(`#row${rowID}`).append(`<button class='btn col-4 col-md-3 mx-auto game--category-select' id='${categoryList[i].id}'>${categoryList[i].name}</button>`)
         if (rowNum % colNum === 0) {
-            $('.game--categories').append(`</div>`)
+            categoryPanel.append(`</div>`)
             rowID++
         }
     }
@@ -59,7 +65,7 @@ const loadCategories = async () => {
         const categories = data.trivia_categories
         filteredCategories = filterCategories(categories, categoryWhitelist)
         displayCategories(filteredCategories)
-        $('.game-content').fadeIn(1000)
+        gameContent.fadeIn(1000)
         $('#loadingSpinner').hide()
     }
     
@@ -83,8 +89,8 @@ function generateURL(categoryID, difficulty) {
 
 const loadGame = async () => {
     await processTrivia(generateURL(userCategory, userDiff))
-    $('.game-content').fadeIn(1000)
-    $('.game--display--wrapper').fadeIn(1000)
+    gameContent.fadeIn(1000)
+    triviaWrapper.fadeIn(1000)
     $('#loadingSpinner').hide()
 }
 
@@ -100,13 +106,13 @@ const processTrivia = async (triviaUrl) => {
         triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
     }
     displayTrivia()
-    $('.game-content').hide()
+    gameContent.hide()
     $('#loadingSpinner').show()
 }
 
 const displayTrivia = () => {
     triviaData.forEach((trivia, index) => {
-        $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
+        triviaPanels.append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
         <div class='row mx-0 game--question'>
             <div class='col-12 mx-auto my-auto'>
                 <h3 id='trivia${index}Question'>${trivia.question}</h3>
@@ -205,12 +211,12 @@ $(document).ready(function () {
     =============== */
 
     // Welcome screen
-    $(document).on('click', '.welcome--play', function (event) {
+    $(document).on('click', '#welcomePlayButton', function (event) {
         if (typeof($('#usernameInput').val()) === 'string') {
             gamePlayer.username = $('#usernameInput').val()
             localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
         }
-        $('.welcome-panel').hide()
+        $('#welcomePanel').hide()
         $('#loadingSpinner').show()
         setTimeout(() => {
             loadCategories()
@@ -224,9 +230,9 @@ $(document).ready(function () {
 
     $(document).on('click', '.game--category-select', function (event) {
         userCategory = event.result
-        $('.game--categories').hide()
-        $('.game--difficulty').fadeIn(1000)
-        $('#gameTitle').text($(this).text())
+        categoryPanel.hide()
+        difficultyPanel.fadeIn(1000)
+        gameTitle.text($(this).text())
     })
 
     // Select difficulty
@@ -241,9 +247,9 @@ $(document).ready(function () {
 
     // Go back and change category choice
     $(document).on('click', '#changeCategory', function () {
-        $('#gameTitle').text('Choose Your Category')
-        $('.game--difficulty').hide()
-        $('.game--categories').fadeIn(1000)
+        gameTitle.text('Choose Your Category')
+        difficultyPanel.hide()
+        categoryPanel.fadeIn(1000)
         disableButton('#begin')
     })
 
@@ -254,9 +260,9 @@ $(document).ready(function () {
     $(document).on('click', '#begin', function (event) {
         // processTrivia(generateURL(userCategory, userDiff))
         loadGame()
-        $('.game--difficulty').hide()
-        $('game-content').hide()
-        currentCategory = $('#gameTitle').text()
+        difficultyPanel.hide()
+        gameContent.hide()
+        currentCategory = gameTitle.text()
         $('#currentQuestion').text(`${checkAnswer + 1}/10`)
         $('#displayUsername').text(gamePlayer.username)
         console.log(currentCategory)
@@ -296,9 +302,9 @@ $(document).ready(function () {
             $('#currentQuestion').text(`${checkAnswer + 1}/10`)
             // After all panels have been completed, show end game panel with score displayed
             if (checkAnswer === correctAnswers.length) {
-                $('.game--display--wrapper').hide()
-                $('#gameTitle').hide()
-                $('.endgame-panel').fadeIn(1000)
+                triviaWrapper.hide()
+                gameTitle.hide()
+                $('#endgamePanel').fadeIn(1000)
                 if (typeof(gamePlayer.username) === 'string') {
                     $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
                 }
@@ -325,15 +331,15 @@ $(document).ready(function () {
     })
 
     function resetGame() {
-        $('.game--display').empty()
+        triviaPanels.empty()
         correctArray = []
         checkAnswer = 0
         difficultyMultiplier = 1
         currentScore = 0
         correctTotal = 0
-        $('.endgame-panel').hide()
-        $('.game--categories').fadeIn(1000)
-        $('#gameTitle').fadeIn(1000).text(`Choose Your Category`)
+        $('#endgamePanel').hide()
+        categoryPanel.fadeIn(1000)
+        gameTitle.fadeIn(1000).text(`Choose Your Category`)
         $('#playerScore').text(`Score`)
         disableButton('#begin')
         updateScoreboard()
