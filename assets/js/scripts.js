@@ -14,7 +14,7 @@ const loadingSpinner = $('#loadingSpinner')
 
 let currentCategory = ''
 let difficultyMultiplier = 1
-let checkAnswer = 0
+let currentQuestion = 0
 let correctTotal = 0
 let currentScore = 0
 
@@ -140,6 +140,13 @@ const displayTrivia = () => {
     })
 }
 
+const checkUsernameExists = () => {
+    if (typeof($('#usernameInput').val()) === 'string') {
+        gamePlayer.username = $('#usernameInput').val()
+        localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
+    }
+}
+
 const loadGame = async () => {
     await processTrivia(generateURL(userCategory, userDiff))
     $('#gamePanel0').show()
@@ -150,7 +157,6 @@ const loadGame = async () => {
 
 
 
-// Update scoreboard
 function updateScoreboard() {
     $('#scoreboardBody').empty()
     for (const property in gamePlayer.scores) {
@@ -161,18 +167,9 @@ function updateScoreboard() {
 }
 
 
-// testing button
-$(document).on('click', '#testClick', function () {
-    console.log('click')
-    // console.log($('#endgameScore p').last());
-})
 
-const checkUsernameExists = () => {
-    if (typeof($('#usernameInput').val()) === 'string') {
-        gamePlayer.username = $('#usernameInput').val()
-        localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
-    }
-}
+
+
 
 $(document).on('click', '#welcomePlayButton', function () {
     checkUsernameExists()
@@ -182,7 +179,6 @@ $(document).on('click', '#welcomePlayButton', function () {
         loadCategories()
     }, 2000);
 })
-
 
 $(document).on('click', '.game--category-select', function() {
     return $(this).attr('id')
@@ -229,57 +225,69 @@ $(document).on('click', '#begin', function() {
         loadGame()
     }, 2000);
     currentCategory = gameTitle.text()
-    $('#currentQuestion').text(`${checkAnswer + 1}/10`)
+    $('#currentQuestion').text(`${currentQuestion + 1}/10`)
     $('#displayUsername').text(gamePlayer.username)
     setDifficultyMultiplier()
 })
 
-$(document).on('click', '.game--answer--single', function (event) {
-    console.log($(this).text())
-    if ($(this).is(`.correct-answer${checkAnswer}`)) {
-        $(this).addClass('btn-success')
+const checkAnswer = () => {
+    if (_this.is(`.correct-answer${currentQuestion}`)) {
+        _this.addClass('btn-success')
         console.log('correct')
         correctTotal++
         currentScore = (correctTotal * difficultyMultiplier)
     } else {
         console.log('incorrect')
-        $(this).addClass('btn-danger')
-        $(`.correct-answer${checkAnswer}`).addClass('btn-outline-success').removeClass('game--answer--outline')
+        _this.addClass('btn-danger')
+        $(`.correct-answer${currentQuestion}`).addClass('btn-outline-success').removeClass('game--answer--outline')
     }
-    // disable answer buttons after selection is made to prevent multiple clicks
-    disableButton('.game--answer--single')
-    // display selection for 1.5 seconds before moving on
+}
+
+const handleSelection = () => {
     setTimeout(() => {
-        $(`#gamePanel${checkAnswer}`).hide()
-        $(`#gamePanel${(checkAnswer + 1)}`).fadeIn(1000)
-        checkAnswer++
+        $(`#gamePanel${currentQuestion}`).hide()
+        $(`#gamePanel${(currentQuestion + 1)}`).fadeIn(1000)
+        currentQuestion++
         enableButton('.game--answer--single')
-        $('#currentQuestion').text(`${checkAnswer + 1}/10`)
-        // After all panels have been completed, show end game panel with score displayed
-        if (checkAnswer === correctAnswers.length) {
-            triviaWrapper.hide()
-            gameTitle.hide()
-            $('#endgamePanel').fadeIn(1000)
-            if (typeof(gamePlayer.username) === 'string') {
-                $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
-            }
-            $('#endgameScore').children().children('h4').text(currentCategory)
-            $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
-            $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
-            $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
-            Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
-            updateScoreboard()
-        }
+        $('#currentQuestion').text(`${currentQuestion + 1}/10`)
+        endGameProcess()
     }, 1500)
-    // update current score display
+}
+
+const updateGameInfo = () => {
     if (currentScore === 1) {
         $('#playerScore').text(`${currentScore} point`)
     } else {
         $('#playerScore').text(`${currentScore} points`)
     }
+}
+
+const endGameProcess = () => {
+    if (currentQuestion === correctAnswers.length) {
+        triviaWrapper.hide()
+        gameTitle.hide()
+        $('#endgamePanel').fadeIn(1000)
+        if (typeof(gamePlayer.username) === 'string') {
+            $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
+        }
+        $('#endgameScore').children().children('h4').text(currentCategory)
+        $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
+        $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
+        $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
+        Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
+        updateScoreboard()
+    }
+}
+
+$(document).on('click', '.game--answer--single', function (event) {
+    _this = $(this)
+    console.log(_this.text())
+    checkAnswer()
+    disableButton('.game--answer--single')
+    handleSelection()
+    updateGameInfo()
 })
 
-// Reset from end game panel back to category select screen so it can be played again
 $('#endgameButton').on('click', function() {
     console.log('click')
     resetGame()
@@ -287,8 +295,8 @@ $('#endgameButton').on('click', function() {
 
 function resetGame() {
     triviaPanels.empty()
-    correctArray = []
-    checkAnswer = 0
+    correctAnswers.length = 0
+    currentQuestion = 0
     difficultyMultiplier = 1
     currentScore = 0
     correctTotal = 0
@@ -308,6 +316,10 @@ function enableButton(selector) {
     $(selector).removeAttr('disabled')
 }
 
+// testing button
+$(document).on('click', '#testClick', function () {
+    console.log('click')
+})
 
 $(document).ready(function () {
 
