@@ -1,4 +1,9 @@
 const categoryWhitelist = ['General Knowledge', 'Entertainment: Books', 'Entertainment: Film', 'Entertainment: Music', 'Entertainment: Television', 'Entertainment: Video Games', 'Science & Nature', 'Science: Computers', 'Sports', 'Geography', 'History', 'Entertainment: Japanese Anime & Manga']
+const gamePlayer = {
+    'username': '',
+    'scores': []
+}
+const correctAnswers = []
 
 /**
  * Uses fetch API to return JSON data
@@ -46,156 +51,137 @@ const displayCategories = categoryList => {
 }
 
 /**
- * Fetches and filters category list, then prints results to the DOM
+ * Loads a list of categories in the DOM, retreived and filtered from the API
  */
-(async () => {
+const loadCategories = async () => {
     try {
         const data = await getData('./categories.json')
         const categories = data.trivia_categories
         filteredCategories = filterCategories(categories, categoryWhitelist)
         displayCategories(filteredCategories)
-    }
-    catch {
-        console.log('error')
-    }
-})()
-
-
-
-$(document).ready(function () {
-
-    // // Declare empty player object
-    const gamePlayer = {
-        'username': '',
-        'scores': []
-    }
-
-    
-    // // Get data from API - DONE
-    // async function getData(url) {
-    //     let res
-    //     let data
-    //     try {
-    //         res = await fetch(url)
-    //         data = await res.json()
-    //         console.log(data)
-    //         return data
-    //     }
-    //     catch {
-    //         console.log('error')
-    //     }
-    // }
-
-
-    // // Generate array of categories DONE
-    // let categoryArray = []
-    // async function getCategories(catUrl) {
-    //     const data = await getData(catUrl)
-    //     categoryList = data.trivia_categories
-    //     filterCategories('General Knowledge')
-    //     filterCategories('Entertainment: Books')
-    //     filterCategories('Entertainment: Film')
-    //     filterCategories('Entertainment: Music')
-    //     filterCategories('Entertainment: Television')
-    //     filterCategories('Entertainment: Video Games')
-    //     filterCategories('Science & Nature')
-    //     filterCategories('Science: Computers')
-    //     filterCategories('Sports')
-    //     filterCategories('Geography')
-    //     filterCategories('History')
-    //     filterCategories('Entertainment: Japanese Anime & Manga')
-    // }
-
-    // // Filter categories using specific names - DONE
-    // const filterCategories = (categoryName) => {
-    //     categoryArray.push(categoryList.filter(el => el.name === categoryName)[0])
-    // }
-
-    
-
-    
-    // /* https://stackoverflow.com/a/40562841/10828019 */
-    // // generate category buttons in DOM - found above code to help with looping for new rows and adjusted for javascript
-    // // https://opentdb.com/api_category.php
-    // async function createCategories() {
-    //     await getCategories('./categories.json')
-    //     rowNum = 0
-    //     colNum = 4
-    //     rowID = 1
-    //     for (i=0; i<categoryArray.length; i++) {
-    //         if (rowNum % colNum === 0) {
-    //             $('.game--categories').append(`<div class='row game--category-row' id='row${rowID}'>`)
-    //         }
-    //         rowNum++
-    //         $(`#row${rowID}`).append(`<button class='btn col-4 col-md-3 mx-auto game--category-select' id='${categoryArray[i].id}'>${categoryArray[i].name}</button>`)
-    //         if (rowNum % colNum === 0) {
-    //             $('.game--categories').append(`</div>`)
-    //             rowID++
-    //         }
-    //     }
-    // }
-    
-    // Load categories using above processing
-    async function loadCategories() {
-        // await createCategories()
         $('.game-content').fadeIn(1000)
         $('#loadingSpinner').hide()
     }
-
-    // Generate url to get specific trivia user selects
-    function generateURL(categoryID, difficulty) {
-        let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
-        let urlCategory = '&category=' + categoryID
-        let urlDifficulty = '&difficulty=' + difficulty
-        // return urlDefault + urlCategory + urlDifficulty
-        return './trivia.json'
+    
+    catch {
+        console.log('error')
     }
+}
 
-    /* Processing of trivia data */
-    let correctArray = []
-    async function processTriviaData(triviaUrl) {
-        const data = await getData(triviaUrl)
-        triviaData = data.results
-        // push all correct answers into seperate array
-        triviaData.forEach((el, index) => {
-            correctArray.push(triviaData[index].correct_answer)
-        })
-        // push correct answer into incorrect answers
-        triviaData.forEach((el, index) => {
-            triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
-        })
-        // shuffle answer array
-        for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
-            triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
-        }
-        // generate panel of questions and answers for each trivia entry
-        triviaData.forEach((trivia, index) => {
-            $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
-            <div class='row mx-0 game--question'>
-                <div class='col-12 mx-auto my-auto'>
-                    <h3 id='trivia${index}Question'>${trivia.question}</h3>
-                </div>
+/**
+ * Generate a URL to fetch the specific trivia the user selects from the API
+ * @param {number} categoryID the id of the category
+ * @param {string} difficulty the selected difficulty
+ */
+function generateURL(categoryID, difficulty) {
+    let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
+    let urlCategory = '&category=' + categoryID
+    let urlDifficulty = '&difficulty=' + difficulty
+    // return urlDefault + urlCategory + urlDifficulty
+    return './trivia.json'
+}
+
+const loadGame = async () => {
+    await processTrivia(generateURL(userCategory, userDiff))
+    $('.game-content').fadeIn(1000)
+    $('.game--display--wrapper').fadeIn(1000)
+    $('#loadingSpinner').hide()
+}
+
+
+const processTrivia = async (triviaUrl) => {
+    const data = await getData(triviaUrl)
+    triviaData = data.results
+    triviaData.forEach((_, index) => {
+        correctAnswers.push(triviaData[index].correct_answer)
+        triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
+    })
+    for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
+        triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
+    }
+    displayTrivia()
+    $('.game-content').hide()
+    $('#loadingSpinner').show()
+}
+
+const displayTrivia = () => {
+    triviaData.forEach((trivia, index) => {
+        $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
+        <div class='row mx-0 game--question'>
+            <div class='col-12 mx-auto my-auto'>
+                <h3 id='trivia${index}Question'>${trivia.question}</h3>
             </div>
-            <div class='row mx-0 mb-1'>
-                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
-                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
-            </div>
-            <div class='row mx-0'>
-                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
-                <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
-            </div>
-            </div>`)
-        })
-        correctArray.forEach((el, index) => {
-           for (i=0; i<4; i++) {
-               if ($(`#trivia${index}Answer${i}`).text() === el) {
-                $(`#trivia${index}Answer${i}`).addClass(`correct-answer${index}`)
-               }
+        </div>
+        <div class='row mx-0 mb-1'>
+            <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
+            <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
+        </div>
+        <div class='row mx-0'>
+            <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
+            <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
+        </div>
+        </div>`)
+    })
+    correctAnswers.forEach((answer, index) => {
+       for (i=0; i<4; i++) {
+           if ($(`#trivia${index}Answer${i}`).text() === answer) {
+            $(`#trivia${index}Answer${i}`).addClass(`correct-answer${index}`)
            }
-        })
-        // $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
-        $('#gamePanel0').show()
-    }
+       }
+    })
+    $('#gamePanel0').show()
+}
+
+$(document).ready(function () {
+
+
+
+
+    // /* Processing of trivia data */
+    // // const correctArray = []
+    // async function processTriviaData(triviaUrl) {
+    //     const data = await getData(triviaUrl)
+    //     triviaData = data.results
+    //     // push all correct answers into seperate array
+    //     triviaData.forEach((el, index) => {
+    //         correctArray.push(triviaData[index].correct_answer)
+    //     })
+    //     // push correct answer into incorrect answers
+    //     triviaData.forEach((el, index) => {
+    //         triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
+    //     })
+    //     // shuffle answer array
+    //     for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
+    //         triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
+    //     }
+    //     // generate panel of questions and answers for each trivia entry
+    //     triviaData.forEach((trivia, index) => {
+    //         $('.game--display').append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
+    //         <div class='row mx-0 game--question'>
+    //             <div class='col-12 mx-auto my-auto'>
+    //                 <h3 id='trivia${index}Question'>${trivia.question}</h3>
+    //             </div>
+    //         </div>
+    //         <div class='row mx-0 mb-1'>
+    //             <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer0'>${trivia.incorrect_answers[0]}</button>
+    //             <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer1'>${trivia.incorrect_answers[1]}</button>
+    //         </div>
+    //         <div class='row mx-0'>
+    //             <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer2'>${trivia.incorrect_answers[2]}</button>
+    //             <button class='col-4 mx-auto game--answer--single game--answer--outline btn btn-default' id='trivia${index}Answer3'>${trivia.incorrect_answers[3]}</button>
+    //         </div>
+    //         </div>`)
+    //     })
+    //     correctArray.forEach((el, index) => {
+    //        for (i=0; i<4; i++) {
+    //            if ($(`#trivia${index}Answer${i}`).text() === el) {
+    //             $(`#trivia${index}Answer${i}`).addClass(`correct-answer${index}`)
+    //            }
+    //        }
+    //     })
+    //     // $('#gamePanel0').addClass('game--panel__shown').removeClass('game--panel__hidden')
+    //     $('#gamePanel0').show()
+    // }
 
     // Update scoreboard
     function updateScoreboard() {
@@ -226,7 +212,9 @@ $(document).ready(function () {
         }
         $('.welcome-panel').hide()
         $('#loadingSpinner').show()
-        loadCategories()
+        setTimeout(() => {
+            loadCategories()
+        }, 2000);
     })
 
     // Select category
@@ -264,11 +252,10 @@ $(document).ready(function () {
     let currentCategory = ''
     let difficultyMultiplier = 1
     $(document).on('click', '#begin', function (event) {
-        processTriviaData(generateURL(userCategory, userDiff))
-        // $('.game--difficulty').addClass('game--panel__hidden').removeClass('game--panel__shown')
-        // $('.game--display--wrapper').addClass('game--panel__shown').removeClass('game--panel__hidden')
+        // processTrivia(generateURL(userCategory, userDiff))
+        loadGame()
         $('.game--difficulty').hide()
-        $('.game--display--wrapper').fadeIn(1000)
+        $('game-content').hide()
         currentCategory = $('#gameTitle').text()
         $('#currentQuestion').text(`${checkAnswer + 1}/10`)
         $('#displayUsername').text(gamePlayer.username)
@@ -308,7 +295,7 @@ $(document).ready(function () {
             enableButton('.game--answer--single')
             $('#currentQuestion').text(`${checkAnswer + 1}/10`)
             // After all panels have been completed, show end game panel with score displayed
-            if (checkAnswer === correctArray.length) {
+            if (checkAnswer === correctAnswers.length) {
                 $('.game--display--wrapper').hide()
                 $('#gameTitle').hide()
                 $('.endgame-panel').fadeIn(1000)
