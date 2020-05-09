@@ -75,7 +75,7 @@ p, h1, h2, h3, h4, h5, h6 {
 >>WELCOME PANEL
 ============ */
 
-.home-container-wrapper {
+#mainPageWrapper {
     min-height: 90vh;
     /* margin-top: 10vh; */
     padding: 8vh 2vw 0;
@@ -86,12 +86,12 @@ p, h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
-.welcome-panel {
+#welcomePanel {
     height: 60vh;
     margin-top: 8vh;
 }
 
-.welcome-panel h3 {
+#welcomePanel h3 {
     font-family: "Bowlby One SC", sans-serif;
     font-weight: 400;
     font-size: 1.15rem;
@@ -100,7 +100,7 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #bf5b17;
 }
 
-.welcome-panel h2 {
+#welcomePanel h2 {
     font-family: "Bowlby One SC";
     font-size: 2.25rem;
     text-transform: uppercase;
@@ -108,7 +108,7 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #DF691A;
 }
 
-.welcome-panel h5 {
+#welcomePanel h5 {
     /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -116,7 +116,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.welcome-panel p {
+#welcomePanel p {
     /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -124,7 +124,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.welcome--play {
+#welcomePlayButton {
     width: 100%;
     text-transform: uppercase;
     height: 60px;
@@ -135,18 +135,18 @@ p, h1, h2, h3, h4, h5, h6 {
 ========== */
 
 /* Main content wrapper */
-.game-content {
+#gameContentWrapper {
     padding: 0 3vw 0;
 }
 
 /* Game title */
-.game--heading {
+#gameHeader {
     text-align: center;
     padding-top: 1vh;
     padding-bottom: 1vh;
 }
 
-.game--heading h1 {
+#gameHeader h1 {
     /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
@@ -155,7 +155,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* Category panel */
-.game--categories {
+#gameCategoryPanel {
     background-color: #4E5D6C;
     padding: 1vh 8vw;
 }
@@ -179,7 +179,7 @@ p, h1, h2, h3, h4, h5, h6 {
 } */
 
 /* Difficulty panel */
-.game--difficulty {
+#gameDifficultyPanel {
     background-color: #4E5D6C;
     padding: 1vh 8vw;
 }
@@ -264,11 +264,19 @@ p, h1, h2, h3, h4, h5, h6 {
     border: white 1px solid;
 }
 
-.game--score {
+#gameInfo {
     min-height: 5vh;
     margin: 1vh 0.5vw 0;
     background-color: #4E5D6C;
     border: #fffbfc 1px solid;
+}
+
+#gameInfo h4 {
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #fffbfc;
 }
 
 #currentQuestion {
@@ -288,21 +296,13 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #5bc0de
 }
 
-.game--score h4 {
-    /* font-family: 'Roboto', sans-serif; */
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: #fffbfc;
-}
-
 /* Endgame panel */
-.endgame-panel {
+#endgamePanel {
     height: 60vh;
     margin-top: 8vh;
 }
 
-.endgame-panel h3 {
+#endgamePanel h3 {
     font-family: "Bowlby One SC", sans-serif;
     font-weight: 400;
     font-size: 1.25rem;
@@ -310,14 +310,14 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.endgame-panel h2 {
+#endgamePanel h2 {
     font-family: "Bowlby One SC";
     font-size: 2rem;
     text-transform: uppercase;
     text-align: center;
 }
 
-.endgame-panel h4 {
+#endgamePanel h4 {
     /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -326,7 +326,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.endgame-panel h5 {
+#endgamePanel h5 {
     /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -334,7 +334,7 @@ p, h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
-.endgame-panel p {
+#endgamePanel p {
     /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -369,7 +369,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 321px) {
 
-    .home-container-wrapper {
+    #mainPageWrapper {
         min-height: 90vh;
         /* margin-top: 10vh; */
         padding: 10vh 6vw 0;
@@ -391,7 +391,7 @@ p, h1, h2, h3, h4, h5, h6 {
         background: #2B3E50;
     }
 
-    .home-container-wrapper {
+    #mainPageWrapper {
         padding: 10vh 10vw 0;
     }
 
@@ -401,11 +401,11 @@ p, h1, h2, h3, h4, h5, h6 {
         padding-top: 5vh;
     }
 
-    .game-content {
+    #gameContentWrapper {
         margin-top: 5vh;
     }
 
-    .game--categories {
+    #gameCategoryPanel {
         padding: 1vh 5vw;
     }
 
@@ -413,7 +413,7 @@ p, h1, h2, h3, h4, h5, h6 {
         max-width: 125px;
     }
 
-    .game--difficulty {
+    #gameDifficultyPanel {
         width: 55vw;
         margin-left: auto;
         margin-right: auto;
@@ -426,11 +426,11 @@ p, h1, h2, h3, h4, h5, h6 {
 ======== */
 
 @media only screen and (min-width: 992px) {
-    .home-container-wrapper {
+    #mainPageWrapper {
         padding: 12vh 20vw 0;
     }
 
-    .game--categories {
+    #gameCategoryPanel {
     padding: 1vh 2vw;
     }
 }
@@ -440,11 +440,11 @@ p, h1, h2, h3, h4, h5, h6 {
 ========= */
 
 @media only screen and (min-width: 1200px) {
-    .home-container-wrapper {
+    #mainPageWrapper {
         padding: 12vh 25vw 0;
     }
 
-    .game--difficulty {
+    #gameDifficultyPanel {
         width: 42vw;
     }
 }   

@@ -32,7 +32,7 @@
         </div>
     </nav>
     <!-- Home page main content -->
-    <section class="container-fluid home-container-wrapper">
+    <section class="container-fluid" id="mainPageWrapper">
         <!-- Loading spinner -->
         <div class="row game--panel__hidden" id="loadingSpinner">
             <div class="col-5 mx-auto">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- Welcome screen -->
-        <div class="card welcome-panel game--panel__shown">
+        <div class="card game--panel__shown" id="welcomePanel">
             <div class="row">
                 <div class="col-12 pt-4">
                     <h3>welcome to</h3>
@@ -62,23 +62,23 @@
                     <p>or click to play anonymously</p>
                 </div>
                 <div class="col-8 col-md-4 mx-auto">
-                    <button class="btn btn-outline-primary welcome--play">play</button>
+                    <button class="btn btn-outline-primary" id="welcomePlayButton">play</button>
                 </div>
             </div>
         </div>
-        <div class="game-content game--panel__hidden ">
+        <div class="game--panel__hidden" id="gameContentWrapper">
             <!-- Game heading -->
             <div class="row">
-                <div class="col-12 game--heading">
+                <div class="col-12" id="gameHeader">
                     <h1 id="gameTitle">Choose Your Category</h1>
                 </div>
             </div>
             <!-- Category select page -->
-            <div class="game--categories game--panel__shown mb-3">
+            <div class="game--panel__shown mb-3" id="gameCategoryPanel">
                 <!-- Category button generation goes here -->
             </div>
             <!-- Difficulty select page -->
-            <div class ="game--difficulty game--panel__hidden">
+            <div class ="game--panel__hidden" id="gameDifficultyPanel">
                 <div class="row">
                     <button class="btn col-10 col-md-6 mx-auto my-2 game--difficulty-select" id="easy">EASY</button>
                 </div>
@@ -97,16 +97,16 @@
             </div>
 
             <!-- Game display and input page -->
-            <div class="game--display--wrapper game--panel__hidden">
+            <div class="game--panel__hidden" id="triviaWrapper">
                 
                 
 
 
-                <div class="game--display">
+                <div id="triviaPanelDisplay">
                     <!-- Trivia game panel generation goes here -->
                 </div>
                 <!-- Current question and score display -->
-                <div class="row game--score">
+                <div class="row" id="gameInfo">
                     <div class="col-4 mx-auto my-auto">
                         <h4 id="currentQuestion">1/10</h4>
                     </div>
@@ -120,7 +120,7 @@
             </div>
         </div>
         <!-- End game panel -->
-        <div class="card endgame-panel game--panel__hidden">
+        <div class="card game--panel__hidden" id="endgamePanel">
             <div class="row" id="endgameScore">
                 <div class="col-12 pt-4">
                     <h3>way to go</h3>
