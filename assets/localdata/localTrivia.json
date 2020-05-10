@@ -1,0 +1,245 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "category": "Entertainment: Film",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which actor played the main character in the 1990 film &quot;Edward Scissorhands&quot;?",
+            "correct_answer": "Johnny Depp",
+            "incorrect_answers": [
+                " Clint Eastwood",
+                "Leonardo DiCaprio",
+                "Ben Stiller"
+            ]
+        },
+        {
+            "category": "Entertainment: Video Games",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who is the protagonist in the game &quot;The Walking Dead: Season One&quot;?",
+            "correct_answer": "Lee Everett",
+            "incorrect_answers": [
+                "Clementine",
+                "Kenny",
+                "Rick Grimes"
+            ]
+        },
+        {
+            "category": "Science: Computers",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What amount of bits commonly equals one byte?",
+            "correct_answer": "8",
+            "incorrect_answers": [
+                "1",
+                "2",
+                "64"
+            ]
+        },
+        {
+            "category": "Entertainment: Film",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the name of the robot in the 1951 science fiction film classic &#039;The Day the Earth Stood Still&#039;?",
+            "correct_answer": "Gort",
+            "incorrect_answers": [
+                "Robby",
+                "Colossus",
+                "Box"
+            ]
+        },
+        {
+            "category": "Entertainment: Video Games",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "In what year was the game &quot;Fallout&quot; released?",
+            "correct_answer": "1997",
+            "incorrect_answers": [
+                "1998",
+                "1999",
+                "1996"
+            ]
+        },
+        {
+            "category": "Entertainment: Japanese Anime & Manga",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the last line muttered in the anime film &quot;The End of Evangelion&quot;?",
+            "correct_answer": "&quot;How disgusting.&quot;",
+            "incorrect_answers": [
+                "&quot;Idiot, I won&#039;t let you kill me!&quot;",
+                "&quot;Nothing.&quot;",
+                "&quot;Goddammit, Shinji.&quot;"
+            ]
+        },
+        {
+            "category": "Entertainment: Video Games",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which was the first M-rated video game developed by Squaresoft/Square Enix?",
+            "correct_answer": "Parasite Eve",
+            "incorrect_answers": [
+                "Final Fantasy VIII",
+                "Front Mission",
+                "Vagrant Story"
+            ]
+        },
+        {
+            "category": "Entertainment: Comics",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In Pre-Super Genesis universe of &quot;Sonic the Hedgehog&quot; comic, what was the name of  Sally Acorn&#039;s brother?",
+            "correct_answer": "Elias Acorn",
+            "incorrect_answers": [
+                "Maximillian Acorn",
+                "Alexis Acorn",
+                "Frederick Acorn"
+            ]
+        },
+        {
+            "category": "Entertainment: Music",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which country does the electronic music duo &quot;The Knife&quot; originate from?",
+            "correct_answer": "Sweden",
+            "incorrect_answers": [
+                "Finland",
+                "Denmark",
+                "Norway"
+            ]
+        },
+        {
+            "category": "Geography",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the Finnish word for &quot;Finland&quot;?",
+            "correct_answer": "Suomi",
+            "incorrect_answers": [
+                "Eesti",
+                "Magyarorsz&aacute;g",
+                "Sverige"
+            ]
+        },
+        {
+            "category": "History",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Who was the President of the United States during the signing of the Gadsden Purchase?",
+            "correct_answer": "Franklin Pierce",
+            "incorrect_answers": [
+                "Andrew Johnson",
+                "Abraham Lincoln",
+                "James Polk"
+            ]
+        },
+        {
+            "category": "Entertainment: Video Games",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "In &quot;Halo 2&quot;, what is the name of the monitor of Installation 05?",
+            "correct_answer": "2401 Penitent Tangent",
+            "incorrect_answers": [
+                "343 Guilty Spark",
+                "031 Exuberant Witness",
+                "252 Biodis Expolsion"
+            ]
+        },
+        {
+            "category": "Geography",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the capital of Estonia?",
+            "correct_answer": "Tallinn",
+            "incorrect_answers": [
+                "Helsinki",
+                "Tartu",
+                "Riga"
+            ]
+        },
+        {
+            "category": "Entertainment: Television",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "Which of the following was not an actor/actress on the American television show &quot;Saturday Night Live&quot; in Season 42?",
+            "correct_answer": "Tina Fey",
+            "incorrect_answers": [
+                "Mikey Day",
+                "Kate McKinnon",
+                "Sasheer Zamata"
+            ]
+        },
+        {
+            "category": "Entertainment: Film",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "What was the first feature-length computer-animated movie?",
+            "correct_answer": "Toy Story",
+            "incorrect_answers": [
+                "Tron",
+                "Lion king",
+                "101 Dalmatians"
+            ]
+        },
+        {
+            "category": "Science & Nature",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "Which of the following is the term for &quot;surgical complications resulting from surgical sponges left inside the patient&#039;s body?",
+            "correct_answer": "Gossypiboma",
+            "incorrect_answers": [
+                "Gongoozler",
+                "Jentacular",
+                "Meupareunia"
+            ]
+        },
+        {
+            "category": "Art",
+            "type": "multiple",
+            "difficulty": "easy",
+            "question": "Who painted The Starry Night?",
+            "correct_answer": "Vincent van Gogh",
+            "incorrect_answers": [
+                "Pablo Picasso",
+                "Leonardo da Vinci",
+                "Michelangelo"
+            ]
+        },
+        {
+            "category": "Entertainment: Board Games",
+            "type": "multiple",
+            "difficulty": "hard",
+            "question": "What is the sum of all the tiles in a standard box of Scrabble?",
+            "correct_answer": "187",
+            "incorrect_answers": [
+                "207",
+                "197",
+                "177"
+            ]
+        },
+        {
+            "category": "Entertainment: Cartoon & Animations",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the name of the Alligator that The Simpsons &quot;killed&quot; in the episode &quot;Kill The Alligator and Run&quot;?",
+            "correct_answer": "Captain Jack",
+            "incorrect_answers": [
+                "Captain Jake",
+                "Captain Hector",
+                "Captain Flynn"
+            ]
+        },
+        {
+            "category": "Animals",
+            "type": "multiple",
+            "difficulty": "medium",
+            "question": "What is the name for a male bee that comes from an unfertilized egg?",
+            "correct_answer": "Drone",
+            "incorrect_answers": [
+                "Soldier",
+                "Worker",
+                "Male"
+            ]
+        }
+    ]
+}

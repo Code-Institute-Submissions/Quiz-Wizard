@@ -4,6 +4,7 @@ const gamePlayer = {
     'scores': []
 }
 const correctAnswers = []
+const welcomePanel = $('#welcomePanel')
 const gameContent = $('#gameContentWrapper')
 const gameTitle = $('#gameTitle')
 const categoryPanel = $('#gameCategoryPanel')
@@ -17,6 +18,40 @@ let difficultyMultiplier = 1
 let currentQuestion = 0
 let correctTotal = 0
 let currentScore = 0
+
+let serverResponse = false
+
+/**
+ * Checks the API server for response and sets variable based on result
+ * @param {string} url The API address to check
+ */
+const checkResponse = async url => {
+    try {
+        const res = await fetch(url)
+        if (res.status === 200) {
+            serverResponse = true
+        }
+    }
+    catch {
+        serverFailed()
+    }
+}
+
+const serverFailed = () => {
+    welcomePanel.children('form').remove()
+    welcomePanel.children('div').children().children('p').text('Unfortunately our we are having issues contacting our database. If you would like to play with locally stored questions, press play. Otherwise please try again later.')
+    welcomePanel.children('div').children().children('button').css('margin-top', '3rem')
+    welcomePanel.css('height', '50vh')
+    welcomePanel.css('padding', '0 10px')
+}
+
+// checkResponse('https://opentdb.com/api_category.php')
+checkResponse('http://127.0.0.1:8887/categories.json')
+
+// testing button
+$(document).on('click', '#testClick', function () {
+    console.log('click')
+})
 
 /**
  * Uses fetch API to return JSON data
@@ -67,18 +102,23 @@ const displayCategories = categoryList => {
  * Loads a list of categories in the DOM, retreived and filtered from the API
  */
 const loadCategories = async () => {
-    try {
-        const data = await getData('./categories.json')
-        const categories = data.trivia_categories
-        filteredCategories = filterCategories(categories, categoryWhitelist)
-        displayCategories(filteredCategories)
-        gameContent.fadeIn(1000)
-        loadingSpinner.hide()
-    }
-    
-    catch {
-        console.log('error')
-    }
+    const data = await getData('./categories.json')
+    const categories = data.trivia_categories
+    filteredCategories = filterCategories(categories, categoryWhitelist)
+    displayCategories(filteredCategories)
+    gameContent.fadeIn(1000)
+    loadingSpinner.hide()
+}
+
+const loadLocal = async () => {
+    await processTrivia('./assets/localdata/localTrivia.json')
+    gameTitle.text('Local Questions')
+    $('#gamePanel0').show()
+    gameContent.fadeIn(1000)
+    triviaWrapper.fadeIn(1000)
+    loadingSpinner.hide()
+    categoryPanel.hide()
+    $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
 }
 
 /**
@@ -167,16 +207,16 @@ function updateScoreboard() {
 }
 
 
-
-
-
-
 $(document).on('click', '#welcomePlayButton', function () {
     checkUsernameExists()
     $('#welcomePanel').hide()
     loadingSpinner.show()
     setTimeout(() => {
-        loadCategories()
+        if (serverResponse === true) {
+            loadCategories()
+        } else {
+            loadLocal()
+        }
     }, 2000);
 })
 
@@ -225,7 +265,7 @@ $(document).on('click', '#begin', function() {
         loadGame()
     }, 2000);
     currentCategory = gameTitle.text()
-    $('#currentQuestion').text(`${currentQuestion + 1}/10`)
+    $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
     $('#displayUsername').text(gamePlayer.username)
     setDifficultyMultiplier()
 })
@@ -249,7 +289,7 @@ const handleSelection = () => {
         $(`#gamePanel${(currentQuestion + 1)}`).fadeIn(1000)
         currentQuestion++
         enableButton('.game--answer--single')
-        $('#currentQuestion').text(`${currentQuestion + 1}/10`)
+        $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
         endGameProcess()
     }, 1500)
 }
@@ -316,10 +356,7 @@ function enableButton(selector) {
     $(selector).removeAttr('disabled')
 }
 
-// testing button
-$(document).on('click', '#testClick', function () {
-    console.log('click')
-})
+
 
 $(document).ready(function () {
 
