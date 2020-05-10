@@ -23,6 +23,14 @@ p, h1, h2, h3, h4, h5, h6 {
     display: block;
 }
 
+#serverErrorAlert {
+    font-family: 'Manrope', sans-serif;
+}
+
+#reloadButton {
+    width: 100%;
+}
+
 /* ================
 >>HEADER/NAVIGATION
 ================ */

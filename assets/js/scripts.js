@@ -45,8 +45,8 @@ const serverFailed = () => {
     welcomePanel.css('padding', '0 10px')
 }
 
-// checkResponse('https://opentdb.com/api_category.php')
-checkResponse('http://127.0.0.1:8887/categories.json')
+checkResponse('https://opentdb.com/api_category.php')
+// checkResponse('http://127.0.0.1:8887/categories.json')
 
 // testing button
 $(document).on('click', '#testClick', function () {
@@ -62,9 +62,14 @@ const getData = async url => {
         return await (await fetch(url)).json()
     }
     catch {
-        console.log('error')
+        $('#serverErrorAlert').show()
+        loadingSpinner.hide()
     }
 }
+
+$(document).on('click', '#reloadButton', function() {
+    window.location.reload(true); 
+})
 
 /**
  * Filters a list of chosen categories out of the complete list from the API
@@ -102,7 +107,7 @@ const displayCategories = categoryList => {
  * Loads a list of categories in the DOM, retreived and filtered from the API
  */
 const loadCategories = async () => {
-    const data = await getData('./categories.json')
+    const data = await getData('./categories.json/')
     const categories = data.trivia_categories
     filteredCategories = filterCategories(categories, categoryWhitelist)
     displayCategories(filteredCategories)

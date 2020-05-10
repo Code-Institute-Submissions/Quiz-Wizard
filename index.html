@@ -66,6 +66,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="game--panel__hidden" id="gameContentWrapper">
             <!-- Game heading -->
             <div class="row">
@@ -108,7 +109,7 @@
                 <!-- Current question and score display -->
                 <div class="row" id="gameInfo">
                     <div class="col-4 mx-auto my-auto">
-                        <h4 id="currentQuestion">1/10</h4>
+                        <h4 id="currentQuestion"></h4>
                     </div>
                     <div class="col-4 mx-auto my-auto">
                         <h4 id="displayUsername"></h4>
@@ -146,6 +147,20 @@
                 </div>
             </div>
         </div>
+        <!-- Alerts -->
+        <div class="alert alert-danger game--panel__hidden" id="serverErrorAlert">
+            <strong>Unfortunately we are having trouble contacting our database.</strong>
+            <p>Please reload the page to try again</p>
+            <div class="row">
+                <div class="col-4 mx-auto">
+                    <button class="btn-light" id="reloadButton">Reload</button>
+                </div>
+            </div>
+            <!-- <div class="col-6">
+                
+            </div> -->
+        </div>
+            
     </section>
 
     <!-- Modals -->
@@ -166,6 +181,7 @@
         </div>
       </div>
     </div>
+    
     <!-- testing button -->
     <!-- <button class="btn btn-outline-danger" id="testClick">click</button> -->
 
