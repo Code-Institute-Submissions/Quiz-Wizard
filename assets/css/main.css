@@ -31,6 +31,48 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* Loading spinner */
+/* Sourced from https://loading.io/css/ */
+#loadingSpinner {
+    margin: 40vh .25rem;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 /* ================
 >>HEADER/NAVIGATION
 ================ */
@@ -85,8 +127,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 #mainPageWrapper {
     min-height: 90vh;
-    /* margin-top: 10vh; */
-    padding: 8vh 2vw 0;
+    padding: 0 2vw;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -97,6 +138,8 @@ p, h1, h2, h3, h4, h5, h6 {
 #welcomePanel {
     height: 60vh;
     margin-top: 8vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #welcomePanel h3 {
@@ -379,8 +422,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
     #mainPageWrapper {
         min-height: 90vh;
-        /* margin-top: 10vh; */
-        padding: 10vh 6vw 0;
+        padding: 0 6vw;
     }
 
     .game--category-select {
@@ -400,7 +442,7 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     #mainPageWrapper {
-        padding: 10vh 10vw 0;
+        padding: 0 10vw;
     }
 
     .welcome-panel {
@@ -435,7 +477,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 992px) {
     #mainPageWrapper {
-        padding: 12vh 20vw 0;
+        padding: 0 20vw;
     }
 
     #gameCategoryPanel {
@@ -449,7 +491,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 1200px) {
     #mainPageWrapper {
-        padding: 12vh 25vw 0;
+        padding: 0 25vw;
     }
 
     #gameDifficultyPanel {
@@ -458,44 +500,3 @@ p, h1, h2, h3, h4, h5, h6 {
 }   
 
 
-/* Loading spinner */
-/* Sourced from https://loading.io/css/ */
-#loadingSpinner {
-    margin-top: 60vh;
-}
-
-.lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
