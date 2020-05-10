@@ -431,6 +431,22 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 }
 
+@media only screen and (min-width: 500px) {
+
+    #gameContentWrapper {
+        padding: 0 10vw 0;
+    }
+
+}
+
+@media only screen and (min-width: 630px) {
+
+    #gameContentWrapper {
+        padding: 0 17vw 0;
+    }
+
+}
+
 /* ========
 >768+ width
 ======== */
@@ -453,6 +469,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
     #gameContentWrapper {
         margin-top: 5vh;
+        padding: 0 3vw 0;
     }
 
     #gameCategoryPanel {
