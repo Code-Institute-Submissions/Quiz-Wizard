@@ -139,7 +139,7 @@ const processTrivia = async (triviaUrl) => {
     const data = await getData(triviaUrl)
     triviaData = data.results
     triviaData.forEach((_, index) => {
-        correctAnswers.push(triviaData[index].correct_answer)
+        correctAnswers.push(he.decode(triviaData[index].correct_answer))
         triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
     })
     for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
@@ -191,8 +191,6 @@ const loadGame = async () => {
     triviaWrapper.fadeIn(1000)
     loadingSpinner.hide()
 }
-
-
 
 function updateScoreboard() {
     $('#scoreboardBody').empty()
