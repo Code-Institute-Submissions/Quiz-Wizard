@@ -121,6 +121,10 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 0;
 }
 
+#serverErrorAlert {
+    margin: 0 1vw;
+}
+
 /* ============
 >>WELCOME PANEL
 ============ */
@@ -137,7 +141,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 #welcomePanel {
     height: 60vh;
-    margin-top: 8vh;
+    margin: 8vh 0 0;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -347,10 +351,9 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #5bc0de
 }
 
-/* Endgame panel */
 #endgamePanel {
     height: 60vh;
-    margin-top: 8vh;
+    margin: 8vh 3vw 0;
 }
 
 #endgamePanel h3 {
@@ -397,6 +400,7 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 100%;
     text-transform: uppercase;
     height: 60px;
+    margin-top: 7vh;
 }
 
 /* =====
@@ -424,7 +428,10 @@ p, h1, h2, h3, h4, h5, h6 {
         min-height: 90vh;
         padding: 0 6vw;
     }
-
+    #welcomePanel {
+        height: 53vh;
+        margin: 8vh 1vw 0;
+    }
     .game--category-select {
         min-width: 120px;
         min-height: 80px;
@@ -433,16 +440,40 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 500px) {
 
+    #loadSpinner, .lds-ring {
+        margin-left: 2rem;
+    }
+    #welcomePanel {
+        margin: 8vh 10vw 0;
+    }
     #gameContentWrapper {
         padding: 0 10vw 0;
+    }
+    #endgamePanel {
+        margin: 8vh 10vw 0;
+    }
+    #serverErrorAlert {
+        margin: 0 10vw;
     }
 
 }
 
 @media only screen and (min-width: 630px) {
 
+    #loadSpinner, .lds-ring {
+        margin-left: 3rem;
+    }
+    #welcomePanel {
+        margin: 8vh 17vw 0;
+    }
     #gameContentWrapper {
         padding: 0 17vw 0;
+    }
+    #endgamePanel {
+        margin: 8vh 17vw 0;
+    }
+    #serverErrorAlert {
+        margin: 0 17vw;
     }
 
 }
@@ -454,17 +485,21 @@ p, h1, h2, h3, h4, h5, h6 {
 /* min-height to exclude long phones in landscape eg; pixel 2 */
 @media only screen and (min-width: 768px) and (min-height: 420px) {
     #NavMobileToggler {
-        background: #2B3E50;
+        background: #4E5D6C;
     }
-
+    #loadSpinner, .lds-ring {
+        margin-left: 0;
+    }
     #mainPageWrapper {
         padding: 0 10vw;
     }
-
-    .welcome-panel {
-        height: 50vh;
-        margin-top: 8vh;
-        padding-top: 5vh;
+    #serverErrorAlert {
+        margin: 0 10vw;
+    }
+    #welcomePanel {
+        height: 43vh;
+        margin: 8vh 10vw 0;
+        padding-top: 1vh;
     }
 
     #gameContentWrapper {
@@ -481,9 +516,15 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     #gameDifficultyPanel {
-        width: 55vw;
         margin-left: auto;
         margin-right: auto;
+    }
+    #endgamePanel {
+        height: 40vh;
+        margin: 8vh 10vw 0;
+    }
+    #endgameButton {
+        margin-top: 4vh;
     }
 
 }
@@ -496,9 +537,15 @@ p, h1, h2, h3, h4, h5, h6 {
     #mainPageWrapper {
         padding: 0 20vw;
     }
-
+    #serverErrorAlert {
+        margin: 0 3vw;
+    }
     #gameCategoryPanel {
     padding: 1vh 2vw;
+    }
+    #endgamePanel {
+        height: 50vh;
+        margin: 8vh 7vw 0;
     }
 }
 
@@ -508,12 +555,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 1200px) {
     #mainPageWrapper {
-        padding: 0 25vw;
+        padding: 0 24vw;
     }
-
-    #gameDifficultyPanel {
-        width: 42vw;
-    }
-}   
+}
 
 
