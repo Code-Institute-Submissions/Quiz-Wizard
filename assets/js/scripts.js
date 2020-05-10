@@ -40,18 +40,11 @@ const checkResponse = async url => {
 const serverFailed = () => {
     welcomePanel.children('form').remove()
     welcomePanel.children('div').children().children('p').text('Unfortunately our we are having issues contacting our database. If you would like to play with locally stored questions, press play. Otherwise please try again later.')
-    welcomePanel.children('div').children().children('button').css('margin-top', '3rem')
     welcomePanel.css('height', '50vh')
     welcomePanel.css('padding', '0 10px')
 }
 
 checkResponse('https://opentdb.com/api_category.php')
-// checkResponse('http://127.0.0.1:8887/categories.json')
-
-// testing button
-$(document).on('click', '#testClick', function () {
-    console.log('click')
-})
 
 /**
  * Uses fetch API to return JSON data
@@ -68,7 +61,7 @@ const getData = async url => {
 }
 
 $(document).on('click', '#reloadButton', function() {
-    window.location.reload(true); 
+    window.location.reload(true)
 })
 
 /**
@@ -107,7 +100,7 @@ const displayCategories = categoryList => {
  * Loads a list of categories in the DOM, retreived and filtered from the API
  */
 const loadCategories = async () => {
-    const data = await getData('./categories.json/')
+    const data = await getData('https://opentdb.com/api_category.php')
     const categories = data.trivia_categories
     filteredCategories = filterCategories(categories, categoryWhitelist)
     displayCategories(filteredCategories)
@@ -135,8 +128,7 @@ function generateURL(categoryID, difficulty) {
     let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
     let urlCategory = '&category=' + categoryID
     let urlDifficulty = '&difficulty=' + difficulty
-    // return urlDefault + urlCategory + urlDifficulty
-    return './trivia.json'
+    return urlDefault + urlCategory + urlDifficulty
 }
 
 /**
@@ -216,13 +208,11 @@ $(document).on('click', '#welcomePlayButton', function () {
     checkUsernameExists()
     $('#welcomePanel').hide()
     loadingSpinner.show()
-    setTimeout(() => {
-        if (serverResponse === true) {
-            loadCategories()
-        } else {
-            loadLocal()
-        }
-    }, 2000);
+    if (serverResponse === true) {
+        loadCategories()
+    } else {
+        loadLocal()
+    }
 })
 
 $(document).on('click', '.game--category-select', function() {
@@ -266,9 +256,7 @@ $(document).on('click', '#begin', function() {
     difficultyPanel.hide()
     gameContent.hide()
     loadingSpinner.show()
-    setTimeout(() => {
-        loadGame()
-    }, 2000);
+    loadGame()
     currentCategory = gameTitle.text()
     $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
     $('#displayUsername').text(gamePlayer.username)
