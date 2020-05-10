@@ -14,7 +14,6 @@
     <title>Quiz Wizard</title>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark nav-wrapper p-0">
         <a class="navbar-brand logo-text pl-2 m-0" href="index.html">Quiz Wizard</a>
         <button class="navbar-toggler nav-menu-icon" type="button" data-toggle="collapse" data-target="#NavMobileToggler" aria-controls="NavMobileToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,15 +30,12 @@
             </ul>
         </div>
     </nav>
-    <!-- Home page main content -->
     <section class="container-fluid" id="mainPageWrapper">
-        <!-- Loading spinner -->
         <div class="row game--panel__hidden" id="loadingSpinner">
             <div class="col-4 col-md-2 mx-auto">
                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
             </div>
         </div>
-        <!-- Welcome screen -->
         <div class="card game--panel__shown" id="welcomePanel">
             <div class="row">
                 <div class="col-12 pt-4">
@@ -66,19 +62,15 @@
                 </div>
             </div>
         </div>
-        
         <div class="game--panel__hidden" id="gameContentWrapper">
-            <!-- Game heading -->
             <div class="row">
                 <div class="col-12" id="gameHeader">
                     <h1 id="gameTitle">Choose Your Category</h1>
                 </div>
             </div>
-            <!-- Category select page -->
             <div class="game--panel__shown mb-3" id="gameCategoryPanel">
                 <!-- Category button generation goes here -->
             </div>
-            <!-- Difficulty select page -->
             <div class ="game--panel__hidden" id="gameDifficultyPanel">
                 <div class="row">
                     <button class="btn col-10 col-md-6 mx-auto my-2 game--difficulty-select" id="easy">EASY</button>
@@ -96,17 +88,10 @@
                     <button class="btn btn-outline-light col-6 col-md-5 mx-auto mt-2" id="changeCategory">Change category</button>
                 </div>
             </div>
-
-            <!-- Game display and input page -->
             <div class="game--panel__hidden" id="triviaWrapper">
-                
-                
-
-
                 <div id="triviaPanelDisplay">
                     <!-- Trivia game panel generation goes here -->
                 </div>
-                <!-- Current question and score display -->
                 <div class="row" id="gameInfo">
                     <div class="col-4 mx-auto my-auto">
                         <h4 id="currentQuestion"></h4>
@@ -120,7 +105,6 @@
                 </div>
             </div>
         </div>
-        <!-- End game panel -->
         <div class="card game--panel__hidden" id="endgamePanel">
             <div class="row" id="endgameScore">
                 <div class="col-12 pt-4">
@@ -148,7 +132,7 @@
             </div>
         </div>
         <!-- Alerts -->
-        <!-- <div class="alert alert-danger mt-2 game--panel__hidden" id="serverErrorAlert">
+        <div class="alert alert-danger mt-2 game--panel__hidden" id="serverErrorAlert">
             <strong>Unfortunately we are having trouble contacting our database.</strong>
             <p>Please reload the page to try again</p>
             <div class="row">
@@ -156,8 +140,7 @@
                     <button class="btn-light" id="reloadButton">Reload</button>
                 </div>
             </div>
-        </div> -->
-            
+        </div>
     </section>
 
     <!-- Modals -->
@@ -179,11 +162,7 @@
       </div>
     </div>
     
-    <!-- testing button -->
-    <!-- <button class="btn btn-outline-danger" id="testClick">click</button> -->
-
     <!-- Scripts -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
