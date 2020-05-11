@@ -60,10 +60,6 @@ const getData = async url => {
     }
 }
 
-$(document).on('click', '#reloadButton', function() {
-    window.location.reload(true)
-})
-
 /**
  * Filters a list of chosen categories out of the complete list from the API
  * @param {array} completeList The API category list
@@ -201,45 +197,6 @@ function updateScoreboard() {
     console.log('scoreboard updated');
 }
 
-
-$(document).on('click', '#welcomePlayButton', function () {
-    checkUsernameExists()
-    $('#welcomePanel').hide()
-    loadingSpinner.show()
-    if (serverResponse === true) {
-        loadCategories()
-    } else {
-        loadLocal()
-    }
-})
-
-$(document).on('click', '.game--category-select', function() {
-    return $(this).attr('id')
-})
-
-$(document).on('click', '.game--category-select', function(event) {
-    userCategory = event.result
-    categoryPanel.hide()
-    difficultyPanel.fadeIn(1000)
-    gameTitle.text($(this).text())
-})
-
-$(document).on('click', '.game--difficulty-select', function() {
-    return $(this).attr('id')
-})
-
-$(document).on('click', '.game--difficulty-select', function (event) {
-    userDiff = event.result
-    enableButton('#begin')
-})
-
-$(document).on('click', '#changeCategory', function() {
-    gameTitle.text('Choose Your Category')
-    difficultyPanel.hide()
-    categoryPanel.fadeIn(1000)
-    disableButton('#begin')
-})
-
 const setDifficultyMultiplier = () => {
     if (userDiff === 'hard') {
         difficultyMultiplier = 3
@@ -249,17 +206,6 @@ const setDifficultyMultiplier = () => {
         difficultyMultiplier = 1
     }
 }
-
-$(document).on('click', '#begin', function() {
-    difficultyPanel.hide()
-    gameContent.hide()
-    loadingSpinner.show()
-    loadGame()
-    currentCategory = gameTitle.text()
-    $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
-    $('#displayUsername').text(gamePlayer.username)
-    setDifficultyMultiplier()
-})
 
 const checkAnswer = () => {
     if (_this.is(`.correct-answer${currentQuestion}`)) {
@@ -310,20 +256,6 @@ const endGameProcess = () => {
     }
 }
 
-$(document).on('click', '.game--answer--single', function (event) {
-    _this = $(this)
-    console.log(_this.text())
-    checkAnswer()
-    disableButton('.game--answer--single')
-    handleSelection()
-    updateGameInfo()
-})
-
-$('#endgameButton').on('click', function() {
-    console.log('click')
-    resetGame()
-})
-
 function resetGame() {
     triviaPanels.empty()
     correctAnswers.length = 0
@@ -347,9 +279,74 @@ function enableButton(selector) {
     $(selector).removeAttr('disabled')
 }
 
-
-
 $(document).ready(function () {
 
+    $(document).on('click', '#reloadButton', function() {
+        window.location.reload(true)
+    })
 
+    $(document).on('click', '#welcomePlayButton', function () {
+        checkUsernameExists()
+        $('#welcomePanel').hide()
+        loadingSpinner.show()
+        if (serverResponse === true) {
+            loadCategories()
+        } else {
+            loadLocal()
+        }
+    })
+
+    $(document).on('click', '.game--category-select', function() {
+        return $(this).attr('id')
+    })
+
+    $(document).on('click', '.game--category-select', function(event) {
+        userCategory = event.result
+        categoryPanel.hide()
+        difficultyPanel.fadeIn(1000)
+        gameTitle.text($(this).text())
+    })
+
+    $(document).on('click', '.game--difficulty-select', function() {
+        return $(this).attr('id')
+    })
+
+    $(document).on('click', '.game--difficulty-select', function (event) {
+        userDiff = event.result
+        enableButton('#begin')
+    })
+
+    $(document).on('click', '#changeCategory', function() {
+        gameTitle.text('Choose Your Category')
+        difficultyPanel.hide()
+        categoryPanel.fadeIn(1000)
+        disableButton('#begin')
+    })
+
+    $(document).on('click', '#begin', function() {
+        difficultyPanel.hide()
+        gameContent.hide()
+        loadingSpinner.show()
+        loadGame()
+        currentCategory = gameTitle.text()
+        $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
+        $('#displayUsername').text(gamePlayer.username)
+        setDifficultyMultiplier()
+    })
+
+    $(document).on('click', '.game--answer--single', function() {
+        _this = $(this)
+        checkAnswer()
+        disableButton('.game--answer--single')
+        handleSelection()
+        updateGameInfo()
+    })
+
+    $(document).on('click', '#endgameButton', function() {
+        resetGame()
+    })
+
+    $(document).click(function() {
+        $('.navbar-collapse').collapse('hide')
+    })
 })
