@@ -114,11 +114,6 @@ animation-delay: -0.15s;
 #mainPageWrapper {
     min-height: 90vh;
     padding: 0 2vw;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: relative;
 }
 
 #welcomePanel {
