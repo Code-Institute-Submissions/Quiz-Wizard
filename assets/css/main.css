@@ -1,16 +1,6 @@
-/* ==========================
->>IMPORTS AND GLOBAL SETTINGS
-========================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
 
-body {
-    /* background: #0e3d4c; */
-}
-
-/* remove bootstrap default margins */
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
@@ -25,14 +15,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 #serverErrorAlert {
     font-family: 'Manrope', sans-serif;
+    margin: 0 1vw;
 }
 
 #reloadButton {
     width: 100%;
 }
 
-/* Loading spinner */
-/* Sourced from https://loading.io/css/ */
 #loadingSpinner {
     margin: 40vh .25rem;
 }
@@ -42,8 +31,9 @@ p, h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 80px;
     height: 80px;
-  }
-  .lds-ring div {
+}
+
+.lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -54,31 +44,30 @@ p, h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
-  }
-  .lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
+}
+
+.lds-ring div:nth-child(1) {
+animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-
-/* ================
->>HEADER/NAVIGATION
-================ */
+}
 
 .nav-wrapper {
-    /* background: #000000; */
     height: 8vh;
 }
 
@@ -97,18 +86,14 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .nav-menu-icon span {
     font-size: 2.5rem;
-    /* color: #ffffff; */
 }
 
 #NavMobileToggler {
-    padding-top: 0.5rem;
     background: #000000;
     z-index: 8;
 }
 
 .nav-text-style {
-    /* border-bottom: 1px solid rgba(255,255,255,.5); */
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: .8rem;
@@ -120,14 +105,6 @@ p, h1, h2, h3, h4, h5, h6 {
 .nav-text-style a {
     padding: 0.75rem 0;
 }
-
-#serverErrorAlert {
-    margin: 0 1vw;
-}
-
-/* ============
->>WELCOME PANEL
-============ */
 
 #mainPageWrapper {
     min-height: 90vh;
@@ -164,7 +141,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #welcomePanel h5 {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: .9rem;
@@ -172,7 +148,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #welcomePanel p {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: .8rem;
@@ -185,16 +160,10 @@ p, h1, h2, h3, h4, h5, h6 {
     height: 60px;
 }
 
-/* ==========
->>GAME PANELS
-========== */
-
-/* Main content wrapper */
 #gameContentWrapper {
     padding: 0 3vw 0;
 }
 
-/* Game title */
 #gameHeader {
     text-align: center;
     padding-top: 1vh;
@@ -202,21 +171,17 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #gameHeader h1 {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    /* color: #fffbfc; */
 }
 
-/* Category panel */
 #gameCategoryPanel {
     background-color: #4E5D6C;
     padding: 1vh 8vw;
 }
 
 .game--category-select {
-    /* font-family: 'Roboto', sans-serif; */
     margin-top: .25rem;
     margin-bottom: .25rem;
     font-family: 'Manrope', sans-serif;
@@ -227,20 +192,13 @@ p, h1, h2, h3, h4, h5, h6 {
     min-height: 75px;
     border: #2B3E50 1px solid;
 }
-/* .category {
-    min-height: 10vh;
-    padding: 3px 0;
-    text-align: center;
-} */
 
-/* Difficulty panel */
 #gameDifficultyPanel {
     background-color: #4E5D6C;
     padding: 1vh 8vw;
 }
 
 .game--difficulty-select {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
@@ -252,7 +210,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #begin {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
@@ -263,7 +220,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #changeCategory {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: .8rem;
     font-weight: 400;
@@ -271,17 +227,6 @@ p, h1, h2, h3, h4, h5, h6 {
     min-width: 100px;
     height: 40px;
     padding: 1vh 0;
-}
-
-
-
-/* Game display panel */
-.game--display {
-    /* padding: 1vh 0vw; */
-}
-
-.trivia--panel {
-    
 }
 
 .game--question {
@@ -292,7 +237,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .game--question h3 {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.15rem;
     font-weight: 400;
@@ -302,11 +246,9 @@ p, h1, h2, h3, h4, h5, h6 {
 .game--answers {
     min-height: 80px;
     text-align: center;
-    /* border: red 1px solid; */
 }
 
 .game--answer--single {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1rem;
     font-weight: 400;
@@ -327,7 +269,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #gameInfo h4 {
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-size: 1.15rem;
     font-weight: 400;
@@ -372,7 +313,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #endgamePanel h4 {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 1.25rem;
@@ -381,7 +321,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #endgamePanel h5 {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 1.25rem;
@@ -389,7 +328,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #endgamePanel p {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 1rem;
@@ -403,24 +341,9 @@ p, h1, h2, h3, h4, h5, h6 {
     margin-top: 7vh;
 }
 
-/* =====
->>MODALS
-===== */
-
 .modal-styles {
-    /* font-family: "Roboto", sans-serif; */
     font-family: 'Manrope', sans-serif;
 }
-
-
-/* ============
->>Media Queries
-============ */
-
-
-/* ========
->321+ width
-======== */
 
 @media only screen and (min-width: 321px) {
 
@@ -455,7 +378,6 @@ p, h1, h2, h3, h4, h5, h6 {
     #serverErrorAlert {
         margin: 0 10vw;
     }
-
 }
 
 @media only screen and (min-width: 630px) {
@@ -475,15 +397,11 @@ p, h1, h2, h3, h4, h5, h6 {
     #serverErrorAlert {
         margin: 0 17vw;
     }
-
 }
-
-/* ========
->768+ width
-======== */
 
 /* min-height to exclude long phones in landscape eg; pixel 2 */
 @media only screen and (min-width: 768px) and (min-height: 420px) {
+
     #NavMobileToggler {
         background: #4E5D6C;
     }
@@ -501,20 +419,16 @@ p, h1, h2, h3, h4, h5, h6 {
         margin: 8vh 10vw 0;
         padding-top: 1vh;
     }
-
     #gameContentWrapper {
         margin-top: 5vh;
         padding: 0 3vw 0;
     }
-
     #gameCategoryPanel {
         padding: 1vh 5vw;
     }
-
     .game--category-select {
         max-width: 125px;
     }
-
     #gameDifficultyPanel {
         margin-left: auto;
         margin-right: auto;
@@ -526,12 +440,7 @@ p, h1, h2, h3, h4, h5, h6 {
     #endgameButton {
         margin-top: 4vh;
     }
-
 }
-
-/* ========
->992+ width
-======== */
 
 @media only screen and (min-width: 992px) {
     #mainPageWrapper {
@@ -549,14 +458,8 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* =========
->1200+ width
-========= */
-
 @media only screen and (min-width: 1200px) {
     #mainPageWrapper {
         padding: 0 24vw;
     }
 }
-
-

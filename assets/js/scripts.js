@@ -152,7 +152,7 @@ const processTrivia = async (triviaUrl) => {
 
 const displayTrivia = () => {
     triviaData.forEach((trivia, index) => {
-        triviaPanels.append(`<div class='trivia--panel game--panel__hidden' id='gamePanel${index}'>
+        triviaPanels.append(`<div class='game--panel__hidden' id='gamePanel${index}'>
         <div class='row mx-0 game--question'>
             <div class='col-12 mx-auto my-auto'>
                 <h3 id='trivia${index}Question'>${trivia.question}</h3>
