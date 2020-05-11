@@ -95,9 +95,6 @@ const displayCategories = categoryList => {
         }
     }
 }
-// if (el.name.includes('Entertainment: ')) {
-//     console.log(el.name.slice(15))
-// }
 
 /**
  * Loads a list of categories in the DOM, retreived and filtered from the API
@@ -145,6 +142,9 @@ const processTrivia = async (triviaUrl) => {
         correctAnswers.push(he.decode(triviaData[index].correct_answer))
         triviaData[index].incorrect_answers.push(triviaData[index].correct_answer)
     })
+    triviaData.forEach(answer => {
+        shuffleArray(answer.incorrect_answers)
+    })
     for (i=0; i<triviaData[i].incorrect_answers.length; i++) {
         triviaData[i].incorrect_answers.sort(() => Math.random() - 0.5)
     }
@@ -180,6 +180,13 @@ const displayTrivia = () => {
     })
 }
 
+const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 const checkUsernameExists = () => {
     if (typeof($('#usernameInput').val()) === 'string') {
         gamePlayer.username = $('#usernameInput').val()
@@ -209,7 +216,6 @@ function updateScoreboard() {
         $('#scoreboardBody').append(`<p>${property}: ${gamePlayer.scores[property]}</p>`)
     }
     localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
-    console.log('scoreboard updated');
 }
 
 const setDifficultyMultiplier = () => {
@@ -225,11 +231,9 @@ const setDifficultyMultiplier = () => {
 const checkAnswer = () => {
     if (_this.is(`.correct-answer${currentQuestion}`)) {
         _this.addClass('btn-success')
-        console.log('correct')
         correctTotal++
         currentScore = (correctTotal * difficultyMultiplier)
     } else {
-        console.log('incorrect')
         _this.addClass('btn-danger')
         $(`.correct-answer${currentQuestion}`).addClass('btn-outline-success').removeClass('game--answer--outline')
     }
