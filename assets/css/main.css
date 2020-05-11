@@ -122,7 +122,7 @@ animation-delay: -0.15s;
 }
 
 #welcomePanel {
-    height: 60vh;
+    height: 50vh;
     margin: 8vh 0 0;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -163,6 +163,7 @@ animation-delay: -0.15s;
     width: 100%;
     text-transform: uppercase;
     height: 60px;
+    margin-top: 5vh;
 }
 
 #gameContentWrapper {
@@ -285,13 +286,6 @@ animation-delay: -0.15s;
     color: #5bc0de
 }
 
-#displayUsername {
-    text-align: center;
-    color: #5bc0de;
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
 #playerScore {
     text-align: right;
     color: #5bc0de
@@ -357,7 +351,7 @@ animation-delay: -0.15s;
         padding: 0 6vw;
     }
     #welcomePanel {
-        height: 60vh;
+        height: 50vh;
         margin: 8vh 1vw 0;
     }
     #gameContentWrapper {
