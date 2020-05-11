@@ -23,9 +23,12 @@
             <ul class="navbar-nav" id="navTextStyle" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Reset game</a>
-                    <li class="nav-item">
-                        <a class="nav-link nav-signup-cursor" data-toggle="modal" data-target="#modalScoreboard">Scoreboard</a>
-                    </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modalHelp">Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modalScoreboard">Scoreboard</a>
                 </li>
             </ul>
         </div>
@@ -154,6 +157,29 @@
             </button>
           </div>
           <div class="modal-body" id="scoreboardBody">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalHelp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-styles">
+          <div class="modal-header">
+            <h5 class="modal-title">Help</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="helpBody">
+              <p>Simply select a desired category and difficulty from the menus after you click play.</p>
+              <p>Different difficulty settings will give you a multiplier on your score.</p>
+              <p>Easy - 1</p>
+              <p>Medium - 2</p>
+              <p>Hard - 3</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
