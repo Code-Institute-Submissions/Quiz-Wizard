@@ -240,6 +240,7 @@ const checkLocalScore = () => {
     if (localStorage.getItem('player scores') != null) {
         playerScores = getLocalScore('player scores')
         updateScoreboard(playerScores)
+    }
 }
 
 const setDifficultyMultiplier = () => {
