@@ -304,19 +304,12 @@ animation-delay: -0.15s;
     text-align: center;
 }
 
-#endgamePanel h2 {
-    font-family: "Bowlby One SC";
-    font-size: 2rem;
-    text-transform: uppercase;
-    text-align: center;
-}
-
 #endgamePanel h4 {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 1.25rem;
     text-transform: uppercase;
-    text-align: center;
+    text-align: right;
 }
 
 #endgamePanel h5 {

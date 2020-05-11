@@ -113,6 +113,7 @@ const loadLocal = async () => {
     triviaWrapper.fadeIn(1000)
     loadingSpinner.hide()
     categoryPanel.hide()
+    currentCategory = gameTitle.text()
     $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
 }
 
@@ -256,7 +257,13 @@ const handleSelection = () => {
         currentQuestion++
         enableButton('.game--answer--single')
         $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
-        endGameProcess()
+        if (currentQuestion === correctAnswers.length) {
+            if (serverResponse === true) {
+                endGameProcess()
+            } else {
+                endGameProcessLocal()
+            }
+        }
     }, 1500)
 }
 
@@ -269,18 +276,28 @@ const updateGameInfo = () => {
 }
 
 const endGameProcess = () => {
-    if (currentQuestion === correctAnswers.length) {
-        triviaWrapper.hide()
-        gameTitle.hide()
-        $('#endgamePanel').fadeIn(1000)
-        $('#endgameScore').children().children('h4').text(currentCategory)
-        $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
-        $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
-        $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
-        playerScores[currentCategory] = currentScore
-        setLocalScore()
-        updateScoreboard(playerScores)
-    }
+    triviaWrapper.hide()
+    gameTitle.hide()
+    $('#endgamePanel').fadeIn(1000)
+    $('#endgameScore').children().children('h4').text(currentCategory)
+    $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
+    $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
+    $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
+    playerScores[currentCategory] = currentScore
+    setLocalScore()
+    updateScoreboard(playerScores)
+}
+
+const endGameProcessLocal = () => {
+    triviaWrapper.hide()
+    gameTitle.hide()
+    $('#endgamePanel').fadeIn(1000)
+    $('#endgameScore').children().children('h4').text(currentCategory)
+    $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
+    $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
+    $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
+    $('#endgameButton').remove()
+    $('#endgamePanel div').last().text(`Please try again later for fresh questions.`).css('margin-top', '2rem')
 }
 
 const resetGame = () => {
