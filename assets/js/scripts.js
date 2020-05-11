@@ -1,8 +1,5 @@
 const categoryWhitelist = ['General Knowledge', 'Entertainment: Books', 'Entertainment: Film', 'Entertainment: Music', 'Entertainment: Television', 'Entertainment: Video Games', 'Science & Nature', 'Science: Computers', 'Sports', 'Geography', 'History', 'Entertainment: Japanese Anime & Manga']
-const gamePlayer = {
-    'username': '',
-    'scores': []
-}
+let playerScores = {}
 const correctAnswers = []
 const welcomePanel = $('#welcomePanel')
 const gameContent = $('#gameContentWrapper')
@@ -187,18 +184,11 @@ const shuffleArray = array => {
     }
 }
 
-const checkUsernameExists = () => {
-    if (typeof($('#usernameInput').val()) === 'string') {
-        gamePlayer.username = $('#usernameInput').val()
-        localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
-    }
-}
-
 const gameTitleText = () => {
     if (_this.text().includes('Entertainment')) {
         gameTitle.text(_this.text().slice('15'))
     } else {
-        gameTitle.text($(this).text())
+        gameTitle.text(_this.text())
     }
 }
 
@@ -210,15 +200,33 @@ const loadGame = async () => {
     loadingSpinner.hide()
 }
 
-const updateScoreboard = () => {
-    $('#scoreboardBody').empty()
-    for (const property in gamePlayer.scores) {
-        $('#scoreboardBody').append(`<p>${property}: ${gamePlayer.scores[property]}</p>`)
-    }
-    localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
+const getLocalScore = (scores) => {
+    let string = localStorage.getItem(scores)
+    obj = JSON.parse(string)
+    return obj
 }
 
+const setLocalScore = () => {
+    localStorage.setItem('player scores', JSON.stringify(playerScores))
+}
 
+const updateScoreboard = (scores) => {
+    $('#scoreboardBody').empty()
+    for (let [key, value] of Object.entries(scores)) {
+        $('#scoreboardBody').append(`<p>${key}: ${value}</p>`).css('text-transform', 'capitalize')
+    }
+}
+
+const checkLocalScore = () => {
+    if (localStorage.getItem('player scores') != null) {
+        console.log('exists')
+        playerScores = getLocalScore('player scores')
+        console.log(playerScores)
+        updateScoreboard(playerScores)
+    } else {
+        console.log('no');
+    }
+}
 
 const setDifficultyMultiplier = () => {
     if (userDiff === 'hard') {
@@ -265,15 +273,13 @@ const endGameProcess = () => {
         triviaWrapper.hide()
         gameTitle.hide()
         $('#endgamePanel').fadeIn(1000)
-        if (typeof(gamePlayer.username) === 'string' && gamePlayer.username.length > 0) {
-            $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
-        }
         $('#endgameScore').children().children('h4').text(currentCategory)
         $('#endgameScore p').first().text(`Correct answers: ${correctTotal}`)
         $('#endgameScore p').last().text(`Difficulty multiplier: ${difficultyMultiplier}`)
         $('#endgameScore').children().children('h5').text(`Total score: ${currentScore}`)
-        Object.assign(gamePlayer.scores, {[currentCategory]: currentScore})
-        updateScoreboard()
+        playerScores[currentCategory] = currentScore
+        setLocalScore()
+        updateScoreboard(playerScores)
     }
 }
 
@@ -289,7 +295,7 @@ const resetGame = () => {
     gameTitle.fadeIn(1000).text(`Choose Your Category`)
     $('#playerScore').text(`Score`)
     disableButton('#begin')
-    updateScoreboard()
+    updateScoreboard(playerScores)
 }
 
 const disableButton = selector => {
@@ -302,6 +308,7 @@ const enableButton = selector => {
 
 $(document).ready(function () {
 
+    checkLocalScore()
     enableButton('#welcomePlayButton')
 
     $(document).on('click', '#reloadButton', function() {
@@ -309,7 +316,6 @@ $(document).ready(function () {
     })
 
     $(document).on('click', '#welcomePlayButton', function () {
-        checkUsernameExists()
         $('#welcomePanel').hide()
         loadingSpinner.show()
         if (serverResponse === true) {
@@ -354,7 +360,6 @@ $(document).ready(function () {
         loadGame()
         currentCategory = gameTitle.text()
         $('#currentQuestion').text(`${currentQuestion + 1}/${correctAnswers.length}`)
-        $('#displayUsername').text(gamePlayer.username)
         setDifficultyMultiplier()
     })
 
