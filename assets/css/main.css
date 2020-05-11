@@ -9,7 +9,7 @@ p, h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-.element__shown {
+.element__shown  {
     display: block;
 }
 
@@ -67,24 +67,28 @@ animation-delay: -0.15s;
     }
 }
 
-.nav-wrapper {
+#navWrapper {
     height: 8vh;
 }
 
-.logo-text {
+#logoText {
+    padding: .75rem 0 0 .5rem;
+    height: 8vh;
     font-family: "Bowlby One SC";
     font-size: 1.75rem;
     color: #DF691A !important;
 }
 
-.nav-menu-icon {
+#navMenuIcon {
     z-index: 10;
-    margin: 0 1rem 0 0;
+    margin: 0 .5rem 0 0;
     border: 0;
     padding: 0;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.nav-menu-icon span {
+#navMenuIcon span {
     font-size: 2.5rem;
 }
 
@@ -93,7 +97,7 @@ animation-delay: -0.15s;
     z-index: 8;
 }
 
-.nav-text-style {
+#navTextStyle {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: .8rem;
@@ -102,8 +106,9 @@ animation-delay: -0.15s;
     line-height: 1.1;
 }
 
-.nav-text-style a {
+#navTextStyle a {
     padding: 0.75rem 0;
+    margin: 0 0.5rem;
 }
 
 #mainPageWrapper {
@@ -402,8 +407,15 @@ animation-delay: -0.15s;
 /* min-height to exclude long phones in landscape eg; pixel 2 */
 @media only screen and (min-width: 768px) and (min-height: 420px) {
 
+    #navWrapper {
+        height: 6vh;
+    }
     #NavMobileToggler {
         background: #4E5D6C;
+    }
+    #logoText {
+        padding: .25rem 0 0 .5rem;
+        height: 6vh;
     }
     #loadSpinner, .lds-ring {
         margin-left: 0;

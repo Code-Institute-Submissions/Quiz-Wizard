@@ -14,15 +14,15 @@
     <title>Quiz Wizard</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark nav-wrapper p-0">
-        <a class="navbar-brand logo-text pl-2 m-0" href="index.html">Quiz Wizard</a>
-        <button class="navbar-toggler nav-menu-icon" type="button" data-toggle="collapse" data-target="#NavMobileToggler" aria-controls="NavMobileToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-0" id="navWrapper">
+        <a class="navbar-brand m-0" id="logoText" href="index.html">Quiz Wizard</a>
+        <button class="navbar-toggler" id="navMenuIcon" type="button" data-toggle="collapse" data-target="#NavMobileToggler" aria-controls="NavMobileToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse flex-row-reverse" id="NavMobileToggler">
-            <ul class="navbar-nav nav-text-style" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav" id="navTextStyle" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Reset game</a>
                     <li class="nav-item">
                         <a class="nav-link nav-signup-cursor" data-toggle="modal" data-target="#modalScoreboard">Scoreboard</a>
                     </li>
