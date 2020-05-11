@@ -281,6 +281,8 @@ function enableButton(selector) {
 
 $(document).ready(function () {
 
+    enableButton('#welcomePlayButton')
+
     $(document).on('click', '#reloadButton', function() {
         window.location.reload(true)
     })
