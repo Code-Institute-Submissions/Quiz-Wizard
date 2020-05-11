@@ -121,7 +121,7 @@ const loadCategories = async () => {
 }
 
 const loadLocal = async () => {
-    await processTrivia('./assets/localdata/localTrivia.json')
+    await processTrivia('./assets/data/triviaQuestions.json')
     gameTitle.text('Local Questions')
     $('#gamePanel0').show()
     gameContent.fadeIn(1000)
