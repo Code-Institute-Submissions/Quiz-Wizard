@@ -238,13 +238,8 @@ const updateScoreboard = (scores) => {
 
 const checkLocalScore = () => {
     if (localStorage.getItem('player scores') != null) {
-        console.log('exists')
         playerScores = getLocalScore('player scores')
-        console.log(playerScores)
         updateScoreboard(playerScores)
-    } else {
-        console.log('no');
-    }
 }
 
 const setDifficultyMultiplier = () => {
