@@ -357,8 +357,11 @@ animation-delay: -0.15s;
         padding: 0 6vw;
     }
     #welcomePanel {
-        height: 53vh;
+        height: 60vh;
         margin: 8vh 1vw 0;
+    }
+    #gameContentWrapper {
+        padding: 0 1vw 0;
     }
     .game--category-select {
         min-width: 120px;
