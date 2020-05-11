@@ -74,11 +74,7 @@ const getData = async url => {
         loadingSpinner.hide()
     }
 }
-// const filterCategories = (completeList, filterList) => {
-//     return completeList.filter(item => {
-//         return filterList.includes(item.name)
-//     })
-// }
+
 /**
  * Filters a list of chosen categories out of the complete list from the API
  * @param {array} completeList The API category list
@@ -92,6 +88,7 @@ const filterCategories = (completeList, filterList) => {
 
 /**
  * Displays a list of categories in the DOM
+ * https://stackoverflow.com/a/40562841/10828019
  * @param {array} categoryList The list of categories to display
  */
 const displayCategories = categoryList => {
@@ -196,6 +193,9 @@ const displayTrivia = () => {
     })
 }
 
+/**
+ * https://stackoverflow.com/a/12646864/10828019
+ */
 const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
