@@ -275,7 +275,7 @@ animation-delay: -0.15s;
 
 #gameInfo h4 {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 400;
     color: #fffbfc;
 }
@@ -376,6 +376,9 @@ animation-delay: -0.15s;
     }
     #gameContentWrapper {
         padding: 0 10vw 0;
+    }
+    #gameInfo h4 {
+        font-size: 1.15rem;
     }
     #endgamePanel {
         margin: 8vh 10vw 0;
