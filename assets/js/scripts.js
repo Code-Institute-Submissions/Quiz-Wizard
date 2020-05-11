@@ -59,7 +59,11 @@ const getData = async url => {
         loadingSpinner.hide()
     }
 }
-
+// const filterCategories = (completeList, filterList) => {
+//     return completeList.filter(item => {
+//         return filterList.includes(item.name)
+//     })
+// }
 /**
  * Filters a list of chosen categories out of the complete list from the API
  * @param {array} completeList The API category list
@@ -91,6 +95,9 @@ const displayCategories = categoryList => {
         }
     }
 }
+// if (el.name.includes('Entertainment: ')) {
+//     console.log(el.name.slice(15))
+// }
 
 /**
  * Loads a list of categories in the DOM, retreived and filtered from the API
@@ -180,6 +187,14 @@ const checkUsernameExists = () => {
     }
 }
 
+const gameTitleText = () => {
+    if (_this.text().includes('Entertainment')) {
+        gameTitle.text(_this.text().slice('15'))
+    } else {
+        gameTitle.text($(this).text())
+    }
+}
+
 const loadGame = async () => {
     await processTrivia(generateURL(userCategory, userDiff))
     $('#gamePanel0').show()
@@ -244,7 +259,7 @@ const endGameProcess = () => {
         triviaWrapper.hide()
         gameTitle.hide()
         $('#endgamePanel').fadeIn(1000)
-        if (typeof(gamePlayer.username) === 'string') {
+        if (typeof(gamePlayer.username) === 'string' && gamePlayer.username.length > 0) {
             $('#endgameScore').children().children('h2').text(`${gamePlayer.username}!`)
         }
         $('#endgameScore').children().children('h4').text(currentCategory)
@@ -303,10 +318,11 @@ $(document).ready(function () {
     })
 
     $(document).on('click', '.game--category-select', function(event) {
+        _this = $(this)
         userCategory = event.result
         categoryPanel.hide()
         difficultyPanel.fadeIn(1000)
-        gameTitle.text($(this).text())
+        gameTitleText()
     })
 
     $(document).on('click', '.game--difficulty-select', function() {
