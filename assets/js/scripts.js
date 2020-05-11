@@ -124,7 +124,7 @@ const loadLocal = async () => {
  * @param {number} categoryID the id of the category
  * @param {string} difficulty the selected difficulty
  */
-function generateURL(categoryID, difficulty) {
+const generateURL = (categoryID, difficulty) => {
     let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
     let urlCategory = '&category=' + categoryID
     let urlDifficulty = '&difficulty=' + difficulty
@@ -210,13 +210,15 @@ const loadGame = async () => {
     loadingSpinner.hide()
 }
 
-function updateScoreboard() {
+const updateScoreboard = () => {
     $('#scoreboardBody').empty()
     for (const property in gamePlayer.scores) {
         $('#scoreboardBody').append(`<p>${property}: ${gamePlayer.scores[property]}</p>`)
     }
     localStorage.setItem(`${gamePlayer.username}`, JSON.stringify(gamePlayer))
 }
+
+
 
 const setDifficultyMultiplier = () => {
     if (userDiff === 'hard') {
@@ -275,7 +277,7 @@ const endGameProcess = () => {
     }
 }
 
-function resetGame() {
+const resetGame = () => {
     triviaPanels.empty()
     correctAnswers.length = 0
     currentQuestion = 0
@@ -290,11 +292,11 @@ function resetGame() {
     updateScoreboard()
 }
 
-function disableButton(selector) {
+const disableButton = selector => {
     $(selector).attr('disabled', true)
 }
 
-function enableButton(selector) {
+const enableButton = selector => {
     $(selector).removeAttr('disabled')
 }
 
