@@ -19,6 +19,24 @@ let currentScore = 0
 let serverResponse = false
 
 /**
+ * Check for async support
+ * https://stackoverflow.com/a/46127053/10828019
+ */
+let isAsync = true;
+try {
+  eval('async () => {}');
+} catch (e) {
+  if (e instanceof SyntaxError)
+    isAsync = false;
+  else
+    throw e; // throws CSP error
+}
+
+if (isAsync === false) {
+    alert('Your browser is not supported, please upgrade to use this website')
+}
+
+/**
  * Checks the API server for response and sets variable based on result
  * @param {string} url The API address to check
  */
