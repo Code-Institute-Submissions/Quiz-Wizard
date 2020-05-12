@@ -77,6 +77,7 @@ checkResponse('https://opentdb.com/api_category.php')
  * Uses fetch API to return JSON data. If the server does not respond, loads
  * an alert informing the user
  * @param {string} url takes an API address to fetch data
+ * @returns {object} JSON data from url
  */
 const getData = async url => {
     try {
@@ -93,6 +94,7 @@ const getData = async url => {
  * Filters a list of chosen categories out of the complete list from the API
  * @param {array} completeList The API category list
  * @param {array} filterList Chosen category whitelist
+ * @returns {array} Result of filtering
  */
 const filterCategories = (completeList, filterList) => {
     return completeList.filter(item => {
@@ -156,6 +158,7 @@ const loadLocal = async () => {
  * Generate a URL to fetch the specific trivia the user selects from the API
  * @param {number} categoryID the id of the category
  * @param {string} difficulty the selected difficulty
+ * @returns {string} Complete API url
  */
 const generateURL = (categoryID, difficulty) => {
     let urlDefault = 'https://opentdb.com/api.php?amount=10&type=multiple'
@@ -263,6 +266,7 @@ const loadGame = async () => {
 
 /**
  * Gets data from local storage
+ * @returns {object} Result of parsing local data
  */
 const getLocalScore = (scores) => {
     let string = localStorage.getItem(scores)
