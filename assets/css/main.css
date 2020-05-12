@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
 
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: #fffbfc;
+}
+
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
@@ -14,7 +25,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #serverErrorAlert {
-    font-family: 'Manrope', sans-serif;
     margin: 0 1vw;
 }
 
@@ -23,7 +33,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #loadingSpinner {
-    margin: 40vh .25rem;
+    margin: 40vh 0.5vw;
 }
 
 .lds-ring {
@@ -72,24 +82,21 @@ animation-delay: -0.15s;
 }
 
 #logoText {
-    padding: .75rem 0 0 .5rem;
+    padding: .5rem 0 0 .5rem;
     height: 8vh;
     font-family: "Bowlby One SC";
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     color: #DF691A !important;
 }
 
 #navMenuIcon {
     z-index: 10;
-    margin: 0 .5rem 0 0;
+    margin: 0 1rem 0 0;
     border: 0;
     padding: 0;
+    font-size: 3.5rem;
     outline: none !important;
     box-shadow: none !important;
-}
-
-#navMenuIcon span {
-    font-size: 2.5rem;
 }
 
 #NavMobileToggler {
@@ -97,65 +104,50 @@ animation-delay: -0.15s;
     z-index: 8;
 }
 
-#navTextStyle {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: .8rem;
+.nav-text {
     text-transform: uppercase;
     text-align: center;
     line-height: 1.1;
-}
-
-#navTextStyle a {
     padding: 0.75rem 0;
     margin: 0 0.5rem;
 }
 
 #mainPageWrapper {
     min-height: 90vh;
-    padding: 0 2vw;
+    padding: 0 0.7rem;
 }
 
 #welcomePanel {
+    font-family: "Bowlby One SC", sans-serif;
     height: 50vh;
     margin: 8vh 0 0;
     padding-left: 1rem;
     padding-right: 1rem;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 #welcomePanel h3 {
-    font-family: "Bowlby One SC", sans-serif;
-    font-weight: 400;
-    font-size: 1.15rem;
-    text-transform: uppercase;
-    text-align: center;
-    color: #bf5b17;
-}
-
-#welcomePanel h2 {
-    font-family: "Bowlby One SC";
-    font-size: 2.25rem;
-    text-transform: uppercase;
-    text-align: center;
+    font-size: 1.75rem;
     color: #DF691A;
 }
 
-#welcomePanel h5 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: .9rem;
-    text-align: center;
+#welcomePanel h2 {
+    font-size: 3rem;
+    color: #DF691A;
 }
 
 #welcomePanel p {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    font-size: .8rem;
-    text-align: center;
+    text-transform: none;
 }
 
 #welcomePlayButton {
     width: 100%;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
     text-transform: uppercase;
     height: 60px;
     margin-top: 5vh;
@@ -172,8 +164,7 @@ animation-delay: -0.15s;
 }
 
 #gameHeader h1 {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
 }
 
@@ -183,12 +174,9 @@ animation-delay: -0.15s;
 }
 
 .game--category-select {
-    margin-top: .25rem;
-    margin-bottom: .25rem;
-    font-family: 'Manrope', sans-serif;
-    font-size: .85rem;
-    font-weight: 400;
-    color: #fffbfc;
+    margin-top: .35rem;
+    margin-bottom: .35rem;
+    font-size: 1.2rem;
     min-width: 120px;
     min-height: 75px;
     border: #2B3E50 1px solid;
@@ -200,34 +188,25 @@ animation-delay: -0.15s;
 }
 
 .game--difficulty-select {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1.75rem;
     color: #fffbfc;
     min-width: 100px;
     height: 50px;
-    padding: 1vh 0;
     border: #2B3E50 1px solid;
 }
 
 #begin {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1.75rem;
     color: #fffbfc;
     min-width: 100px;
     height: 50px;
-    padding: 1vh 0;
 }
 
 #changeCategory {
-    font-family: 'Manrope', sans-serif;
-    font-size: .8rem;
-    font-weight: 400;
+    font-size: 1.2rem;
     color: #fffbfc;
     min-width: 100px;
     height: 40px;
-    padding: 1vh 0;
 }
 
 .game--question {
@@ -238,21 +217,13 @@ animation-delay: -0.15s;
 }
 
 .game--question h3 {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    color: #fffbfc;
-}
-
-.game--answers {
-    min-height: 80px;
-    text-align: center;
 }
 
 .game--answer--single {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: #fffbfc;
     min-width: 140px;
     min-height: 110px;
@@ -267,23 +238,12 @@ animation-delay: -0.15s;
     margin: 1vh 0.5vw 0;
     background-color: #4E5D6C;
     border: #fffbfc 1px solid;
+    color: #5bc0de;
+    text-align: center;
 }
 
 #gameInfo h4 {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #fffbfc;
-}
-
-#currentQuestion {
-    text-align: center;
-    color: #5bc0de
-}
-
-#playerScore {
-    text-align: right;
-    color: #5bc0de
+    font-size: 1.6rem;
 }
 
 #endgamePanel {
@@ -294,42 +254,37 @@ animation-delay: -0.15s;
 #endgamePanel h3 {
     font-family: "Bowlby One SC", sans-serif;
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     text-transform: uppercase;
     text-align: center;
 }
 
 #endgamePanel h4 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
     text-align: right;
 }
 
 #endgamePanel h5 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     text-align: right;
 }
 
 #endgamePanel p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
     text-align: right;
 }
 
 #endgameButton {
     width: 100%;
     text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 700;
     height: 60px;
     margin-top: 7vh;
 }
 
 .modal-styles {
-    font-family: 'Manrope', sans-serif;
+    /* font-family: 'Manrope', sans-serif; */
 }
 
 @media only screen and (min-width: 321px) {
@@ -354,7 +309,7 @@ animation-delay: -0.15s;
 @media only screen and (min-width: 500px) {
 
     #loadSpinner, .lds-ring {
-        margin-left: 2rem;
+        margin-left: 3rem;
     }
     #welcomePanel {
         margin: 8vh 10vw 0;
@@ -363,7 +318,7 @@ animation-delay: -0.15s;
         padding: 0 10vw 0;
     }
     #gameInfo h4 {
-        font-size: 1.15rem;
+        font-size: 1.8rem;
     }
     #endgamePanel {
         margin: 8vh 10vw 0;
