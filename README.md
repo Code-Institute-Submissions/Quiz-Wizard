@@ -25,15 +25,16 @@ The goal of this project is to provide an educational and entertaining experienc
 
 #### User Stories
 
-<em>"I love pub quiz night, but at the moment I can't attend the weekly event due to isolation. I'd like to keep up on my trivia knowledge so that I can be on top when quiz night resumes."</em> - Jeff
+* As a user, I would like to be able to play a game of trivia so that I can challenge my knowledge
+* As a user, I would like to be able to choose from a selection of categories so that I can have a choice in what the game is about
+* As a user, I would like to be able to select the difficulty of the questions so that I can customise the challenge of the game
+* As a user, I would like to be able to see my score and record it so that I can track my progress
 
 <em>"As an avid game show fan, I want to participate in a similar experience so that I can feel like I'm a part of the show. Maybe one day I'll feel confident enough to go on one!"</em> - A. Plaza
 
 <em>I teach children in their early teens, and I'm looking for something fun and interesting to do when they have finished all their assignments. I want to be able to challenge them with general knowledge, but not questions that are too difficult.</em> - Mr. Crisp
 
 <em>Since I retired I have a lot of spare time, I like to keep my mind sharp by exercising it with challenging activities such as trivia. I want something easy to use so that I can focus on the qeustions.</em> - Arnold
-
-<em>Sometimes my partner and I like to challenge each other with random trivia facts. I'd like to be able to access a wide range of questions so that I can easily shoot them off at a moments notice.</em> - Zara
 
 ## Site Owner Goals
 * Display trivia information for users and display their answers
@@ -46,7 +47,6 @@ The goal of this project is to provide an educational and entertaining experienc
 
 * nav bar/header
 * help
-* bg image
 * category selection
 * display questions and update
 * display score
@@ -114,7 +114,7 @@ I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a 
 * [Popper.JS](https://popper.js.org/)
 * [Font Awesome](https://fontawesome.com/)
 * [Google Fonts](https://fonts.google.com)
-* [HTML entities](https://github.com/mathiasbynens/he)
+* [HTML entities (he)](https://github.com/mathiasbynens/he)
 * [Git](https://git-scm.com/)
 
 ## Resources
