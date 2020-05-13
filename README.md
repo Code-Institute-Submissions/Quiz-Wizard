@@ -84,6 +84,11 @@ This theme closely matched my original colours and was already tried and tested 
 * Primary: Manrope - After doing some research on font psychology I decided this is a good choice for the main text of this project. This is due to it's clean, neutral appearance. I want this because I don't want people to be distracted by the font when reading questions and thinking of answers
 * Logo: Bowlby One SC - A sleek, modern display font for the game logo and welcome page
 
+##### CSS
+* I have chosen to use the [BEM](http://getbem.com/) naming convention for my CSS classes. I like the way this reads and allows for descriptive naming for ease of use.
+
+Note on CSS: I have chosen to use vw/vh on padding and margins in a lot of cases as I believe this allows for an even more responsive experience than using solely rem. My decision was influenced by my own experimentation as well as researching, particularly [this](https://www.elegantthemes.com/blog/divi-resources/better-mobile-website-design-how-to-use-vw-vh-and-rem-to-create-fluid-divi-pages) article.
+
 ## Wireframes
 I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a rough outline of how I wanted the data to be displayed on the website. They are avaiable to view [here](assets/wireframes)
 
@@ -117,12 +122,13 @@ I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a 
 * [HTML entities (he)](https://github.com/mathiasbynens/he)
 * [Git](https://git-scm.com/)
 
-## Resources
-* [https://stackoverflow.com](https://stackoverflow.com)
-* [https://developer.mozilla.org/en-US/](https://developer.mozilla.org/en-US/)
-* [https://www.w3schools.com/](https://www.w3schools.com/)
+### Resources
+* [Stack Overflow](https://stackoverflow.com)
+* [MDN](https://developer.mozilla.org/en-US/)
+* [w3 Schools](https://www.w3schools.com/)
 * [Favicon Generator](https://www.favicon-generator.org/)
-* [https://flaviocopes.com/](https://flaviocopes.com/)
+* [Loading spinner](https://loading.io/css/)
+* [Flavio Copes](https://flaviocopes.com/)
 * [Traversy Media](https://www.traversymedia.com/)
 * [Web Dev Simplified](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw)
 * [The Coding Train](https://www.youtube.com/user/shiffman)
