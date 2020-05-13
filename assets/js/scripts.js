@@ -71,7 +71,7 @@ const serverFailed = () => {
     welcomePanel.css('padding', '0 10px')
 }
 
-checkResponse('https://opentdb.com/api_category.php')
+
 
 /**
  * Uses fetch API to return JSON data. If the server does not respond, loads
@@ -435,6 +435,7 @@ const enableButton = selector => {
 
 $(document).ready(function () {
 
+    checkResponse('https://opentdb.com/api_category.php')
     checkLocalScore()
     enableButton('#welcomePlayButton')
 
