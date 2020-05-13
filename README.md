@@ -90,7 +90,7 @@ This theme closely matched my original colours and was already tried and tested 
 Note on CSS: I have chosen to use vw/vh on padding and margins in a lot of cases as I believe this allows for an even more responsive experience than using solely rem. My decision was influenced by my own experimentation as well as researching, particularly [this](https://www.elegantthemes.com/blog/divi-resources/better-mobile-website-design-how-to-use-vw-vh-and-rem-to-create-fluid-divi-pages) article.
 
 ## Wireframes
-I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a rough outline of how I wanted the data to be displayed on the website. They are avaiable to view [here](assets/wireframes)
+I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a rough outline of how I wanted the data to be displayed on the website. They are avaiable to view [here](./wireframes)
 
 ## Features
 * Database request for trivia selection
@@ -134,32 +134,80 @@ I used [Pencil](https://pencil.evolus.vn/) to design my wireframes, giving me a 
 * [The Coding Train](https://www.youtube.com/user/shiffman)
 
 ## Testing
-* The website was constantly tested during development using Chrome dev tools
-* During development the API database went down, so I implemented functionality to handle this, inform the user, and load locally stored data
-* The original theme for the website did not look good once implemented and tested, so I had to redesign it
-* Tested retrieving, processing and displaying data from the API dynamically constantly through development, both in the console and the DOM
+The website was constantly tested during development using Chrome dev tools. Additionally as this was my first time using fetch, promises and retrieving data from APIs, I constantly used the console to thoroughly test and understand each step in the process. In the future I would like to develop a more thorough testing plan, as well as implementing automated testing.
 
-## Bugs
-Multiple clicks:
-* Bug: It was possible to click my event handlers multiple times, completely breaking the game functionality
-* Fix: After receiving an input, buttons are disabled and then re-enabled when another input is required
+#### Design -
 
-Special characters:
-* Bug: The API delivers data with special character encoding, and my function to check the answer was testing decoded text against encoded text. Even if the correct answer was selected, it did not recognise it
-* Fix: Use HTML Entities library (linked in tools and libraries) to decode the text from the API before processing it
+* <strong>Plan:</strong> Using colour psychology design a theme I believe would promote mental tasks and be exciting yet non-distracting to allow for focus on the questions
+* <strong>Implementation:</strong> The original theme for the website did not look good once implemented and tested, so I had to redesign it
+* <strong>Result:</strong> After deciding on a Bootswatch theme similar to my original colours and implementing it, the desired effect is achieved
+* <strong>Verdict:</strong> This test has passed and the theme of the website fits the purpose
 
-## Deployment
-* Deployed using Github Pages
-* Re-tested the whole site after deployment
-* Additionally tested using -
-    * [Google Mobile Friendly Test](https://search.google.com/test/mobile-friendly) and received a mobile friendly result
-    * [Webpagetest](https://www.webpagetest.org/) - [(result)](https://www.webpagetest.org/result/200511_FY_3dac919ab877314097c51632730c6b93/) and received a satisfactory result
-    * Dev tools audit and after resolving the issue listed below received above 90 on all categories
-    * Validated both HTML and CSS with [w3schools](https://www.w3schools.com/) validation service
+#### Navigation -
+* <strong>Plan:</strong> An enjoyable experience that is easy to use. The ability to smoothly progress through the stages of the app, as well as reset it if desired
+* <strong>Implementation:</strong> The first screen is a welcome panel promting the user to click play to begin, there is a reset option in the menu which reloads the game to the beginning panel
+* <strong>Result:</strong> Navigating through the app is a simple, the user does not need to fight against bad design
+* <strong>Verdict:</strong> This test has passed and the app is easy to navigate
 
-### Issues encountered and steps taken to resolve
+#### Playing the game -
+* <strong>Plan:</strong> An app that is available to play a game of trivia
+* <strong>Implementation:</strong> Accessing a database of trivia questions and displaying them to the user. If the database is offline or otherwise unavailable, the app will use locally stored questions and inform the user
+* <strong>Result:</strong> This app is always ready to provide the game of trivia to someone, regardless of if the database is online or not
+* <strong>Verdict:</strong> This test has passed and the app is always functional
+
+#### Keeping score -
+* <strong>Plan:</strong> A way to store and display the score of each game the user plays
+* <strong>Implementation:</strong> A modal scoreboard that is accessed by click on the menu item. The scoreboard and local storage are updated on each game completion. Local storage is checked when the app is loaded and the scoreboard updated with the stored scores
+* <strong>Result:</strong> Scores are stored and displayed for the user
+* <strong>Verdict:</strong> This test has passed and the user can see the scores they get for each category
+
+
+### Additionally tested using -
+* [Google Mobile Friendly Test](https://search.google.com/test/mobile-friendly) and received a mobile friendly result
+* [Webpagetest](https://www.webpagetest.org/) - [(result)](https://www.webpagetest.org/result/200511_FY_3dac919ab877314097c51632730c6b93/) and received a satisfactory result
+* Dev tools audit and after resolving the issue listed below received above 90 on all categories
+* Validated both HTML and CSS with [w3schools](https://www.w3schools.com/) validation service
+
+### Issues encountered and steps taken to resolve -
 * Recommended by Dev tools audit to add a preconnect link to head element to improve loading time. Implemented this and increased performance score from high 70's to 91
 * Added rel property to all stylesheets after using W3 validator
+* During development the API database went down, so I implemented functionality to handle this, inform the user, and load locally stored data
+
+## Bugs
+#### Multiple clicks:
+* <strong>Bug:</strong> It was possible to click my event handlers multiple times, completely breaking the game functionality
+* <strong>Fix:</strong> After receiving an input, buttons are disabled and then re-enabled when another input is required
+* <strong>Verdict:</strong> This bug was fixed
+
+#### Special characters:
+* <strong>Bug:</strong> The API delivers data with special character encoding, and my function to check the answer was testing decoded text against encoded text. Even if the correct answer was selected, it did not recognise it
+* <strong>Fix:</strong> Use HTML Entities library (linked in tools and libraries) to decode the text from the API before processing it
+* <strong>Verdict:</strong> This bug was fixed by using an external library
+
+## Deployment
+I developed this project using Visual Studio Code, using git for version control and GitHub to host the repository.
+
+To deploy Quiz Wizard on GitHub pages -
+
+* Sign in to GitHub website
+* Select my repositories
+* Navigate to 'asdfractal/Quiz-Wizard'
+* Select 'settings'
+* In the 'GitHub Pages' section, select 'Master Branch' from the 'Source' menu
+* Clicked to confirm my selection.
+* Quiz Wizard is now live on GitHub Pages
+
+To run Quiz Wizard locally -
+
+* Navigate to 'asdfractal/Quiz-Wizard'
+* Click the green 'Clone or Download' button
+* Copy the url in the dropdown box
+* Using an IDE open up your preferred terminal
+* Navigate to your desired file location
+* Use the command 'git clone' in the terminal followed by the url copied from dropdown box in the previous step (shown below)
+```git
+git clone https://github.com/asdfractal/Quiz-Wizard.git
+ ```
 
 ## Final comments
 This was a fun yet very challenging project to learn. Using multiple resources I was able to implement a working trivia game by using a database to provide the user with a selection of categories and difficulty. Once they have made their choice I can dynamically display the data and process their answers.
