@@ -172,6 +172,7 @@ The website was constantly tested during development using Chrome dev tools. Add
 * Recommended by Dev tools audit to add a preconnect link to head element to improve loading time. Implemented this and increased performance score from high 70's to 91
 * Added rel property to all stylesheets after using W3 validator
 * During development the API database went down, so I implemented functionality to handle this, inform the user, and load locally stored data
+* Adding a check for Internet Explorer would not execute when the code was inside the javascript file. I managed to solve this by putting the script in the HTML file directly.
 
 ## Bugs
 #### Multiple clicks:
@@ -214,4 +215,7 @@ This was a fun yet very challenging project to learn. Using multiple resources I
 
 I refactored the code multiple times for both consitency and modularity. This was both a frustrating and enlightening experience, as I have learned multiple ways to do things and am getting more efficient in my writing and understanding of the code. I can already imagine how to write a new project from scratch much more efficiently to save time and hassle refactoring.
 
-
+### Credits
+Simen Daehlin
+Igor B
+Boroz
