@@ -216,6 +216,6 @@ This was a fun yet very challenging project to learn. Using multiple resources I
 I refactored the code multiple times for both consitency and modularity. This was both a frustrating and enlightening experience, as I have learned multiple ways to do things and am getting more efficient in my writing and understanding of the code. I can already imagine how to write a new project from scratch much more efficiently to save time and hassle refactoring.
 
 ### Credits
-Simen Daehlin
-Igor B
+Simen Daehlin  
+Igor B  
 Boroz
