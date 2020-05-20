@@ -126,6 +126,14 @@ animation-delay: -0.15s;
     text-align: center;
 }
 
+.unsupported-browser {
+    height: 30vh;
+    margin: 8vh 0 0;
+    padding: 5rem;
+    text-align: center;
+    display: none;
+}
+
 #welcomePanel h3 {
     font-size: 1.75rem;
     color: #DF691A;

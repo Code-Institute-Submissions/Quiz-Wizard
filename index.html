@@ -118,6 +118,7 @@
                 </div>
             </div>
         </div>
+        <div class="card unsupported-browser"></div>
         <!-- Alerts -->
         <div class="alert alert-danger element__hidden" id="serverErrorAlert">
             <strong>Unfortunately we are having trouble contacting our database.</strong>
@@ -171,13 +172,33 @@
         </div>
       </div>
     </div>
-    
     <!-- Scripts -->
+    <!-- Checks for internet explorer and informs user browser not supported -->
+    <script>
+        function isIE() {
+            return /Trident\/|MSIE/.test(window.navigator.userAgent);
+        }
+
+        let showBrowserAlert = (function () {
+            if (document.querySelector('.unsupported-browser')) {
+                let d = document.getElementsByClassName('unsupported-browser');
+                is_IE = isIE();
+                if (is_IE) {
+                    document.getElementById('welcomePanel').style.display = 'none';
+                    d[0].innerHTML = '<p>Sorry, your browser is out of date and not supported on this website. If you would like to play Quiz Wizard, please update your browser. We recommend <a href="https://www.google.com/chrome/" target="_blank">Google Chrome.</a></p>';
+                    d[0].style.display = 'block';
+                }
+            }
+        });
+        document.addEventListener('DOMContentLoaded', showBrowserAlert);
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.js"></script>
     <script src="assets/js/scripts.js"></script>
+    
 </body>
 </html>
 
