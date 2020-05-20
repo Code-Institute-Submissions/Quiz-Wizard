@@ -19,7 +19,7 @@ let currentQuestion = 0
 let correctTotal = 0
 let currentScore = 0
 
-let serverResponse = false
+let serverResponse = true
 
 /**
  * Checks the API server for response and sets variable based on result
@@ -35,6 +35,7 @@ const checkResponse = async url => {
         }
     }
     catch {
+        serverResponse = false
         serverFailed()
     }
 }
@@ -387,6 +388,7 @@ const endGameProcessLocal = () => {
  * Reset the game so the user can play again
  */
 const resetGame = () => {
+    checkResponse('https://opentdb.com/api_category.php')
     triviaPanels.empty()
     correctAnswers.length = 0
     currentQuestion = 0
